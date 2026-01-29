@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типы данных и операторы сравнения | Frontend Guide</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>Типы данных и операторы</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#introduction">Что такое типы данных?</a></li>
+                    <li class="aside-link"><a href="#data-types">Основные типы данных</a></li>
+                    <li class="aside-link"><a href="#comparison-operators">Операторы сравнения</a></li>
+                    <li class="aside-link"><a href="#practice-1">Практика: Калькулятор оценок</a></li>
+                    <li class="aside-link"><a href="#practice-2">Практика: Проверка возраста</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="lesson-content">
+            <article>
+                <section id="introduction" class="lesson-section">
+                    <h2>Что такое типы данных?</h2>
+                    <p>Типы данных — это разные виды информации, с которыми работает программа. Как в жизни есть разные форматы информации (текст, числа, да/нет), так и в программировании.</p>
+                    
+                    <h3>Простая аналогия: Школьный рюкзак.</h3>
+                    <p>Представьте, что переменные — это отделения в рюкзаке:</p>
+                    <ul>
+                        <li><strong>Числа</strong> — как учебники по математике (можно складывать, вычитать)</li>
+                        <li><strong>Строки</strong> — как тетради с сочинениями (текст, который можно читать и соединять)</li>
+                        <li><strong>Булевы значения</strong> — как галочки в дневнике (✓ сделано, ✗ не сделано)</li>
+                    </ul>
+                    <p>Каждый тип данных обрабатывается по-своему, и JavaScript должен понимать, с чем он работает.</p>
+                </section>
+                
+                <section id="data-types" class="lesson-section">
+                    <h2>Основные типы данных</h2>
+                    <h3>1. Числа <code class="element">(Numbers)</code> — для математики</h2>
+                    <p>Числа используются для подсчетов, вычислений, измерений.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>let age = 15;          // Целое число
+let price = 99.99;     // Десятичная дробь
+let temperature = -5;  // Отрицательное число</code></pre>
+                    </div>
+                    
+                    <h4>Математические операции:</h4>
+                    <div class="code-block">
+                        <pre><code>let a = 10;
+let b = 3;
+
+console.log(a + b);   // 13 (сложение)
+console.log(a - b);   // 7 (вычитание)
+console.log(a * b);   // 30 (умножение)
+console.log(a / b);   // 3.333... (деление)
+console.log(a % b);   // 1 (остаток от деления)</code></pre>
+                    </div>
+                    
+                    <h3>Особые числа:</h3>
+                    <div class="code-block">
+                        <pre><code>console.log(10 / 0);   // Infinity (бесконечность)
+console.log(-10 / 0);  // -Infinity
+console.log(0 / 0);    // NaN (Not a Number - не число)</code></pre>
+                    </div>
+                
+                    <h3>2. Строки <code class="element">(Strings)</code> — для текста</h3>
+                    <p>Строки — это текст в кавычках. Используются для слов, сообщений, имен.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>let name = "Анна";       // Двойные кавычки
+let city = 'Москва';     // Одинарные кавычки
+let message = `Привет`;  // Обратные кавычки</code></pre>
+                    </div>
+                    
+                    <h4>Операции со строками:</h4>
+                    <div class="code-block">
+                        <pre><code>let firstName = "Иван";
+let lastName = "Петров";
+
+// Конкатенация (соединение строк)
+let fullName = firstName + " " + lastName;
+console.log(fullName); // "Иван Петров"
+
+// Длина строки
+console.log(fullName.length); // 11 (символов)</code></pre>
+                    </div>
+                    
+                    <h3>Шаблонные строки (обратные кавычки):</h3>
+                    <div class="code-block">
+                        <pre><code>let age = 15;
+let text = `Мне ${age} лет`; // Удобная вставка переменных
+console.log(text); // "Мне 15 лет"</code></pre>
+                    </div>
+
+                    <h3>3. Булевы значения <code class="element">(Boolean)</code> — да/нет</h3>
+                    <p>Всего два значения: <code class="element">true</code> (правда) и <code class="element">false</code> (ложь). Используются для проверок условий.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>let isStudent = true;     // Да, я ученик
+let hasHomework = false;  // Нет, домашку не сделал
+let isAdult = false;      // Нет, не совершеннолетний</code></pre>
+                    </div>
+                    <h3>Определение типа: <code class="element">typeof</code></h3>
+                    <p>Узнаем, какой тип данных хранится в переменной:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>console.log(typeof 42);           // "number"
+console.log(typeof "Привет");     // "string"
+console.log(typeof true);         // "boolean"
+console.log(typeof undefined);    // "undefined"</code></pre>
+                    </div>
+                    <h3>Преобразование типов</h3>
+                    <p>JavaScript иногда сам преобразует типы:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>// Строка + число = строка
+console.log("Возраст: " + 15); // "Возраст: 15"
+
+// При умножении/делении строки преобразуются в числа
+console.log("10" * 2);  // 20
+console.log("10" / 2);  // 5
+
+// Явное преобразование
+let str = "123";
+let num = Number(str);  // Преобразуем строку в число
+console.log(typeof num); // "number"</code></pre>
+                    </div>
+                </section>
+                <section id="comparison-operators" class="lesson-section">
+                    <h2>Операторы сравнения</h2>
+                    <p>Операторы сравнения возвращают <code class="element">true</code> или <code class="element">false</code>. Используются для принятия решений в программе.</p>
+                    
+                    <h3>1. Операторы равенства</h3>
+                    <div class="code-block">
+                        <pre><code>let a = 5;
+let b = 10;
+
+console.log(a == 5);   // true (равно)
+console.log(a != 5);   // false (не равно)
+console.log(a == b);   // false
+console.log(a != b);   // true</code></pre>
+                    </div>
+                    
+                    <p><strong>Важно:</strong> <code class="element">==</code> сравнивает значения, <code class="element">===</code> сравнивает и значения, и типы:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>console.log(5 == "5");   // true (значения одинаковые)
+console.log(5 === "5");  // false (типы разные: number vs string)</code></pre>
+                    </div>
+                    
+                    <p><strong>Правило:</strong> Используйте <code class="element">===</code> и <code class="element">!==</code> — они строже и надежнее.</p>
+                    
+                    <h3>2. Операторы сравнения</h3>
+                    <div class="code-block">
+                        <pre><code>let score = 85;
+
+console.log(score > 80);   // true (больше)
+console.log(score < 80);   // false (меньше)
+console.log(score >= 85);  // true (больше или равно)
+console.log(score <= 84);  // false (меньше или равно)</code></pre>
+                    </div>
+                </section>
+                
+                <section id="logical-operators" class="lesson-section">
+                    <h3>3. Логические операторы</h3>
+                    <p>Объединяют несколько условий:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>let age = 15;
+let hasTicket = true;
+
+// И (AND) — оба условия должны быть true
+console.log(age >= 12 && hasTicket); // true (и возраст подходит, и билет есть)
+
+// ИЛИ (OR) — хотя бы одно условие true
+console.log(age >= 18 || hasTicket); // true (билет есть, хотя возраст не подходит)
+
+// НЕ (NOT) — инвертирует значение
+console.log(!hasTicket); // false (не имеет билета = false)</code></pre>
+                    </div>
+                </section>
+                
+                <section id="practice-1" class="lesson-section">
+                    <h2>Практика: Задание 1 — Калькулятор оценок с проверками</h2>
+                    <p><strong>Цель:</strong> Создать программу, которая проверяет оценки ученика.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>console.log('=== ПРОВЕРКА УСПЕВАЕМОСТИ ===');
+
+// Данные ученика
+const studentName = "Мария";
+const mathGrade = 4;
+const russianGrade = 5;
+const englishGrade = 3;
+
+// Выводим информацию
+console.log(`Ученик: ${studentName}`);
+console.log(`Математика: ${mathGrade}`);
+console.log(`Русский: ${russianGrade}`);
+console.log(`Английский: ${englishGrade}`);
+
+// Проверки
+const hasExcellentMath = mathGrade === 5;
+const hasGoodRussian = russianGrade >= 4;
+const hasProblemsWithEnglish = englishGrade < 4;
+
+console.log('='.repeat(30));
+console.log('Отличник по математике?', hasExcellentMath);
+console.log('Хорошист по русскому?', hasGoodRussian);
+console.log('Проблемы с английским?', hasProblemsWithEnglish);
+
+// Общая проверка
+const isGoodStudent = mathGrade >= 4 && russianGrade >= 4;
+console.log('Хороший ученик в целом?', isGoodStudent);
+
+// Можно ли на олимпиаду?
+const canGoToOlympiad = mathGrade === 5 || russianGrade === 5;
+console.log('Можно на олимпиаду?', canGoToOlympiad);</code></pre>
+                    </div>
+                </section>
+                
+                <section id="practice-2" class="lesson-section">
+                    <h2>Практика: Задание 2 — Проверка возраста для кинотеатра</h2>
+                    <p><strong>Цель:</strong> Создать программу, которая проверяет, можно ли смотреть фильм.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>console.log('=== ПРОВЕРКА ВОЗРАСТА ДЛЯ КИНО ===');
+
+// Данные посетителя
+let visitorName = "Алексей";
+let visitorAge = 14;
+let hasParent = true;
+let movieRating = 16; // Возрастное ограничение фильма
+
+console.log(`Посетитель: ${visitorName}`);
+console.log(`Возраст: ${visitorAge} лет`);
+console.log(`Рейтинг фильма: ${movieRating}+`);
+console.log(`С родителем? ${hasParent ? 'Да' : 'Нет'}`);
+
+// Проверки
+let canWatchAlone = visitorAge >= movieRating;
+let canWatchWithParent = visitorAge >= 12 && hasParent;
+let canWatchAtAll = canWatchAlone || canWatchWithParent;
+
+console.log('='.repeat(30));
+console.log('Может смотреть один?', canWatchAlone);
+console.log('Может смотреть с родителем?', canWatchWithParent);
+console.log('Может смотреть вообще?', canWatchAtAll);
+
+// Детальный вывод
+if (canWatchAlone) {
+    console.log('Можете проходить, возраст подходит!');
+} else if (canWatchWithParent) {
+    console.log('Только в сопровождении взрослого');
+} else {
+    console.log('Извините, вам рано смотреть этот фильм');
+}
+
+// Дополнительные проверки
+console.log('='.repeat(30));
+console.log('Проверка типов данных:');
+console.log('Тип возраста:', typeof visitorAge);
+console.log('Тип имени:', typeof visitorName);
+console.log('Тип "с родителем":', typeof hasParent);
+
+// Преобразование типов
+let ageString = String(visitorAge); // Число в строку
+console.log('Возраст как строка:', ageString, 'тип:', typeof ageString);
+
+let parentString = String(hasParent);
+console.log('"С родителем" как строка:', parentString);</code></pre>
+                    </div>
+                </section>
+                
+                <section id="summary" class="lesson-section">
+                    <h2>Что вы узнали</h2>
+                    <ol>
+                        <li><strong>Три основных типа данных:</strong>
+                            <ul>
+                                <li>Числа (<code class="element">number</code>) — для вычислений: 10, 3.14, -5</li>
+                                <li>Строки (<code class="element">string</code>) — для текста: "Привет", 'Мир'</li>
+                                <li>Булевы значения (<code class="element">boolean</code>) — для условий: true, false</li>
+                            </ul>
+                        </li>
+                        <li><strong>Операции с числами:</strong>
+                            <ul>
+                                <li>+, -, *, /, % (остаток от деления)</li>
+                                <li>Особые значения: Infinity, NaN</li>
+                            </ul>
+                        </li>
+                        <li><strong>Операции со строками:</strong>
+                            <ul>
+                                <li>+ для соединения строк</li>
+                                <li><code class="element">.length</code> для длины строки</li>
+                                <li>Шаблонные строки с ${переменная}</li>
+                            </ul>
+                        </li>
+                        <li><strong>Операторы сравнения (возвращают true/false):</strong>
+                            <ul>
+                                <li>== и === (равно) — используйте ===</li>
+                                <li>!= и !== (не равно) — используйте !==</li>
+                                <li>>, <, >=, <= (больше/меньше)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Логические операторы:</strong>
+                            <ul>
+                                <li>&& (И) — оба условия true</li>
+                                <li>|| (ИЛИ) — хотя бы одно условие true</li>
+                                <li>! (НЕ) — инвертирует значение</li>
+                            </ul>
+                        </li>
+                        <li><strong>Важные функции:</strong>
+                            <ul>
+                                <li><code class="element">typeof</code> — узнать тип данных</li>
+                                <li><code class="element">Number()</code> — преобразовать в число</li>
+                                <li><code class="element">String()</code> — преобразовать в строку</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <div class="buttons">
+                        <a href="lesson-1-JS.html" class="previous-lesson">Предыдущий урок</a>
+                        <a href="../theory.html" class="next-lesson">Вернуться к теории</a>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+    <script>
+        // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

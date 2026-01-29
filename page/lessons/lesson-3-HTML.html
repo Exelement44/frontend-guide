@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+        <div class="lesson-container">
+            <aside class="lesson-nav">                
+                <h3>Таблицы и формы: сбор данных</h3>
+                <nav>
+                    <ul>
+                        <li class="aside-link"><a href="#tables-and-forms">Введение в таблицы и формы</a></li>
+                        <li class="aside-link"><a href="#creating-tables">Создание таблиц для данных</a></li>
+                        <li class="aside-link"><a href="#form-elements"> Элементы форм (input, textarea, button)</a></li>
+                        <li class="aside-link"><a href="#simple-validation"> Простая валидация</a></li>
+                        <li class="aside-link"><a href="#practice">Практика</a></li>
+                        <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main class="lesson-content">
+                <article>
+                    <section id="tables-and-forms" class="lesson-section">
+                        <h2>Введение в таблицы и формы</h2>
+                        <p>Теперь, когда вы освоили базовые элементы контента, пришло время изучить два мощных инструмента HTML: таблицы для структурированного представления данных и формы для взаимодействия с пользователем. Без этих элементов современный веб был бы невозможен.</p>
+                    </section>
+                    <section id="creating-tables" class="lesson-section">
+                        <h2>Создание таблиц для данных</h2>
+                        <p>Таблицы в HTML используются не для создания макета страницы (для этого есть CSS), а исключительно для <strong>отображения табличных данных:</strong> расписаний, прайс-листов, сравнительных характеристик.</p>
+                        <h3>Базовая структура таблицы:</h3>
+                        <p>Таблица строится из нескольких обязательных тегов, которые работают как конструктор:</p>
+                        <ol>
+                            <li><code class="element">&lt;table&gt;</code> - <strong>главный контейнер</strong> для всей таблицы.</li>
+                            <li><code class="element">&lt;tr&gt;</code> (table row) - строка таблицы.</li>
+                            <li><code class="element">&lt;td&gt;</code> (table data) - ячейка с данными внутри строки.</li>
+                            <li><code class="element">&lt;th&gt;</code> (table header) - ячейка-заголовок для столбца или строки. Текст внутри автоматически выделяется жирным и центрируется.</li>
+                        </ol>
+                        <div class="code-block">
+                            <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Месяц&lt;/th&gt;
+        &lt;th&gt;Доход&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Январь&lt;/td&gt;
+        &lt;td&gt;100 000 ₽&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Февраль&lt;/td&gt;
+        &lt;td&gt;120 000 ₽&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                        </div>
+                        <h3>Улучшение читаемости:</h3>
+                        <p>Для лучшей структуры и доступности используются дополнительные теги:</p>
+                        <ul>
+                            <li><code class="element">&lt;thead&gt;</code> - оборачивает блок с заголовками (<code class="element">&lt;tr&gt;</code> с <code class="element">&lt;th&gt;</code>).</li>
+                            <li><code class="element">&lt;tbody&gt;</code> - оборачивает основное тело таблицы с данными.</li>
+                            <li><code class="element">&lt;tfoot&gt;</code>  - оборачивает итоговую строку (например, «Всего»).</li>
+                        </ul>
+                        <div class="code-block">
+                            <pre><code>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;th&gt;Продукт&lt;/th&gt;&lt;th&gt;Цена&lt;/th&gt;&lt;th&gt;Кол-во&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;Хлеб&lt;/td&gt;&lt;td&gt;50 ₽&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Молоко&lt;/td&gt;&lt;td&gt;90 ₽&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;&lt;td colspan="2"&gt;Итого:&lt;/td&gt;&lt;td&gt;230 ₽&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+                        </div>
+                        <p><strong>ВАЖНО:</strong> <code class="element">colspan="2"</code> в примере выше объединяет две ячейки по горизонтали. Аналогично <code class="element">rowspan</code> объединяет ячейки по вертикали.</p>
+                    </section>
+                    <section id="form-elements" class="lesson-section">
+                        <h2>Элементы форм (input, textarea, button)</h2>
+                        <p>Формы - это инструмент диалога с пользователем. Они собирают данные для поиска, регистрации, отправки комментариев, оформления заказов.</p>
+                        <h3>Базовая структура формы:</h3>
+                        <p>Любая форма начинается с тега &lt;form&gt;. У него есть ключевые атрибуты:</p>
+                        <ul>
+                            <li><code class="element">action</code> - URL, куда отправятся собранные данные.</li>
+                            <li><code class="element">method</code> - метод отправки (обычно <code class="element">"get"</code> или <code class="element">"post"</code>).</li>
+                        </ul>
+                        <div class="code-block">
+                            <pre><code>&lt;form action="/send-data" method="post"&gt;
+    &lt;!-- Сюда вставляются поля формы --&gt;
+&lt;/form&gt;</code></pre>
+                        </div>
+                        <h3>Поля для ввода (тег <code>&lt;input&gt;</code>):</h3>
+                        <p>Это самый универсальный и часто используемый элемент форм. Его поведение кардинально меняется в зависимости от атрибута <code class="element">type</code>.</p>
+                        <div class="code-block">
+                            <pre><code>&lt;label for="name"&gt;Ваше имя:&lt;/label&gt;
+&lt;input type="text" id="name" name="user_name" placeholder="Иван Иванов"&gt;
+
+&lt;label for="email"&gt;E-mail:&lt;/label&gt;
+&lt;input type="email" id="email" name="user_email"&gt;
+
+&lt;label for="psw"&gt;Пароль:&lt;/label&gt;
+&lt;input type="password" id="psw" name="user_psw"&gt;
+
+&lt;!-- Группа переключателей (выбор одного) --&gt;
+&lt;p&gt;Выберите способ связи:&lt;/p&gt;
+&lt;input type="radio" id="contact_phone" name="contact" value="phone"&gt;
+&lt;label for="contact_phone"&gt;Телефон&lt;/label&gt;
+&lt;input type="radio" id="contact_email" name="contact" value="email" checked&gt;
+&lt;label for="contact_email"&gt;E-mail&lt;/label&gt;
+
+&lt;!-- Флажки (можно выбрать несколько) --&gt;
+&lt;input type="checkbox" id="subscribe" name="subscribe" checked&gt;
+&lt;label for="subscribe"&gt;Подписаться на новости&lt;/label&gt;</code></pre>
+                        </div>
+                        <p><strong>ТАКЖЕ ВАЖНО:</strong>  Атрибут <code class="element">name</code> - это <strong>имя</strong> поля, под которым данные уйдут на сервер. Атрибут <code class="element">id</code> <strong>связывает</strong> поле с тегом <code class="element">&lt;label&gt;</code>, что улучшает доступность (клик по <code class="element">label</code> активирует поле).</p>
+                        <h3>Многострочный текст (тег <code>&lt;textarea&gt;</code> ):</h3>
+                        <p>Используется для ввода больших текстов: комментариев, сообщений, описаний.</p>
+                        <div class="code-block">
+                            <pre><code>&lt;label for="message"&gt;Ваше сообщение:&lt;/label&gt;
+&lt;textarea id="message" name="user_message" rows="5" cols="30" placeholder="Напишите здесь..."&gt;&lt;/textarea&gt;</code></pre>
+                        </div>
+                        <h3>Кнопки (теги <code>&lt;button&gt;</code> и <code>&lt;input type="submit"&gt;</code>):</h3>
+                        <p>Отправляют форму или выполняют другие действия.</p>
+                        <div class="code-block">
+                            <pre><code>&lt;!-- Основная кнопка отправки формы --&gt;
+&lt;button type="submit"&gt;Отправить данные&lt;/button&gt;
+&lt;!-- или --&gt;
+&lt;input type="submit" value="Отправить"&gt;
+
+&lt;!-- Кнопка для сброса формы --&gt;
+&lt;button type="reset"&gt;Очистить форму&lt;/button&gt;</code></pre>
+                        </div>
+                    </section>
+                    <section id="simple-validation" class="lesson-section">
+                        <h2>Простая валидация</h2>
+                        <p>Валидация — это проверка введенных данных на корректность. Самую простую валидацию можно настроить прямо в HTML с помощью атрибутов тега <code class="element">&lt;input&gt;</code>.</p>
+                        <ul>
+                            <li><strong>Обязательное поле</strong> (<code class="element">required</code>): Браузер не отправит форму, пока это поле не будет заполнено.</li>
+                            <li><strong>Проверка формата через</strong> <code class="element">type</code>: Браузер проверит, соответствует ли ввод указанному типу.</li>
+                            <li><strong>Паттерн</strong> (<code class="element">pattern</code>): Проверка по регулярному выражению. Например, для российского номера телефона.</li>
+                        </ul>
+                        <div class="code-block">
+                            <pre><code>&lt;input type="tel" name="phone" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" placeholder="+7 (999) 123-45-67" title="Формат: +7 (999) 123-45-67"&gt;</code></pre>
+                        </div>
+                        <p>Если валидация не пройдена, браузер покажет подсказку из атрибута <code class="element">title</code> и не отправит форму.</p>
+                    </section>
+                    <section id="practice" class="lesson-section">
+                        <h2>Практика: Создаем страницу регистрации и таблицы</h2>
+                        <p>Давайте создадим страницу, которая объединяет таблицу данных и форму для регистрации на мероприятие.</p>
+                        <ol>
+                            <li><strong>Создайте файл</strong> <code class="element">event.html</code> и подготовьте базовую структуру HTML-документа.</li>
+                            <li><strong>Добавьте таблицу с расписанием докладчиков</strong> в тело страницы (<code class="element">&lt;body&gt;</code>):</li>
+                            <div class="code-block">
+                                <pre><code>&lt;h2&gt;Расписание конференции&lt;/h2&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Время&lt;/th&gt;
+            &lt;th&gt;Докладчик&lt;/th&gt;
+            &lt;th&gt;Тема&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;10:00 - 11:00&lt;/td&gt;
+            &lt;td&gt;Анна Петрова&lt;/td&gt;
+            &lt;td&gt;Будущее веб-разработки&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;11:15 - 12:15&lt;/td&gt;
+            &lt;td&gt;Игорь Сидоров&lt;/td&gt;
+            &lt;td&gt;Введение в искусственный интеллект&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;13:30 - 15:00&lt;/td&gt;
+            &lt;td colspan="2"&gt;Круглый стол: Обсуждение трендов&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                            <li><strong>Под таблицей создайте форму регистрации:</strong></li>
+                            <div class="code-block">
+                                <pre><code>&lt;h2&gt;Регистрация на конференцию&lt;/h2&gt;
+&lt;form action="#" method="post"&gt;
+    &lt;label for="reg_name"&gt;ФИО *&lt;/label&gt;&lt;br&gt;
+    &lt;input type="text" id="reg_name" name="name" required placeholder="Петров Алексей"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="reg_email"&gt;E-mail *&lt;/label&gt;&lt;br&gt;
+    &lt;input type="email" id="reg_email" name="email" required placeholder="alexey@example.com"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;Выберите тариф:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="radio" id="tariff_standard" name="tariff" value="standard" checked&gt;
+    &lt;label for="tariff_standard"&gt;Стандарт (бесплатно)&lt;/label&gt;&lt;br&gt;
+    &lt;input type="radio" id="tariff_vip" name="tariff" value="vip"&gt;
+    &lt;label for="tariff_vip"&gt;VIP (+ доступ к материалам)&lt;/label&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="reg_comment"&gt;Комментарий или пожелания:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="reg_comment" name="comment" rows="3" cols="40"&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;input type="checkbox" id="reg_agreement" name="agreement" required&gt;
+    &lt;label for="reg_agreement"&gt;Я согласен на обработку персональных данных *&lt;/label&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;Зарегистрироваться&lt;/button&gt;
+    &lt;button type="reset"&gt;Очистить форму&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                            </div>
+                            <li><strong>Откройте файл в браузере.</strong> Попробуйте отправить форму, не заполнив обязательные поля (отмеченные <code class="element">*</code>) или указав некорректный email. Браузер покажет ошибки валидации. Протестируйте работу радио-кнопок, флажка и кнопок отправки/сброса.</li>
+                            <li><strong>Экспериментируйте:</strong>
+                                <ul>
+                                    <li>Добавьте в таблицу новую строку с докладчиком.</li>
+                                    <li>Создайте поле для ввода телефона с простой валидацией <code class="element">pattern="[0-9]{11}"</code>.</li>
+                                    <li>Добавьте в форму поле для выбора даты (<code class="element">&lt;input type="date"&gt;</code>).</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </section>
+                    <section id="summary" class="lesson-section">
+                        <h2>Что вы узнали</h2>
+                        <ol>
+                            <li>Таблицы создаются с помощью тегов <code class="element">&lt;table&gt;</code>, <code class="element">&lt;tr&gt;</code>, <code class="element">&lt;td&gt;</code>, <code class="element">&lt;th&gt;</code>. Для структуры используются <code class="element">&lt;thead&gt;</code>, <code class="element">&lt;tbody&gt;</code>, <code class="element">&lt;tfoot&gt;</code>.</li>
+                            <li>Ячейки можно объединять атрибутами <code class="element">colspan</code> и <code class="element">rowspan</code>.</li>
+                            <li>Формы (<code class="element">&lt;form&gt;</code>) — это инструмент сбора данных. Их основные элементы: разнотипные поля <code class="element">&lt;input&gt;</code>, многострочное поле <code class="element">&lt;textarea&gt;</code> и кнопки <code class="element">&lt;button&gt;</code>.</li>
+                            <li>Ключевые атрибуты полей: <code class="element">type</code> определяет вид поля, <code class="element">name</code> - имя для отправки данных, <code class="element">id</code> - связь с <code class="element">&lt;label&gt;</code>, <code class="element">required</code> - обязательность заполнения.</li>
+                            <li>Простую проверку (валидацию) данных можно реализовать на уровне HTML с помощью атрибутов <code class="element">required</code>, <code class="element">type="email/url/number"</code> и <code class="element">pattern</code>.</li>
+                        </ol>
+                <div class="buttons">
+                    <a href="lesson-2-HTML.html" class="previous-lesson">Предыдущий урок</a>
+                    <a href="lesson-4-HTML.html" class="next-lesson">Следующий урок</a>
+                </div>
+                    </section>
+                </article>
+            </main>
+        </div>
+        <script>
+        // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

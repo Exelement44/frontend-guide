@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>Мультимедиа в HTML</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#introduction">Введение в мультимедиа</a></li>
+                    <li class="aside-link"><a href="#video-tag">Тег &lt;video&gt;</a></li>
+                    <li class="aside-link"><a href="#audio-tag">Тег &lt;audio&gt;</a></li>
+                    <li class="aside-link"><a href="#iframe-tag">Тег &lt;iframe&gt;</a></li>
+                    <li class="aside-link"><a href="#practice">Практика</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="lesson-content">
+            <article>
+                <section class="lesson-section" id="introduction">
+    <h2>Введение в мультимедиа</h2>
+    
+    <p><strong>Мультимедиа</strong> - это контент, который сочетает разные форматы: <strong>текст + изображения + аудио + видео + интерактивные элементы.</strong> С помощью HTML мы можем добавлять на страницы не просто картинки, а целые видео, музыку, карты, презентации.</p>
+
+    <h3>Простая аналогия</h3>
+    <p>Сравните газету (только текст и фото) и современный новостной сайт (есть видео-репортажи, аудио-интервью, интерактивные графики). Мультимедиа делает информацию живой и увлекательной.</p>
+
+    <h3>Почему это важно сейчас:</h3>
+    <ul>
+      <li><strong>Визуальное восприятие</strong> - 65% людей лучше запоминают видео, чем текст</li>
+      <li><strong>Доступность</strong> - аудио помогает слабовидящим</li>
+      <li><strong>Современность</strong> - пользователи ожидают мультимедийный контент</li>
+      <li><strong>Экономия времени</strong> - иногда 1 минута видео объясняет лучше, чем 10 минут чтения</li>
+    </ul>
+
+    <h3>Базовая структура мультимедийной страницы</h3>
+    <p>Вот простой шаблон для начала:</p>
+    
+    <div class="code-block">
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Мультимедиа на сайте&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .media-block { margin: 30px 0; padding: 20px; background: #f9f9f9; border-radius: 10px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Медиа-контент на сайте&lt;/h1&gt;
+    
+    &lt;div class="media-block"&gt;
+        &lt;h2&gt;Видео-урок&lt;/h2&gt;
+        &lt;!-- Здесь будет видео --&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="media-block"&gt;
+        &lt;h2&gt;Аудио-подкаст&lt;/h2&gt;
+        &lt;!-- Здесь будет аудио --&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="media-block"&gt;
+        &lt;h2&gt;Интерактивная карта&lt;/h2&gt;
+        &lt;!-- Здесь будет карта --&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    
+    <p>Сохраните этот код как <code class="element">multimedia.html</code> и откройте в браузере. Пока он пустой, но сейчас мы его наполним!</p>
+  </section>
+
+  <section class="lesson-section" id="video-tag">
+    <h2>Тег <code>&lt;video&gt;</code> - видео</h2>
+    
+    <p>С HTML5 добавить видео на сайт стало очень просто.</p>
+
+    <h3>Минимальный рабочий пример:</h3>
+    <div class="code-block">
+      <pre><code>&lt;video controls width="600"&gt;
+    &lt;source src="lesson.mp4" type="video/mp4"&gt;
+    Ваш браузер не поддерживает видео.
+&lt;/video&gt;</code></pre>
+    </div>
+    
+    <h4>Что здесь важно:</h4>
+    <ul>
+      <li><code class="element">controls</code> - добавляет кнопки управления (пауза, громкость, полноэкранный режим)</li>
+      <li><code class="element">width="600"</code> - задает ширину видео</li>
+      <li><code class="element">&lt;source&gt;</code> - указывает файл видео и его тип</li>
+      <li>Текст внутри - показывается, если браузер не поддерживает видео</li>
+    </ul>
+
+    <h4>Дополнительные возможности:</h4>
+    <div class="code-block">
+      <pre><code>&lt;video 
+    controls 
+    width="100%" 
+    poster="preview.jpg"
+    preload="metadata"
+    muted
+&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+    &lt;p&gt;Скачайте &lt;a href="video.mp4"&gt;видеофайл&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;</code></pre>
+    </div>
+    
+    <p><strong>Атрибуты:</strong></p>
+    <ul>
+      <li><code class="element">poster="preview.jpg"</code> - картинка до начала воспроизведения</li>
+      <li><code class="element">preload="metadata"</code> - загрузить только информацию о видео</li>
+      <li><code class="element">muted</code> - без звука по умолчанию</li>
+    </ul>
+
+    <h3>Пример использования:</h3>
+    <div class="code-block">
+      <pre><code>&lt;div class="tutorial-video"&gt;
+    &lt;h3&gt;Видео-урок: Создание кнопки на CSS&lt;/h3&gt;
+    &lt;video controls width="100%" style="max-width: 800px;"&gt;
+        &lt;source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"&gt;
+        Ваш браузер не поддерживает видео.
+    &lt;/video&gt;
+    &lt;p&gt;&lt;small&gt;Длительность: 2:15 | Формат: MP4 | Размер: 15 MB&lt;/small&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+    
+    <p><strong>Совет:</strong> Используйте видео с YouTube или Vimeo через <code class="element">&lt;iframe&gt;</code> (об этом ниже) - так не нужно хранить большие файлы на своем сервере.</p>
+  </section>
+
+  <section class="lesson-section" id="audio-tag">
+    <h2>Тег <code>&lt;audio&gt;</code> - аудио</h2>
+    
+    <p>Аудио работает почти так же, как видео:</p>
+
+    <h3>Базовый пример:</h3>
+    <div class="code-block">
+      <pre><code>&lt;audio controls&gt;
+    &lt;source src="music.mp3" type="audio/mpeg"&gt;
+    Ваш браузер не поддерживает аудио.
+&lt;/audio&gt;</code></pre>
+    </div>
+
+    <h3>Полный пример с настройками:</h3>
+    <div class="code-block">
+      <pre><code>&lt;audio 
+    controls 
+    preload="none"
+    style="width: 100%;"
+&gt;
+    &lt;source src="podcast.mp3" type="audio/mpeg"&gt;
+    &lt;source src="podcast.ogg" type="audio/ogg"&gt;
+    &lt;p&gt;Слушайте &lt;a href="podcast.mp3"&gt;подкаст&lt;/a&gt; в MP3.&lt;/p&gt;
+&lt;/audio&gt;</code></pre>
+    </div>
+    
+    <p>Атрибуты:</p>
+    <ul>
+      <li><code class="element">preload="none"</code> - не загружать заранее</li>
+      <li><code class="element">style="width: 100%;"</code> - растянуть на всю ширину</li>
+    </ul>
+
+    <h3>Практические примеры использования:</h3>
+    
+    <h4>1. Аудио-подкаст:</h4>
+    <div class="code-block">
+      <pre><code>&lt;div class="podcast"&gt;
+    &lt;h3&gt;Подкаст: Основы веб-разработки&lt;/h3&gt;
+    &lt;audio controls style="width: 100%;"&gt;
+        &lt;source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"&gt;
+    &lt;/audio&gt;
+    &lt;div class="audio-info"&gt;
+        &lt;p&gt;&lt;strong&gt;Выпуск #15&lt;/strong&gt; | 45:12 | MP3 128kbps&lt;/p&gt;
+        &lt;p&gt;Темы: HTML, CSS, первые шаги в разработке&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <h4>2. Фоновая музыка (с управлением):</h4>
+    <div class="code-block">
+      <pre><code>&lt;div class="background-music"&gt;
+    &lt;h4&gt;Фоновая музыка для учебы&lt;/h4&gt;
+    &lt;audio id="bgMusic" loop&gt;
+        &lt;source src="ambient.mp3" type="audio/mpeg"&gt;
+    &lt;/audio&gt;
+    &lt;button onclick="document.getElementById('bgMusic').play()"&gt;Включить&lt;/button&gt;
+    &lt;button onclick="document.getElementById('bgMusic').pause()"&gt;Пауза&lt;/button&gt;
+    &lt;button onclick="document.getElementById('bgMusic').volume -= 0.1"&gt;Тише&lt;/button&gt;
+    &lt;button onclick="document.getElementById('bgMusic').volume += 0.1"&gt;Громче&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <h4>3. Аудио-книга или лекция:</h4>
+    <div class="code-block">
+      <pre><code>&lt;div class="audiobook"&gt;
+    &lt;h4&gt;Аудио-лекция по JavaScript&lt;/h4&gt;
+    &lt;audio controls preload="metadata"&gt;
+        &lt;source src="lecture.mp3" type="audio/mpeg"&gt;
+    &lt;/audio&gt;
+    &lt;div class="chapters"&gt;
+        &lt;p&gt;&lt;strong&gt;Главы:&lt;/strong&gt;&lt;/p&gt;
+        &lt;button onclick="document.querySelector('audio').currentTime = 0"&gt;00:00 - Введение&lt;/button&gt;
+        &lt;button onclick="document.querySelector('audio').currentTime = 120"&gt;02:00 - Переменные&lt;/button&gt;
+        &lt;button onclick="document.querySelector('audio').currentTime = 300"&gt;05:00 - Функции&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="lesson-section" id="iframe-tag">
+    <h2>Тег <code>&lt;iframe&gt;</code> - внешний контент</h2>
+    
+    <p><code class="element">&lt;iframe&gt;</code> - это окно в другое веб-приложение. Через него можно встроить на свою страницу почти любой сайт или сервис.</p>
+
+    <h3>Базовая структура:</h3>
+    <div class="code-block">
+      <pre><code>&lt;iframe 
+    src="https://example.com" 
+    width="800" 
+    height="600"
+    title="Описание встроенного контента"&gt;
+&lt;/iframe&gt;</code></pre>
+    </div>
+    <p><strong>Важно:</strong> Всегда добавляйте атрибут <code class="element">title</code> для доступности!</p>
+
+    <h3>Что можно встраивать:</h3>
+    
+    <h4>1. YouTube видео:</h4>
+    <div class="code-block">
+      <pre><code>&lt;iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+    title="Обучающее видео по HTML"
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+    </div>
+    <p><strong>Как получить код для вставки:</strong></p>
+    <ol>
+      <li>На YouTube нажмите "Поделиться" под видео</li>
+      <li>Выберите "Встроить"</li>
+      <li>Скопируйте предоставленный код</li>
+      <li>Вставьте на свою страницу</li>
+    </ol>
+
+    <h4>2. Google Карты:</h4>
+    <div class="code-block">
+      <pre><code>&lt;iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.6149!2d37.6171!3d55.7508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a738fa419%3A0x7c347d506b52311f!2z0JzQvtGB0LrQstCw!5e0!3m2!1sru!2sru" 
+    width="100%" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy"
+    title="Карта Москвы, Красная площадь"&gt;
+&lt;/iframe&gt;</code></pre>
+    </div>
+
+    <h4>3. Презентации (Google Slides):</h4>
+    <div class="code-block">
+      <pre><code>&lt;iframe 
+    src="https://docs.google.com/presentation/d/e/2PACX-1vSc_abc123/embed" 
+    width="960" 
+    height="569" 
+    frameborder="0"
+    title="Презентация по веб-разработке"&gt;
+&lt;/iframe&gt;</code></pre>
+    </div>
+
+    <h4>4. Социальные сети (Twitter):</h4>
+    <div class="code-block">
+      <pre><code>&lt;iframe 
+    src="https://platform.twitter.com/embed/Tweet.html?id=123456789" 
+    width="550" 
+    height="300"
+    title="Твит о веб-разработке"&gt;
+&lt;/iframe&gt;</code></pre>
+    </div>
+
+    <h3>Важно знать про <code>&lt;iframe&gt;</code>:</h3>
+    
+    <h4>Плюсы:</h4>
+    <ul>
+      <li>Не нужно хранить большие файлы (видео, презентации)</li>
+      <li>Контент всегда актуальный (карты, погода)</li>
+      <li>Можно встроить почти любой сервис</li>
+      <li>Не нагружает ваш сервер</li>
+    </ul>
+    
+    <h4>Минусы:</h4>
+    <ul>
+      <li>Зависите от стороннего сервиса (если он упал - у вас пропадет контент)</li>
+      <li>Медленная загрузка (дополнительный запрос к другому сайту)</li>
+      <li>Возможны проблемы с безопасностью</li>
+    </ul>
+  </section>
+
+  <section class="lesson-section" id="practice">
+    <h2>Практика: Медиа-галерея</h2>
+    
+    <p><strong>Задача:</strong> Создать страницу-портфолио с разными типами мультимедиа контента.</p>
+
+    <h3>Что должно быть на странице:</h3>
+    <ul>
+      <li>Видео-раздел: Встроить обучающее видео с YouTube</li>
+      <li>Аудио-раздел: Добавить аудио-запись с объяснением проекта</li>
+      <li>Карта-раздел: Показать на карте место проведения хакатона/мероприятия</li>
+      <li>Презентация: Встроить презентацию вашего проекта</li>
+    </ul>
+
+    <h3>Пошаговая инструкция:</h3>
+    
+    <h4>Шаг 1: Создайте файл <code class="element">portfolio.html</code></h4>
+    <div class="code-block">
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Медиа-портфолио&lt;/title&gt;
+    &lt;style&gt;
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 1000px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; margin-bottom: 40px; }
+        .media-section { background: white; border-radius: 10px; padding: 25px; margin: 30px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-top: 0; }
+        iframe, video, audio { border-radius: 8px; margin-top: 15px; }
+        .media-container { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Медиа-портфолио проекта&lt;/h1&gt;
+        &lt;p&gt;Демонстрация использования мультимедиа в веб-разработке&lt;/p&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;!-- Здесь будем добавлять медиа-контент --&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h4>Шаг 2: Добавьте видео с YouTube</h4>
+    <p>Внутри <code class="element">&lt;main&gt;</code> добавьте:</p>
+    <div class="code-block">
+      <pre><code>&lt;section class="media-section"&gt;
+    &lt;h2&gt;Видео-презентация проекта&lt;/h2&gt;
+    &lt;p&gt;Краткий обзор возможностей нашей образовательной платформы:&lt;/p&gt;
+    
+    &lt;div class="media-container"&gt;
+        &lt;iframe 
+            width="100%" 
+            height="450" 
+            src="https://www.youtube.com/embed/pQN-pnXPaVg" 
+            title="Видео о веб-разработке для начинающих"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen&gt;
+        &lt;/iframe&gt;
+    &lt;/div&gt;
+    
+    &lt;p&gt;&lt;small&gt;Источник: YouTube | Длительность: 5:17&lt;/small&gt;&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+
+    <h4>Шаг 3: Добавьте аудио-пояснение</h4>
+    <div class="code-block">
+      <pre><code>&lt;section class="media-section"&gt;
+    &lt;h2&gt;Аудио-описание технической части&lt;/h2&gt;
+    &lt;p&gt;Прослушайте объяснение архитектуры проекта:&lt;/p&gt;
+    
+    &lt;div class="media-container"&gt;
+        &lt;audio controls style="width: 100%;"&gt;
+            &lt;source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"&gt;
+            Ваш браузер не поддерживает аудио-элементы.
+        &lt;/audio&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="audio-details"&gt;
+        &lt;h3&gt;Содержание аудио:&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;00:00 - Введение и цели проекта&lt;/li&gt;
+            &lt;li&gt;01:30 - Используемые технологии&lt;/li&gt;
+            &lt;li&gt;03:15 - Структура базы данных&lt;/li&gt;
+            &lt;li&gt;04:45 - Планы по развитию&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+
+    <h4>Шаг 4: Добавьте карту с местом презентации</h4>
+    <div class="code-block">
+      <pre><code>&lt;section class="media-section"&gt;
+    &lt;h2&gt;Место проведения защиты проекта&lt;/h2&gt;
+    &lt;p&gt;Наша школа находится по адресу:&lt;/p&gt;
+    
+    &lt;div class="media-container"&gt;
+        &lt;iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.6149!2d37.6171!3d55.7508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a738fa419%3A0x7c347d506b52311f!2z0JzQvtGB0LrQstCw!5e0!3m2!1sru!2sru" 
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+            title="Карта расположения школы"&gt;
+        &lt;/iframe&gt;
+    &lt;/div&gt;
+    
+    &lt;p&gt;&lt;strong&gt;Адрес:&lt;/strong&gt; Москва, Красная площадь, 1&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Дата защиты:&lt;/strong&gt; 25 мая 2024&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+
+    <h4>Шаг 5: Добавьте презентацию проекта</h4>
+    <div class="code-block">
+      <pre><code>&lt;section class="media-section"&gt;
+    &lt;h2&gt;Презентация проекта&lt;/h2&gt;
+    &lt;p&gt;Изучите слайды нашего итогового проекта:&lt;/p&gt;
+    
+    &lt;div class="media-container"&gt;
+        &lt;iframe 
+            src="https://docs.google.com/presentation/d/e/2PACX-1vQpP4iNCNZG1LHvHdZ5oJ8k7QYbLl7nT8Q3cV7w8m3V9XzLpM7vW6Vl7NpRrM4o3qYbHvFm5tT7W/embed" 
+            width="100%" 
+            height="450" 
+            frameborder="0"
+            title="Презентация образовательной платформы"&gt;
+        &lt;/iframe&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="presentation-info"&gt;
+        &lt;h3&gt;Ключевые слайды:&lt;/h3&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Актуальность проблемы&lt;/li&gt;
+            &lt;li&gt;Цели и задачи проекта&lt;/li&gt;
+            &lt;li&gt;Технологический стек&lt;/li&gt;
+            &lt;li&gt;Архитектура решения&lt;/li&gt;
+            &lt;li&gt;Результаты и перспективы&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="lesson-section" id="summary">
+    <h2>Что вы узнали</h2>
+    
+    <h3>1. Три главных инструмента мультимедиа:</h3>
+    <ul>
+      <li><code class="element">&lt;video&gt;</code> — для встраивания видеофайлов</li>
+      <li><code class="element">&lt;audio&gt;</code> — для добавления звука</li>
+      <li><code class="element">&lt;iframe&gt;</code> — для встраивания любых веб-страниц и сервисов</li>
+    </ul>
+
+    <h3>2. Ключевые атрибуты:</h3>
+    <ul>
+      <li><code class="element">controls</code> — элементы управления</li>
+      <li><code class="element">width/height</code> — размеры</li>
+      <li><code class="element">src</code> — источник контента</li>
+      <li><code class="element">title</code> — описание для доступности (очень важно!)</li>
+    </ul>
+
+    <h3>3. Практические применения:</h3>
+    <ul>
+      <li>Обучающие видео-уроки</li>
+      <li>Аудио-подкасты и лекции</li>
+      <li>Интерактивные карты</li>
+      <li>Презентации и документы</li>
+      <li>Социальные виджеты</li>
+    </ul>
+
+    <h3>4. Важные правила:</h3>
+    <ul>
+      <li>Всегда добавляйте <code class="element">title</code> для <code class="element">&lt;iframe&gt;</code></li>
+      <li>Предусматривайте fallback-контент (на случай, если элемент не поддерживается)</li>
+      <li>Тестируйте на разных браузерах</li>
+      <li>Учитывайте размер файлов (видео может быть очень тяжелым)</li>
+    </ul>
+    <div class="buttons">
+                    <a href="lesson-5 HTML.html" class="previous-lesson">Предыдущий урок</a>
+                    <a href="..//theory.html" class="next-lesson">Вернуться к теории</a>
+                </div>
+  </section>
+            </article>
+        </main>
+    </div>
+    <script>
+        // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+    </body>
+</html>

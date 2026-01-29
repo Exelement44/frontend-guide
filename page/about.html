@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lessons/lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="index.html">Главная</a></li>
+                <li class="link"><a href="theory.html">Теория</a></li>
+                <li class="link"><a href="practice.html">Практика</a></li>
+                <li class="link"><a href="about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="about">
+        <section id="introduction"></section>
+        <h1>Неидеальный, но честный старт в веб-разработке.</h1>
+        <p>Этот проект создан школьниками для начинающих, таких же школьников как и мы,а также для тех кто не понял материал какой-либо темы. Мы сами прошли через неструктурированные гайды, сложные термины и ощущение, что «непонятно, что учить дальше». Этот прототип — это наша попытка создать ресурс, которого нам не хватало в самом начале, чтобы не допустить такого же отрицательного опыта. Это не идеальный коммерческий продукт, а честный эксперимент по систематизации первых шагов в коде.</p>
+        <section id="our-mission"></section>
+        <h2>Наша миссия</h2>
+        <p>Мы верим, что хорошее обучение должна начинаться с ясности прежде всего. Наша цель — снизить барьер входа, сделав изучение основ HTML, CSS и JavaScript менее пугающим и более структурированным, получив при этом самим бесценный опыт в создании сайта, который является первым нашим серьезным проектом, структуировании материала и педагогике разумеется.</p>
+        <section id = "our-principles">
+            <h2>На чём построена платформа?</h2>
+            <p>Вся методология проекта выросла из анализа реальных трудностей новичков и проверена нашим собственным опросом среди других начинающих разработчиков в IT сфере. Мы сделали ставку на три ключевых принципа:</p>
+            <ol>
+                <li><strong>Объяснение через аналогии.</strong> Мы переводим абстрактные концепции в знакомые образы из нашей жизни,чтобы сделать их интуитивно понятными, давая при этом разумеется также и основной материал.</li>
+                <li><strong>Визуальный путь (Roadmap).</strong> Чтобы не теряться в море информации, мы наглядно показываем весь путь обучения от основ до более сложных тем.</li>
+                <li><strong>Фокус на практике.</strong> Каждая порция теории сразу подкрепляется конкретным заданием. Мы за принцип «увидел → сделал → понял» и за то, чтобы пользователь пробовал менять значения или элементы в коде, чтобы он увидел как это работает. Но мы также хотим сделать и отдельную вкладку с практическими заданиями чтобы окончательно добить все непонятные моменты, допуская ошибки в редакторе кода, которые дают также большой опыт и шаг к понятию</li>
+            </ol>
+        </section>
+        <section id = "our-stack">
+            <h2>Техническая сторона</h2>
+            <p>Платформа — это тоже часть обучения. Она полностью написана на чистом HTML, CSS и JavaScript, чтобы быть быстрым, современным и служить наглядным примером технологий, которые мы изучаем. Сайт адаптирован для всех мобильных устройств, чтобы сделать обучение доступнее.</p>
+        </section>
+        <section class="creators">
+            <h2>Об авторах</h2>
+            <p>Проект разработан учениками 9 «В» класса — Регасом Дмитрием и Павлюченко Никитой — в рамках школьной проектной работы. Этот сайт для нас — это не только учёба, но и способ систематизировать собственные знания, а также попытка помочь другим начать этот путь с меньшими трудностями.</p>
+        </section>
+        <section id="forgiveness"></section>
+        <h3>Спасибо, что зашли! Надеемся, наш проект окажется для вас полезным.</h3>
+        <a href="index.html" class="back-button"> ← Вернуться на главную</a>
+    </main>
+    <script>
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

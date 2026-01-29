@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы CSS</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>Основы CSS</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#introduction">Что такое CSS?</a></li>
+                    <li class="aside-link"><a href="#connection-methods">Способы подключения CSS</a></li>
+                    <li class="aside-link"><a href="#selectors">Селекторы</a></li>
+                    <li class="aside-link"><a href="#properties">Свойства и значения</a></li>
+                    <li class="aside-link"><a href="#box-model">Блочная модель</a></li>
+                    <li class="aside-link"><a href="#practice-card">Практика: Создание карточки</a></li>
+                    <li class="aside-link"><a href="#step-by-step">Шаг за шагом</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="lesson-content">
+            <article>
+                <section id="introduction" class="lesson-section">
+                    <h2>Что такое CSS?</h2>
+                    <p><strong>CSS (Cascading Style Sheets)</strong> — это язык стилей, который определяет, как HTML-элементы должны отображаться на экране. Если HTML — это скелет страницы, то CSS — это её одежда, макияж и прическа.</p>
+                    <h3>Простая аналогия: Строительство дома.</h3>
+                    <p><strong>HTML</strong> — это фундамент, стены, окна, двери (структура)</p>
+                    <p><strong>CSS</strong> — это цвет стен, обои, стиль окон, форма крыши (внешний вид)</p>
+                    <p><strong>JavaScript</strong> — это электричество, водопровод, лифт (интерактивность)</p>
+                    <p>Без CSS все сайты выглядели бы как чистый текст с синими ссылками — как в 1990-х годах.</p>
+                    <h3>Базовый пример подключения CSS</h3>
+                    <p>Вот минимальный пример HTML-страницы со стилями:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Моя первая стилизованная страница&lt;/title&gt;
+    &lt;!-- ПОДКЛЮЧЕНИЕ CSS --&gt;
+    &lt;style&gt;
+        /* Здесь пишутся стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2563eb;
+            text-align: center;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Добро пожаловать в мир CSS!&lt;/h1&gt;
+    
+    &lt;div class="card"&gt;
+        &lt;h2&gt;Это карточка со стилями&lt;/h2&gt;
+        &lt;p&gt;Раньше этот текст был обычным, а теперь он красивый!&lt;/p&gt;
+        &lt;button&gt;Кнопка с будущими стилями&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    <p>Давайте разберем, как это работает.</p>
+                </section>
+
+                <section id="connection-methods" class="lesson-section">
+                    <h2>3 способа подключения CSS</h2>
+                    
+                    <h3>1. Встроенные стили (inline)</h3>
+                    <p>Стили прямо в теге через атрибут <code class="element">style</code>:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;h1 style="color: blue; font-size: 32px;"&gt;Заголовок&lt;/h1&gt;
+&lt;p style="background: yellow; padding: 10px;"&gt;Текст&lt;/p&gt;</code></pre>
+                    </div>
+                    <p><strong>Плюсы:</strong> Быстро, для разовых стилей</p>
+                    <p><strong>Минусы:</strong> Нельзя переиспользовать, смешивает структуру и оформление</p>
+
+                    <h3>2. Внутренние стили (internal)</h3>
+                    <p>Стили внутри <code class="element">&lt;style&gt;</code> в <code class="element">&lt;head&gt;</code>:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;head&gt;
+    &lt;style&gt;
+        h1 { color: blue; }
+        p { background: yellow; }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                    <p><strong>Плюсы:</strong> Все стили в одном месте, только для этой страницы</p>
+                    <p><strong>Минусы:</strong> Нельзя использовать на других страницах</p>
+
+                    <h3>3. Внешние стили (external)</h3>
+                    <p>Отдельный файл <code class="element">.css</code>, подключаемый через <code class="element">&lt;link&gt;</code>:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                    <p>Файл <code class="element">styles.css</code>:</p>
+                    <div class="code-block">
+                        <pre><code>h1 { color: blue; }
+p { background: yellow; }</code></pre>
+                    </div>
+                    <p><strong>Плюсы:</strong> Переиспользование на всех страницах, кэширование браузером</p>
+                    <p><strong>Минусы:</strong> Дополнительный файл</p>
+                    <p><strong>Рекомендация:</strong> Всегда используйте внешние стили для реальных проектов!</p>
+                </section>
+
+                <section id="selectors" class="lesson-section">
+                    <h2>Селекторы: Как выбрать элементы</h2>
+                    <p>Селекторы — это способ сказать CSS: "Эти стили применяй к ЭТИМ элементам".</p>
+                    
+                    <h3>Базовые селекторы:</h3>
+                    <table class="selector-table">
+                        <thead>
+                            <tr>
+                                <th>Селектор</th>
+                                <th>Пример</th>
+                                <th>Что выбирает</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>По тегу</td>
+                                <td><code class="element">p</code></td>
+                                <td>Все параграфы <code class="element">&lt;p&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td>По классу</td>
+                                <td><code class="element">.card</code></td>
+                                <td>Элементы с <code class="element">class="card"</code></td>
+                            </tr>
+                            <tr>
+                                <td>По id</td>
+                                <td><code class="element">#header</code></td>
+                                <td>Элемент с <code class="element">id="header"</code></td>
+                            </tr>
+                            <tr>
+                                <td>Универсальный</td>
+                                <td><code class="element">*</code></td>
+                                <td>Все элементы</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Примеры в коде:</p>
+                    <div class="code-block">
+                        <pre><code>/* Все заголовки h2 */
+h2 {
+    color: darkblue;
+}
+
+/* Все элементы с классом "important" */
+.important {
+    background: yellow;
+    font-weight: bold;
+}
+
+/* Элемент с id="main-title" */
+#main-title {
+    font-size: 48px;
+    text-align: center;
+}
+
+/* Все элементы на странице */
+* {
+    box-sizing: border-box;
+}</code></pre>
+                    </div>
+
+                    <h3>Комбинированные селекторы:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Все параграфы внутри элементов с классом .article */
+.article p {
+    line-height: 1.6;
+}
+
+/* Все ссылки при наведении */
+a:hover {
+    color: red;
+}
+
+/* Первый элемент списка */
+ul li:first-child {
+    font-weight: bold;
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="properties" class="lesson-section">
+                    <h2>Свойства и значения: Что можно менять</h2>
+                    
+                    <h3>Текстовые свойства:</h3>
+                    <div class="code-block">
+                        <pre><code>p {
+    /* Шрифт */
+    font-family: "Arial", sans-serif;
+    font-size: 16px;           /* Размер: px, em, rem */
+    font-weight: 400;          /* Толщина: 100-900 или normal, bold */
+    font-style: italic;        /* Стиль: normal, italic */
+    
+    /* Цвет и выравнивание */
+    color: #333333;            /* Цвет текста: #hex, rgb(), названия */
+    text-align: center;        /* Выравнивание: left, center, right, justify */
+    line-height: 1.5;          /* Межстрочный интервал */
+    text-decoration: underline;/* Подчеркивание: none, underline, line-through */
+}</code></pre>
+                    </div>
+
+                    <h3>Цвета в CSS:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Разные способы задать цвет */
+.color-examples {
+    color: red;                /* По имени */
+    color: #ff0000;            /* HEX (шестнадцатеричный) */
+    color: rgb(255, 0, 0);     /* RGB (0-255) */
+    color: rgba(255, 0, 0, 0.5);/* RGB с прозрачностью (0-1) */
+    color: hsl(0, 100%, 50%);  /* HSL (тон, насыщенность, яркость) */
+}</code></pre>
+                    </div>
+
+                    <h3>Пример текстовых стилей:</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;style&gt;
+        .fancy-text {
+            font-family: "Georgia", serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2d3748;
+            text-align: justify;
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+        
+        .special {
+            color: #e53e3e;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p class="fancy-text"&gt;
+        Это текст с примененными стилями CSS. 
+        &lt;span class="special"&gt;Обратите внимание&lt;/span&gt; 
+        на разницу в оформлении разных частей текста.
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </section>
+
+                <section id="box-model" class="lesson-section">
+                    <h2>Блочная модель (Box Model)</h2>
+                    <p>Каждый HTML-элемент — это прямоугольный блок. Блочная модель описывает, как устроен этот блок:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>┌─────────────────────────────────────────┐
+│              margin (внешний отступ)    │
+│  ┌───────────────────────────────────┐  │
+│  │         border (граница)          │  │
+│  │  ┌─────────────────────────────┐  │  │
+│  │  │      padding (внутренний    │  │  │
+│  │  │          отступ)            │  │  │
+│  │  │  ┌───────────────────────┐  │  │  │
+│  │  │  │     content (контент) │  │  │  │
+│  │  │  └───────────────────────┘  │  │  │
+│  │  └─────────────────────────────┘  │  │
+│  └───────────────────────────────────┘  │
+└─────────────────────────────────────────┘</code></pre>
+                    </div>
+                    <p>В качестве примера даже можно взять ту же кнопку "Следующий урок" где надпись - контент, внутренний отступ - <code class="element">padding</code>, граница кнопки(в том числе сгругленные углы) - <code class="element">border</code>, и наконец расстояние от кнопки "Предыдущий урок" - <code class="element">margin</code></p>
+                    <h3>Свойства блочной модели:</h3>
+                    <div class="code-block">
+                        <pre><code>.box {
+    /* Размер контента */
+    width: 300px;
+    height: 200px;
+    
+    /* Внутренние отступы (padding) */
+    padding: 20px;                    /* Все стороны: 20px */
+    padding: 10px 20px;               /* Вертикально | Горизонтально */
+    padding: 10px 20px 30px 40px;     /* Верх | Право | Низ | Лево */
+    
+    /* Границы (border) */
+    border: 2px solid #2563eb;        /* Толщина | Стиль | Цвет */
+    border-radius: 10px;              /* Скругление углов */
+    
+    /* Внешние отступы (margin) */
+    margin: 20px auto;                /* auto центрирует по горизонтали */
+    
+    /* Фон */
+    background-color: #f8fafc;
+    background-image: linear-gradient(45deg, #f3f4f6, #ffffff);
+}</code></pre>
+                    </div>
+
+                    <h3>Важное свойство <code class="element">box-sizing</code>:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Без box-sizing: border-box */
+.old-box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    /* Фактическая ширина: 300 + 20*2 + 5*2 = 350px! */
+}
+
+/* С box-sizing: border-box (рекомендуется всегда!) */
+.modern-box {
+    box-sizing: border-box;
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    /* Ширина остается 300px! padding и border внутрь */
+}
+
+/* Лучше задать для всех элементов */
+* {
+    box-sizing: border-box;
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="practice-card" class="lesson-section">
+                    <h2>Практическое задание: Создаем стилизованную карточку</h2>
+                    <p><strong>Задача:</strong> Превратить обычный HTML в красивую карточку с помощью CSS.</p>
+                    
+                    <h3>Исходный HTML:</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Практика CSS&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="product-card"&gt;
+        &lt;img src="https://via.placeholder.com/300x200" alt="Товар"&gt;
+        &lt;h2 class="product-title"&gt;Смартфон Flagship Pro&lt;/h2&gt;
+        &lt;p class="product-description"&gt;Мощный смартфон с лучшей камерой на рынке&lt;/p&gt;
+        &lt;div class="price"&gt;49 990 ₽&lt;/div&gt;
+        &lt;button class="buy-button"&gt;Добавить в корзину&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+
+                    <h3>Что нужно сделать в файле <code class="element">style.css</code>:</h3>
+                    <ol>
+                        <li>Задать стили для всего тела страницы (<code class="element">body</code>)</li>
+                        <li>Стилизовать карточку (<code class="element">.product-card</code>)</li>
+                        <li>Оформить заголовок (<code class="element">.product-title</code>)</li>
+                        <li>Стилизовать описание (<code class="element">.product-description</code>)</li>
+                        <li>Сделать красивую цену (<code class="element">.price</code>)</li>
+                        <li>Оформить кнопку (<code class="element">.buy-button</code>)</li>
+                    </ol>
+
+                    <h3>Подсказки:</h3>
+                    <ul>
+                        <li>Используйте <code class="element">padding</code> для внутренних отступов</li>
+                        <li>Добавьте <code class="element">border-radius</code> для скругления углов</li>
+                        <li>Поэкспериментируйте с <code class="element">box-shadow</code> для объема</li>
+                        <li>Используйте <code class="element">margin</code> для расстояний между элементами</li>
+                        <li>Попробуйте разные <code class="element">font-family</code> и <code class="element">font-weight</code></li>
+                    </ul>
+
+                    <h3>Пример решения:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Файл style.css */
+
+/* 1. Сброс и базовые стили */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 2. Стили карточки */
+.product-card {
+    width: 100%;
+    max-width: 320px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+/* 3. Изображение товара */
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* 4. Контент карточки */
+.product-card > div {
+    padding: 20px;
+}
+
+/* 5. Заголовок товара */
+.product-title {
+    font-size: 1.5rem;
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* 6. Описание товара */
+.product-description {
+    color: #718096;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* 7. Цена */
+.price {
+    font-size: 1.8rem;
+    color: #2b6cb0;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+/* 8. Кнопка */
+.buy-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buy-button:hover {
+    background: linear-gradient(90deg, #5a67d8 0%, #6b46c1 100%);
+    transform: scale(1.02);
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="step-by-step" class="lesson-section">
+                    <h2>Шаг за шагом: Создаем первую стилизованную страницу</h2>
+                    
+                    <h3>Шаг 1: Создаем файловую структуру</h3>
+                    <div class="code-block">
+                        <pre><code>my-website/
+├── index.html
+├── style.css
+└── images/</code></pre>
+                    </div>
+
+                    <h3>Шаг 2: Пишем базовый HTML</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Мой стилизованный сайт&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header class="site-header"&gt;
+        &lt;h1&gt;Мой первый CSS-сайт&lt;/h1&gt;
+        &lt;p&gt;Изучаем основы каскадных таблиц стилей&lt;/p&gt;
+    &lt;/header&gt;
+    
+    &lt;main class="content"&gt;
+        &lt;section class="intro"&gt;
+            &lt;h2&gt;Что такое CSS?&lt;/h2&gt;
+            &lt;p&gt;CSS делает веб-страницы красивыми...&lt;/p&gt;
+        &lt;/section&gt;
+        
+        &lt;section class="features"&gt;
+            &lt;div class="feature-card"&gt;
+                &lt;h3&gt;Селекторы&lt;/h3&gt;
+                &lt;p&gt;Выбирают элементы для стилизации&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="feature-card"&gt;
+                &lt;h3&gt;Свойства&lt;/h3&gt;
+                &lt;p&gt;Определяют внешний вид&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="feature-card"&gt;
+                &lt;h3&gt;Значения&lt;/h3&gt;
+                &lt;p&gt;Конкретные настройки стилей&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    
+    &lt;footer class="site-footer"&gt;
+        &lt;p&gt;© 2024 | Изучаем CSS&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+
+                    <h3>Шаг 3: Создаем CSS файл</h3>
+                    <div class="code-block">
+                        <pre><code>/* style.css */
+
+/* 1. Сброс и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9fafb;
+}
+
+/* 2. Шапка сайта */
+.site-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    margin-bottom: 40px;
+}
+
+.site-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.site-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* 3. Основной контент */
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 4. Секция введения */
+.intro {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+}
+
+.intro h2 {
+    color: #2d3748;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    color: #4a5568;
+}
+
+/* 5. Карточки особенностей */
+.features {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.feature-card {
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    color: #2d3748;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-card p {
+    color: #718096;
+    line-height: 1.6;
+}
+
+/* 6. Подвал */
+.site-footer {
+    background: #2d3748;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+}
+
+.site-footer p {
+    opacity: 0.8;
+}
+
+/* 7. Адаптивность */
+@media (max-width: 768px) {
+    .site-header h1 {
+        font-size: 2rem;
+    }
+    
+    .features {
+        flex-direction: column;
+    }
+    
+    .intro {
+        padding: 30px 20px;
+    }
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 4: Экспериментируем!</h3>
+                    <p>Попробуйте изменить:</p>
+                    <ul>
+                        <li>Цвета (поменяйте значения <code class="element">color</code> и <code class="element">background</code>)</li>
+                        <li>Размеры (<code class="element">font-size</code>, <code class="element">padding</code>, <code class="element">margin</code>)</li>
+                        <li>Шрифты (подключите другие через Google Fonts)</li>
+                        <li>Эффекты (<code class="element">box-shadow</code>, <code class="element">border-radius</code>)</li>
+                    </ul>
+                </section>
+
+                <section id="summary" class="lesson-section">
+                    <h2>Что вы узнали</h2>
+                    
+                    <h3>1. Основные понятия:</h3>
+                    <ul>
+                        <li>CSS — язык стилей для оформления HTML</li>
+                        <li>Селекторы — выбирают элементы для стилизации</li>
+                        <li>Свойства и значения — что и как менять</li>
+                    </ul>
+
+                    <h3>2. Способы подключения CSS:</h3>
+                    <ul>
+                        <li>Встроенные (<code class="element">style</code> атрибут) — плохая практика</li>
+                        <li>Внутренние (<code class="element">&lt;style&gt;</code> в <code class="element">&lt;head&gt;</code>) — для простых страниц</li>
+                        <li>Внешние (отдельный <code class="element">.css</code> файл) — рекомендуется всегда!</li>
+                    </ul>
+
+                    <h3>3. Ключевые свойства:</h3>
+                    <ul>
+                        <li>Текст: <code class="element">font-family</code>, <code class="element">font-size</code>, <code class="element">color</code>, <code class="element">text-align</code></li>
+                        <li>Блочная модель: <code class="element">width</code>, <code class="element">height</code>, <code class="element">padding</code>, <code class="element">margin</code>, <code class="element">border</code></li>
+                        <li>Важно: <code class="element">box-sizing: border-box</code></li>
+                    </ul>
+
+                    <h3>4. Практические навыки:</h3>
+                    <ul>
+                        <li>Создание внешнего CSS файла</li>
+                        <li>Подключение Google Fonts</li>
+                        <li>Стилизация карточек и кнопок</li>
+                        <li>Использование <code class="element">box-shadow</code> и <code class="element">border-radius</code></li>
+                        <li>Основы адаптивного дизайна</li>
+                    </ul>
+
+                    <div class="buttons">
+                        <span></span>
+                        <a href="lesson-2-CSS.html" class="next-lesson">Следующий урок</a>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+    <script>
+            // Скрипт для выделения активной секции (ваш оригинальный)
+            document.addEventListener('DOMContentLoaded', function() {
+    // Исправленный скрипт для выделения активной секции
+    const sections = document.querySelectorAll('.lesson-section');
+    const navLinks = document.querySelectorAll('.lesson-nav a');
+    
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

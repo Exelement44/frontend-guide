@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>Семантика HTML5</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#introduction">Введение в семантику</a></li>
+                    <li class="aside-link"><a href="#main-tags">Основные теги</a></li>
+                    <li class="aside-link"><a href="#additional-tags">Дополнительные теги</a></li>
+                    <li class="aside-link"><a href="#comparison">Сравнение подходов к структуре в HTML</a></li>
+                    <li class="aside-link"><a href="#practice">Практика</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="lesson-content">
+            <article>
+                <section id = "introduction" class="lesson-section">
+                    <h2>Что такое семантика в HTML5?</h2>
+                    <p><strong>Семантика</strong> - это смысл, значение. В контексте HTML семантические теги — это теги, которые <strong>называют вещи своими именами:</strong> «вот шапка сайта», «вот основная навигация», «вот независимая статья», «вот подвал».</p>
+                    <h3>Простая аналогия: Организация библиотеки.</h3>
+                    <p>Представьте, что HTML-страница — это библиотека:</p>
+                    <ul>
+                        <li>Старый подход (только <code class="element">&lt;div&gt;</code>) - все книги свалены в одну большую кучу. Чтобы найти учебник, нужно перерыть всю стопку.</li>
+                        <li>Семантический подход (HTML5) — книги расставлены по полкам с четкими табличками: «Художественная литература», «Научные труды», «Справочники», «Детские книги». Все структурировано и понятно.</li>
+                    </ul>
+                    <p><strong>Почему это важно?</strong> Семантические теги делают ваш код понятным не только для людей, но и для:</p>
+                        <ol>
+                            <li><strong>Поисковых систем</strong> (SEO) -  они лучше понимают, какой контент важнее</li>
+                            <li><strong>Скринридеров</strong> (для слабовидящих) - программы могут правильно «озвучить» структуру страницы</li>
+                            <li><strong>Браузеров</strong> - они могут предлагать дополнительные функции для определенных типов контента</li>
+                            <li><strong>Будущих разработчиков</strong> - код читается как книга</li>
+                        </ol>
+                    <h2>Базовая структура семантической страницы</h2>
+                    <p>Вот как выглядит современный каркас типичной веб-страницы с использованием HTML5:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Мой блог о технологиях&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- ШАПКА САЙТА --&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Tech Insights&lt;/h1&gt;
+        &lt;p&gt;Глубокий анализ технологий будущего&lt;/p&gt;
+    &lt;/header&gt;
+    
+    &lt;!-- ГЛАВНОЕ МЕНЮ --&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#home"&gt;Главная&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#articles"&gt;Статьи&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#about"&gt;О нас&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+    
+    &lt;!-- ОСНОВНОЕ СОДЕРЖАНИЕ --&gt;
+    &lt;main&gt;
+        &lt;!-- САМОСТОЯТЕЛЬНАЯ СТАТЬЯ --&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Революция искусственного интеллекта&lt;/h2&gt;
+            &lt;p&gt;Содержание статьи...&lt;/p&gt;
+        &lt;/article&gt;
+        
+        &lt;!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ --&gt;
+        &lt;aside&gt;
+            &lt;h3&gt;Популярное&lt;/h3&gt;
+            &lt;p&gt;Другие интересные материалы...&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;!-- ПОДВАЛ САЙТА --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;© 2024 Tech Insights. Все права защищены.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                <p>Давайте разберем каждый семантический тег по порядку.</p>
+                </section>
+                <section id = "main-tags" class="lesson-section">
+                    <h2>Основные семантические теги и их назначение</h2>
+                    <h3>1. <code class="element">&lt;header&gt;</code> - Шапка (верхний колонтитул)</h3>
+                    <p>Это не просто «верх страницы». <code class="element">&lt;header&gt;</code> представляет вводный контент, обычно группу вводных или навигационных средств.</p>
+                    <p><strong>Где используется:</strong></p>
+                    <ul>
+                        <li>В начале <code class="element">&lt;body&gt;</code> - как шапка всего сайта (логотип, слоган)</li>
+                        <li>Внутри <code class="element">&lt;article&gt;</code> или <code class="element">&lt;section&gt;</code> - как заголовок конкретного раздела</li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code>&lt;!-- Шапка всего сайта --&gt;
+&lt;header&gt;
+    &lt;img src="logo.png" alt="Логотип"&gt;
+    &lt;h1&gt;Мой учебный портал&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;!-- Шапка внутри статьи --&gt;
+&lt;article&gt;
+    &lt;header&gt;
+        &lt;h2&gt;Как выучить HTML за неделю&lt;/h2&gt;
+        &lt;p&gt;Автор: Иван Разработчиков | Дата: &lt;time&gt;2024-03-15&lt;/time&gt;&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;p&gt;Текст статьи...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                    <h3>2. <code class="element">&lt;nav&gt;</code> - Навигационный раздел</h3>
+                    <p>Представляет блок навигационных ссылок. <strong>Важно:</strong> Не все группы ссылок должны быть внутри <code class="element">&lt;nav&gt;</code> ! Только основные блоки навигации (главное меню, оглавление статьи).</p>
+                    <div class="code-block">
+                        <pre><code>&lt;!-- Правильно: главное меню --&gt;
+&lt;nav aria-label="Основное меню"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Главная&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/courses"&gt;Курсы&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/blog"&gt;Блог&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/contacts"&gt;Контакты&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- НЕ нужно оборачивать в &lt;nav&gt;: --&gt;
+&lt;div&gt;
+    &lt;a href="#top"&gt;Наверх&lt;/a&gt; | 
+    &lt;a href="privacy.html"&gt;Конфиденциальность&lt;/a&gt; &lt;!-- Это не основная навигация --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    <p><strong>Атрибут</strong> <code class="element">aria-label</code> - дополнительно описывает назначение навигации для скринридеров.</p>
+                    <h3>3. <code class="element">&lt;main&gt;</code>- Основное содержимое</h3>
+                    <p>Самый главный контент страницы. <strong>На странице должен быть только один</strong> <code class="element">&lt;main&gt;</code> <strong>!</strong> Это то уникальное содержание, ради которого пользователь пришел на страницу.</p>
+                    <div class="code-block">
+                        <pre><code>&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+    
+    &lt;!-- ВСЕ ОСНОВНОЕ ЗДЕСЬ --&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Заголовок основной статьи&lt;/h1&gt;
+        &lt;p&gt;Самая важная информация страницы...&lt;/p&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+                    </div>
+                    <h3>4. <code class="element">&lt;article&gt;</code> - Независимый контент</h3>
+                    <p>Представляет самостоятельную, законченную единицу контента, которую можно взять и использовать отдельно от всего сайта.</p>
+                    <p><strong>Что может быть</strong> <code class="element">&lt;article&gt;</code>:</p>
+                    <ul>
+                        <li>Пост в блоге</li>
+                        <li>Новость</li>
+                        <li>Комментарий на форуме</li>
+                        <li>Виджет</li>
+                        <li>Любой контент, который имеет смысл сам по себе</li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code>&lt;article&gt;
+    &lt;h2&gt;10 причин изучать веб-разработку в 2024&lt;/h2&gt;
+    &lt;p&gt;Веб-разработка продолжает быть одной из самых востребованных профессий...&lt;/p&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;Теги: &lt;mark&gt;карьера&lt;/mark&gt;, &lt;mark&gt;обучение&lt;/mark&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                    <h3>5. <code class="element">&lt;section&gt;</code> - Логический раздел</h3>
+                    <p>Группирует тематический контент. Обычно начинается с заголовка (<code class="element">&lt;h2&gt;</code> - <code class="element">&lt;h6&gt;</code>).</p>
+                    <div class="code-block">
+                        <pre><code>&lt;article&gt;
+    &lt;h1&gt;Руководство по HTML5&lt;/h1&gt;
+    
+    &lt;section&gt;
+        &lt;h2&gt;Введение&lt;/h2&gt;
+        &lt;p&gt;HTML5 — это пятая версия языка разметки...&lt;/p&gt;
+    &lt;/section&gt;
+    
+    &lt;section&gt;
+        &lt;h2&gt;Семантические элементы&lt;/h2&gt;
+        &lt;p&gt;Семантика позволяет придать смысл разным частям страницы...&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                    <p><strong>Важное правило:</strong> Если вы просто хотите обернуть контент для стилизации - используйте <code class="element">&lt;div&gt;</code>. Если контент логически завершен и тематически сгруппирован - используйте <code class="element">&lt;section&gt;</code>.</p>
+                    <h3>6. <code class="element">&lt;aside&gt;</code> - Боковая панель, дополнительная информация</h3>
+                    <p>Контент, который косвенно связан с основным содержимым. Часто используется для:</p>
+                    <ul>
+                        <li>Боковых панелей</li>
+                        <li>Списков связанных статей</li>
+                        <li>Блоков «Читайте также»</li>
+                        <li>Рекламных баннеров</li>
+                        <li>Биографии автора</li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code>&lt;main&gt;
+    &lt;article&gt;
+        &lt;h1&gt;Как работает CSS Grid&lt;/h1&gt;
+        &lt;p&gt;Основной контент статьи...&lt;/p&gt;
+    &lt;/article&gt;
+    
+    &lt;!-- Дополнительная информация --&gt;
+    &lt;aside&gt;
+        &lt;h3&gt;Материалы по теме&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Flexbox за 5 минут&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Адаптивный дизайн&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/aside&gt;
+&lt;/main&gt;</code></pre>
+                    </div>
+                    <h3>7. <code class="element">&lt;footer&gt;</code> - Подвал (нижний колонтитул)</h3>
+                    <p>Завершающий блок. Содержит информацию об авторе, контакты, ссылки на связанные документы, копирайт.</p>
+                    <p><strong>Как и</strong> <code class="element">&lt;header&gt;</code><strong>, может использоваться:</strong></p>
+                    <ul>
+                        <li>В конце <code class="element">&lt;body&gt;</code> - подвал всего сайта</li>
+                        <li>Внутри <code class="element">&lt;article&gt;</code> и <code class="element">&lt;section&gt;</code> -  подвал конкретного раздела</li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code>&lt;!-- Подвал всего сайта --&gt;
+&lt;footer&gt;
+    &lt;p&gt;© 2024 Веб-академия. Все права защищены.&lt;/p&gt;
+    &lt;address&gt;
+        Email: &lt;a href="mailto:info@webacademy.ru"&gt;info@webacademy.ru&lt;/a&gt;
+    &lt;/address&gt;
+&lt;/footer&gt;
+
+&lt;!-- Подвал статьи --&gt;
+&lt;article&gt;
+    &lt;h2&gt;Заголовок&lt;/h2&gt;
+    &lt;p&gt;Текст...&lt;/p&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;Опубликовано: 15 марта 2024&lt;/p&gt;
+        &lt;p&gt;Автор: &lt;a href="/author/ivan"&gt;Иван&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                </section>
+                <section id = "additional-tags" class="lesson-section">
+                    <h2>Дополнительные семантические теги</h2>
+                    <h3><code class="element">&lt;figure&gt;</code> и <code class="element">&lt;figcaption&gt;</code> - Иллюстрация с подписью</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;figure&gt;
+    &lt;img src="code-screenshot.png" alt="Пример HTML-кода"&gt;
+    &lt;figcaption&gt;Рис. 1: Пример семантической разметки статьи&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+                    </div>
+                    <h3><code class="element">&lt;time&gt;</code> - Дата и время</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;p&gt;Опубликовано: &lt;time datetime="2024-03-15T14:30"&gt;15 марта 2024, 14:30&lt;/time&gt;&lt;/p&gt;</code></pre>
+                    </div>
+                    <p><strong>Атрибут</strong> <code class="element">datetime</code> - машинно-читаемый формат для парсеров.</p>
+                    <h3><code class="element">&lt;mark&gt;</code> - Выделенный текст</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;p&gt;Важно: &lt;mark&gt;семантические теги не влияют на внешний вид&lt;/mark&gt;, только на смысл.&lt;/p&gt;</code></pre>
+                    </div>
+                </section>
+                <section id = "comparison" class="lesson-section">
+                    <h2>Сравнение подходов к структуре в HTML</h2>
+                    <p>Теперь, когда мы обсудили что из себя представляет семантика и какие семантические теги используются, давайте сравним как раньше выглядел код на HTML4 и как выглядит сейчас.</p>
+                    <h3>Как было раньше (HTML4):</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;div id="header"&gt;
+    &lt;div class="logo"&gt;Мой сайт&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="nav"&gt;
+    &lt;div class="menu"&gt;Главная | О нас&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="content"&gt;
+    &lt;div class="post"&gt;
+        &lt;div class="title"&gt;Новость дня&lt;/div&gt;
+        &lt;div class="text"&gt;Текст новости...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="sidebar"&gt;
+    &lt;div class="related"&gt;Похожие статьи&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="footer"&gt;
+    &lt;div class="copyright"&gt;© 2024&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    <p><strong>Проблемы этого подхода:</strong></p>
+                    <ol>
+                        <li>Браузер видит только «кучу непонятных div»</li>
+                        <li>Скринридер не понимает структуру</li>
+                        <li>Поисковики не могут определить, где важный контент</li>
+                        <li>Код плохо читается</li>
+                    </ol>
+                    <h3>Как выглядит сейчас (HTML5 с семантикой):</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;header&gt;
+    &lt;h1&gt;Мой сайт&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Главная&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/about"&gt;О нас&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;h2&gt;Новость дня&lt;/h2&gt;
+        &lt;p&gt;Текст новости...&lt;/p&gt;
+    &lt;/article&gt;
+    
+    &lt;aside&gt;
+        &lt;h3&gt;Похожие статьи&lt;/h3&gt;
+        &lt;!-- Дополнительный контент --&gt;
+    &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;© 2024&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+                    </div>
+                    <p><strong>Преимущества нового подхода:</strong></p>
+                    <ol>
+                        <li><strong>Читаемость кода</strong> - сразу понятно, где что находится</li>
+                        <li><strong>Лучшее SEO</strong> - поисковики ценят семантическую разметку</li>
+                        <li><strong>Доступность</strong> - скринридеры правильно озвучивают структуру</li>
+                        <li><strong>Удобство стилизации</strong> - можно стилизовать по тегам</li>
+                        <li><strong>Будущая совместимость</strong> - современный стандарт</li>
+                    </ol>
+                </section>
+                <section id = "practice" class="lesson-section">
+                    <h2>Практика: Преобразование div-верстки в семантическую </h2>
+                    <p><strong>Задача: </strong>Преобразуйте «дивную» верстку в семантическую HTML5</p>
+                    <div class="code-block">
+                        <pre><code>&lt;div class="page-wrapper"&gt;
+    &lt;div class="top-section"&gt;
+        &lt;div class="site-name"&gt;Блог о путешествиях&lt;/div&gt;
+        &lt;div class="site-description"&gt;Истории из поездок по миру&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="menu-container"&gt;
+        &lt;a href="#" class="menu-item"&gt;Главная&lt;/a&gt;
+        &lt;a href="#" class="menu-item"&gt;Фото&lt;/a&gt;
+        &lt;a href="#" class="menu-item"&gt;Контакты&lt;/a&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="content-area"&gt;
+        &lt;div class="story-block"&gt;
+            &lt;div class="story-title"&gt;Мое путешествие в Японию&lt;/div&gt;
+            &lt;div class="story-date"&gt;10 августа 2025&lt;/div&gt;
+            &lt;div class="story-text"&gt;Текст статьи о поездке...&lt;/div&gt;
+            
+            &lt;div class="photo-container"&gt;
+                &lt;img src="japan.jpg" class="story-photo"&gt;
+                &lt;div class="photo-caption"&gt;Гора Фудзи на рассвете&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="side-panel"&gt;
+        &lt;div class="panel-title"&gt;Другие путешествия&lt;/div&gt;
+        &lt;div class="related-story"&gt;Италия 2024&lt;/div&gt;
+        &lt;div class="related-story"&gt;Норвегия 2025&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="bottom-info"&gt;
+        &lt;div class="legal-text"&gt;© Все права защищены 2026&lt;/div&gt;
+        &lt;div class="contact-email"&gt;Email: travel@blog.ru&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    <p><strong>Подсказки для решения:</strong></p>
+                    <ol>
+                        <li>Каждый <code class="element">&lt;div&gt;</code> с классом замените на соответствующий семантический тег</li>
+                        <li>Для меню используйте <code class="element">&lt;nav&gt;</code> и список <code class="element">&lt;ul&gt;</code></li>
+                        <li>Для статьи - <code class="element">&lt;article&gt;</code></li>
+                        <li>Для фотографии с подписью  - <code class="element">&lt;figure&gt;</code> и <code class="element">&lt;figcaption&gt;</code></li>
+                        <li>Для даты - <code class="element">&lt;time&gt;</code></li>
+                        <li>Для боковой панели - <code class="element">&lt;aside&gt;</code></li>
+                    </ol>
+                    <h2>Шаг за шагом: Создаем семантическую страницу</h2>
+                    <h3>Шаг 1: Создайте базовую структуру</h3>
+                    <p>Создайте файл <code class="element">semantic.html</code>  и скопируйте базовый каркас:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Мой семантический сайт&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Здесь будет ваша структура --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    <h3>Шаг 2: Добавьте основные семантические блоки</h3>
+                    <p>Внутри <code class="element">&lt;body&gt;</code> добавьте:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;header&gt;
+    &lt;h1&gt;Веб-дневник начинающего разработчика&lt;/h1&gt;
+    &lt;p&gt;Мой путь в изучении фронтенда&lt;/p&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#home"&gt;Дневник&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#projects"&gt;Проекты&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#resources"&gt;Ресурсы&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;!-- Основной контент будет здесь --&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;© 2024. Создано с любовью и семантикой.&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+                    </div>
+                    <h3>Шаг 3: Наполните <code class="element">&lt;main&gt;</code> контентом</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;main&gt;
+    &lt;article&gt;
+        &lt;header&gt;
+            &lt;h2&gt;День 5: Открытие семантики HTML5&lt;/h2&gt;
+            &lt;p&gt;Дата: &lt;time datetime="2025-10-15"&gt;15 октября 2025&lt;/time&gt;&lt;/p&gt;
+        &lt;/header&gt;
+        
+        &lt;section&gt;
+            &lt;h3&gt;Что я узнал сегодня&lt;/h3&gt;
+            &lt;p&gt;Сегодня я открыл для себя семантические теги HTML5...&lt;/p&gt;
+            &lt;mark&gt;Важное открытие: семантика не меняет внешний вид, но меняет смысл!&lt;/mark&gt;
+        &lt;/section&gt;
+        
+        &lt;section&gt;
+            &lt;h3&gt;Пример кода&lt;/h3&gt;
+            &lt;figure&gt;
+                &lt;pre&gt;&lt;code&gt;&amp;lt;article&amp;gt;
+    &amp;lt;h2&amp;gt;Заголовок&amp;lt;/h2&amp;gt;
+    &amp;lt;p&amp;gt;Содержание...&amp;lt;/p&amp;gt;
+&amp;lt;/article&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+                &lt;figcaption&gt;Правильная разметка статьи&lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/section&gt;
+        
+        &lt;footer&gt;
+            &lt;p&gt;Теги: &lt;strong&gt;HTML5&lt;/strong&gt;, &lt;strong&gt;семантика&lt;/strong&gt;, &lt;strong&gt;обучение&lt;/strong&gt;&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/article&gt;
+    
+    &lt;aside&gt;
+        &lt;h3&gt;Недавние записи&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;День 4: Блочные и строчные элементы&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;День 3: Работа с формами и таблицами&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/aside&gt;
+&lt;/main&gt;</code></pre>
+                    </div>
+                    <h3>Шаг 4: Откройте в браузере</h3>
+                    <p>Сохраните файл и откройте его в браузере. Попробуйте:</p>
+                    <ol>
+                        <li>Добавить еще одну статью <code class="element">&lt;article&gt;</code></li>
+                        <li>Внутри статьи создать несколько <code class="element">&lt;section&gt;</code></li>
+                        <li>Добавить изображение с <code class="element">&lt;figure&gt;</code> и <code class="element">&lt;figcaption&gt;</code></li>
+                        <li>Использовать тег <code class="element">&lt;time&gt;</code> для разных дат</li>
+                    </ol>
+                </section>
+                <section id = "summary" class="lesson-section">
+                    <h2>Что вы узнали</h2>
+                    <ol>
+                        <li><strong>Семантика</strong> - это использование тегов в соответствии с их смыслом</li>
+                        <li><strong>7 основных семантических тегов:</strong> <code class="element">&lt;header&gt;</code>, <code class="element">&lt;nav&gt;</code>, <code class="element">&lt;main&gt;</code>, <code class="element">&lt;article&gt;</code>, <code class="element">&lt;section&gt;</code>, <code class="element">&lt;aside&gt;</code>, <code class="element">&lt;footer&gt;</code></li>
+                        <li>
+                            <strong>Правила использования:</strong>
+                            <ul>
+                                <li><code class="element">&lt;main&gt;</code> только один на странице</li>
+                                <li><code class="element">&lt;article&gt;</code> для независимого контента</li>
+                                <li><code class="element">&lt;section&gt;</code> для логических разделов с заголовком</li>
+                            </ul>
+                        </li>
+                        <li><strong>Дополнительные теги:</strong> <code class="element">&lt;figure&gt;</code>, <code class="element">&lt;figcaption&gt;</code>, <code class="element">&lt;time&gt;</code>, <code class="element">&lt;mark&gt;</code></li>
+                        <li>
+                            <strong>Преимущества семантики:</strong>
+                            <ul>
+                                <li>Лучшее SEO (поисковая оптимизация)</li>
+                                <li>Улучшенная доступность</li>
+                                <li>Читаемый и поддерживаемый код</li>
+                                <li>Современный стандарт веб-разработки</li>
+                            </ul>
+                        </li>
+                    </ol>
+                <div class="buttons">
+                    <a href="lesson-4-HTML.html" class="previous-lesson">Предыдущий урок</a>
+                    <a href="lesson-6-HTML.html" class="next-lesson">Следующий урок</a>
+                </div>
+                </section>
+            </article>
+        </main>
+    </div>
+    <script>
+        // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

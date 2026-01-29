@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="../index.html" id="home-link">Frontend Guide</a></div>
+            
+            <!-- Бургер-меню кнопка -->
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>Основы HTML: структура документа</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#what-is-html">Что такое HTML?</a></li>
+                    <li class="aside-link"><a href="#structure">Базовая структура HTML-документа</a></li>
+                    <li class="aside-link"><a href="#head-section">Зачем нужен элемент head?</a></li>
+                    <li class="aside-link"><a href="#body-section">Что представляет из себя элемент body?</a></li>
+                    <li class="aside-link"><a href="#first-tags">Первые теги</a></li>
+                    <li class="aside-link"><a href="#practice">Практика</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="lesson-content">
+            <article>
+                <section id="what-is-html" class="lesson-section">
+                    <h2>Что такое HTML?</h2>
+                    <p><strong>HTML (HyperText Markup Language) </strong> - это не язык программирования, а <strong>язык разметки.</strong> Его задача - описать структуру и содержание веб-страницы, размечая, где что находится: «вот заголовок», «вот параграф текста», «вот изображение», «вот ссылка».</p>
+                    
+                    <div class="analogy">
+                        <h3>Простая аналогия: Строительство дома.</h3>
+                        <ul>
+                            <li><strong>HTML - это фундамент, несущие стены, окна и двери.</strong> Он создает каркас и определяет, где будут расположены основные элементы. Без этого дом просто не может существовать.</li>
+                            <li><strong>CSS - это отделка:</strong> цвет обоев, стиль дверей, форма оконных рам, ландшафтный дизайн. CSS отвечает за внешний вид и красоту.</li>
+                            <li><strong>JavaScript — это инженерия:</strong> выключатели света, лифт, система отопления, дверной звонок. JavaScript делает страницу интерактивной и «живой».</li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- Секция 2: Структура документа -->
+            <section id="structure" class="lesson-section">
+                <h2>Базовая структура HTML-документа</h2>
+                <p>Каждый HTML-документ следует единому шаблону. Запомнив его однажды, вы сможете создавать новые страницы за секунды.</p>
+                <p>Вот минимальный, но полностью рабочий код:</p>
+                <div class="code-block">
+    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Мой первый сайт&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+    &lt;p&gt;Это моя первая HTML-страница.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<p>Давайте разберем каждую строку по порядку.</p>
+<p><code class = "element"><strong>&lt;!DOCTYPE html&gt;</code> - Объявление типа документа </strong></p>
+<p>Это самая первая и обязательная строка. Ее можно сравнить с <strong>указанием «Это инструкция по сборке мебели IKEA версии 5». Она сообщает браузеру: «Работай в самом современном режиме обработки HTML (HTML5)»</strong>. Без этой строки браузер может переключиться в «режим совместимости» со старыми стандартами, и ваша страница может отображаться некорректно.</p>
+                </section>               
+                
+                <!-- Секция 3-4: Head и Body -->
+                <section id="head-section" class="lesson-section">
+                    <h2>Раздел <code>&lt;head&gt;</code>: Инструкция для браузера и поисковиков </h2>
+                    <p>Тег <code class = "element">&lt;head&gt;</code> — это <strong>служебный раздел.</strong> Ничего из того, что находится внутри <code class = "element">&lt;head&gt;</code>, пользователь напрямую на странице не видит (кроме заголовка вкладки). Зато эту информацию очень внимательно читает браузер и поисковые системы.</p>
+                    <ul>
+                        <li><code class = "element">&lt;html lang="ru"&gt;</code> : Атрибут <code class = "element">lang</code> указывает язык страницы. Это важно для программ чтения с экрана (скринридеров) и для поисковиков.</li>
+                        <li><code class = "element">&lt;meta charset="UTF-8"&gt;</code><strong> : Самая важная мета-информация.</strong> Устанавливает кодировку символов. <code class = "element">UTF-8</code> включает поддержку кириллицы (русских букв) и практически всех языков мира. Без этой строчки вместо текста могут появиться «кракозябры».</li>
+                        <li><code class = "element">&lt;meta name="viewport" ...&gt;</code> : Ключевой тег для <strong>адаптивности.</strong> Он сообщает браузеру, что ширину страницы нужно подстраивать под ширину экрана устройства (телефона, планшета). Это основа современных мобильных версий сайтов.</li>
+                        <li><code class = "element">&lt;title&gt;Мой первый сайт&lt;/title&gt;</code> : Заголовок страницы. Он отображается на вкладке браузера, сохраняется в закладках и является одним из главных факторов для SEO (поисковой оптимизации).</li>
+                    </ul>
+                </section>
+
+                <section id="body-section" class="lesson-section">
+                    <h2>Раздел <code>&lt;body&gt;</code> : Пространство для контента</h2>                    
+                    <p>Тег <code class = "element">&lt;body&gt;</code> - это <strong>видимая часть страницы,</strong> ради которой все и затевается. Все, что вы напишете или разместите внутри <code class = "element">&lt;body&gt;</code>, увидят пользователи: текст, картинки, видео, кнопки, меню.</p>
+                    <p>Здесь начинается творчество и работа с контентом.</p>
+                </section>
+
+                <!-- Секция 5: Первые теги -->
+                <section id="first-tags" class="lesson-section">
+                    <h2>Первые и самые важны теги</h2>
+                    <p>Давайте познакомимся с четырьмя китами, на которых держится большинство страниц.</p>
+                    <p><strong><code class = "element">&lt;h1&gt; ... &lt;h6&gt;</code> - Заголовки (Headings)</strong></p>
+                    <p>Это иерархические заголовки. <code class = "element">&lt;h1&gt;</code> - самый главный, заголовок всей страницы (он обычно один). Далее идут подзаголовки: <code class = "element">&lt;h2&gt;</code>, <code class = "element">&lt;h3&gt;</code> и так до <code class = "element">&lt;h6&gt;</code>.</p>
+                    <ul>
+                        <li><strong>Важно для структуры:</strong> Заголовки создают «оглавление» вашей страницы.</li>
+                        <li><strong>Критически важно для SEO:</strong> Поисковые системы с их помощью понимают, о чем ваш контент.</li>
+                    </ul>
+                    <div class = "code-block">
+                      <pre><code>&lt;h1&gt;Название статьи (главная мысль)&lt;/h1&gt;
+&lt;h2&gt;Глава 1. Введение&lt;/h2&gt;
+&lt;h3&gt;1.1. Предыстория проблемы&lt;/h3&gt;
+&lt;h2&gt;Глава 2. Основная часть&lt;/h2&gt; </code></pre>
+                    </div>
+                    <p><strong><code class = "element">&lt;p&gt;</code> - Параграф (Paragraph)</strong></p>
+                    <p>Тег для обычного текста. Каждый новый параграф логически отделяется от другого.</p>
+                    <div class="code-block editable">
+                        <pre><code>&lt;p&gt;Это первый абзац моего текста. Здесь я рассказываю о чем-то важном.&lt;/p&gt;
+&lt;p&gt;А это второй абзац. Он начинается с новой строки, и между абзацами есть небольшой отступ.&lt;/p&gt;</code></pre>
+                    </div>
+                    <p><strong><code class = "element">&lt;a&gt;</code> - Ссылка (Anchor / Якорь)</strong></p>
+                    <p>Создает гиперссылки для перехода на другие страницы или сайты.</p>
+                    <ul>
+                        <li><strong>Атрибут</strong> <code class = "element">href</code> - это адрес, куда ведет ссылка (обязательный).</li>
+                        <li><strong>Атрибут</strong> <code class = "element">target="_blank"</code> - необязательный, но полезный. Он открывает ссылку в новой вкладке.</li>
+                    </ul>
+                    <div class = "code-block">
+                        <pre><code>&lt;p&gt;Посетите &lt;a href="https://yandex.ru" target="_blank"&gt;Яндекс&lt;/a&gt; для поиска информации.&lt;/p&gt;</code></pre>
+                    </div>
+                    <p><strong><code class = "element">&lt;img&gt;</code> - Изображение (Image)</strong></p>
+                    <p>Тег для вставки картинок. <strong>Это одиночный тег (не требует закрывающего).</strong></p>
+                    <ul>
+                        <li><strong>Атрибут</strong> <code class = "element">src</code> - путь к файлу изображения (URL или имя файла в папке).</li>
+                        <li><strong>Атрибут</strong> <code class = "element">alt</code> - альтернативный текст. <strong>Это обязательно!</strong> Он появляется, если картинка не загрузилась, и его «озвучивают» скринридеры для незрячих людей.</li>
+                    </ul>
+                    <div class = "code-block">
+                        <pre><code>&lt;img src="my_cat.jpg" alt="Фотография моего рыжего кота, спящего на диване"&gt;</code></pre>
+                    </div>
+                </section>
+                    <!-- Секция 6: Практика -->
+                    <section id = "practice" class = "lesson-section">
+                        <h2>Практика: Создаем свою первую страницу</h2>
+                        <p>Теория без практики ничего не стоит. Давайте создадим реальный файл.</p>
+                        <h3>Шаг 1: Создание файла</h3>
+                        <ol>
+                            <li>Откройте любой текстовый редактор (подойдет даже «Блокнот», но лучше <strong>VS Code</strong>, <strong>Sublime Text</strong> или <strong>Pulsar</strong>).</li>
+                            <li>Создайте новый файл</li>
+                            <li>Скопируйте и вставьте код ниже</li>
+                            <li><strong>Сохраните файл</strong> с именем <code class = "element">index.html</code>. Важно: расширение должно быть именно <strong>.html</strong>, а не .txt.</li>
+                        </ol>
+                        <div class = "code-block">
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Мое творение&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Добро пожаловать в мой мир!&lt/h1&gt;
+    &lt;h2&gt;Немного о себе&lt;/h2&gt;
+    &lt;p&gt;Меня зовут [Ваше Имя]. Я начинающий веб-разработчик и сегодня создал свою первую страницу.&lt;/p&gt;
+    &lt;p&gt;Это невероятно увлекательно — видеть, как код превращается в то, что можно увидеть в браузере!&lt;/p&gt;
+
+    &lt;h2&gt;Мои увлечения&lt;/h2&gt;
+    &lt;p&gt;Я люблю читать, путешествовать и изучать новые технологии. А еще я большой фанат фильмов Marvel!&lt;/p&gt;
+
+    &lt;h2&gt;Полезный ресурс&lt;/h2&gt;
+    &lt;p&gt;Больше информации о веб-разработке можно найти на &lt;a href="https://developer.mozilla.org/ru/" target="_blank"&gt;MDN Web Docs&lt;/a&gt; - это лучшая документация для разработчиков.&lt;/p&gt;
+
+    &lt;h2&gt;Мое вдохновение&lt;/h2&gt;
+    &lt;img src="https://via.placeholder.com/600x400" alt="Пример изображения-заглушки. Здесь мог бы быть красивый пейзаж."&gt;
+    &lt;p&gt;&lt;small&gt;Для своей страницы вы можете заменить этот тег на `&lt;img src="ваша_фото.jpg" alt="описание"&gt;` и положить картинку в ту же папку, что и index.html.&lt;/small&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                        <h3>Шаг 2: Просмотр в браузере</h3>
+                        <p>Найдите файл <code class = "element">index.html</code> в папке и просто <strong>дважды щелкните по нему.</strong> Он автоматически откроется в вашем стандартном браузере (Chrome, Firefox, Edge и т.д.). Вуаля, вы только что запустили свой веб-сайт!</p>
+                        <h3>Шаг 3: Эксперименты</h3>
+                        <p>Самое важное - начать изменять код. Попробуйте прямо сейчас:</p>
+                        <ol>
+                            <li>Измените текст внутри <code class = "element">&lt;title&gt;</code> и обновите страницу в браузере (F5). Посмотрите, что изменилось.</li>
+                            <li>Добавьте еще один параграф <code class = "element">&lt;p&gt;</code> с любым текстом.</li>
+                            <li>Создайте ссылку на свой любимый сайт.</li>
+                            <li>Найдите в интернете картинку, сохраните ее в ту же папку, что и <code class = "element">index.html</code>, и загрузите, указав ее имя в атрибуте <code>src</code> тега <code class = "element">&lt;img&gt;</code> (например, <code class = "element">src="nature.jpg"</code>).</li>
+                        </ol>
+                    </section>
+                    <section id = "summary" class = "lesson-section">
+                        <h2>Что вы узнали</h2>
+                        <ol>
+                            <li><strong>HTML</strong> - это язык разметки, <strong>структурный скелет</strong> веб-страницы.</li>
+                            <li>Каждый документ начинается с <code class = "element">&lt;!DOCTYPE html&gt;</code> и имеет обязательную структуру <code>&lt;html&gt;</code> → <code class = "element">&lt;head&gt;</code> + <code class = "element">&lt;body&gt;</code>.</li>
+                            <li>Раздел <code class = "element">&lt;head&gt;</code> содержит служебную информацию (кодировку, заголовок вкладки, настройки для мобильных).</li>
+                            <li> Раздел <code class = "element">&lt;body&gt;</code> - это контейнер для всего видимого контента.</li>
+                            <li>Вы познакомились с ключевыми тегами: заголовки <code class = "element">&lt;h1&gt;-&lt;h6&gt;</code>, параграф <code class = "element">&lt;p&gt;</code>, ссылка <code class = "element">&lt;a href="..."&gt;</code>, изображение <code class = "element">&lt;img src="..." alt="..."&gt;</code>.</li>
+                            <li>Вы <strong>создали, сохранили и открыли</strong> свой первый HTML-файл!</li>
+                        </ol>
+                <div class="buttons">
+                    <span></span>
+                    <a href="lesson-2-HTML.html" class="next-lesson">Следующий урок</a>
+                </div>
+                    </section>
+            </article>
+        </main>
+    </div>
+    <script>
+            // Скрипт для выделения активной секции (ваш оригинальный)
+            document.addEventListener('DOMContentLoaded', function() {
+    // Исправленный скрипт для выделения активной секции
+    const sections = document.querySelectorAll('.lesson-section');
+    const navLinks = document.querySelectorAll('.lesson-nav a');
+    
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

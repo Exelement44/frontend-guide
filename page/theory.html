@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор уроков | Frontend Guide</title>
+    <link rel="stylesheet" href="test.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="index.html">Главная</a></li>
+                <li class="link"><a href="theory.html">Теория</a></li>
+                <li class="link"><a href="practice.html">Практика</a></li>
+                <li class="link"><a href="about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="lessons-main">
+        <div class="lessons-container">
+            <h1 class="lessons-title">Выбор урока</h1>
+            <p class="lessons-subtitle">Изучайте темы последовательно, двигаясь от простого к сложному</p>
+            
+            <!-- АККОРДЕОН С КУРСАМИ -->
+            <div class="courses-accordion">
+                
+                <!-- HTML курс -->
+                <div class="course-card">
+                    <button class="course-header" onclick="toggleCourse('html')" aria-expanded="false" aria-controls="html-lessons">
+                        <div class="course-header-content">
+                            <div class="course-icon"></div>
+                            <div class="course-info">
+                                <h2 class="course-title">HTML</h2>
+                                <p class="course-description">Основы разметки веб-страниц</p>
+                                <div class="course-stats">
+                                    <span class="stats-item">6 уроков</span>
+                                    <span class="stats-item">•</span>
+                                    <span class="stats-item">2.5 часа</span>
+                                </div>
+                            </div>
+                            <div class="course-arrow" id="html-arrow">▶</div>
+                        </div>
+                    </button>
+                    
+                    <div class="course-lessons" id="html-lessons">
+                        <nav class="lessons-list">
+                            <a href="lessons/lesson-1-HTML.html" class="lesson-link">
+                                <div class="lesson-number">1</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Введение в HTML</h3>
+                                    <p class="lesson-desc">Структура документа, базовые теги</p>
+                                </div>
+                                <div class="lesson-duration">15 мин</div>
+                            </a>
+                            
+                            <a href="lessons/lesson-2-HTML.html" class="lesson-link">
+                                <div class="lesson-number">2</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Контентные элементы</h3>
+                                    <p class="lesson-desc">Заголовки, параграфы, списки</p>
+                                </div>
+                                <div class="lesson-duration">20 мин</div>
+                            </a>
+                            
+                            <a href="lessons/lesson-3-HTML.html" class="lesson-link">
+                                <div class="lesson-number">3</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Таблицы и формы</h3>
+                                    <p class="lesson-desc">Создание таблиц, работа с формами</p>
+                                </div>
+                                <div class="lesson-duration">25 мин</div>
+                            </a>
+                            
+                            <a href="lessons/lesson-4-HTML.html" class="lesson-link">
+                                <div class="lesson-number">4</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Блочные и строчные элементы</h3>
+                                    <p class="lesson-desc">div, span, классы, id</p>
+                                </div>
+                                <div class="lesson-duration">30 мин</div>
+                            </a>
+                            
+                            <a href="lessons/lesson-5-HTML.html" class="lesson-link">
+                                <div class="lesson-number">5</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Семантика HTML5</h3>
+                                    <p class="lesson-desc">Семантические теги, доступность</p>
+                                </div>
+                                <div class="lesson-duration">35 мин</div>
+                            </a>
+                            
+                            <a href="lessons/lesson-6-HTML.html" class="lesson-link">
+                                <div class="lesson-number">6</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Мультимедиа в HTML</h3>
+                                    <p class="lesson-desc">Видео, аудио, iframe</p>
+                                </div>
+                                <div class="lesson-duration">25 мин</div>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                
+                <!-- CSS курс -->
+                <div class="course-card">
+                    <button class="course-header" onclick="toggleCourse('css')" aria-expanded="false" aria-controls="css-lessons">
+                        <div class="course-header-content">
+                            <div class="course-icon"></div>
+                            <div class="course-info">
+                                <h2 class="course-title">CSS</h2>
+                                <p class="course-description">Стилизация и оформление</p>
+                                <div class="course-stats">
+                                    <span class="stats-item">6 уроков</span>
+                                    <span class="stats-item">•</span>
+                                    <span class="stats-item">2.5 часа</span>
+                                </div>
+                            </div>
+                            <div class="course-arrow" id="css-arrow">▶</div>
+                        </div>
+                    </button>
+                    
+                    <div class="course-lessons" id="css-lessons">
+                        <nav class="lessons-list">
+                            <a href="lessons/lesson-1-CSS.html" class="lesson-link">
+                                <div class="lesson-number">1</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Введение в CSS</h3>
+                                    <p class="lesson-desc">Подключение, селекторы, свойства</p>
+                                </div>
+                                <div class="lesson-duration">20 мин</div>
+                            </a>
+                            
+                            <a href="lessons/lesson-2-CSS.html" class="lesson-link">
+                                <div class="lesson-number">2</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Типографика в вебе</h3>
+                                    <p class="lesson-desc">font-family, font-size, font-weight, color</p>
+                                </div>
+                                <div class="lesson-duration">25 мин</div>
+                            </a>
+                            
+                            <a href="lessons/lesson-3-CSS.html" class="lesson-link">
+                                <div class="lesson-number">3</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Блочная модель</h3>
+                                    <p class="lesson-desc">Margin, padding, border, box-sizing</p>
+                                </div>
+                                <div class="lesson-duration">30 мин</div>
+                            </a>
+                            <a href="lessons/lesson-4-CSS.html" class="lesson-link">
+                                <div class="lesson-number">4</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Позиционирование</h3>
+                                    <p class="lesson-desc">Static, relative, absolute, fixed</p>
+                                </div>
+                                <div class="lesson-duration">30 мин</div>
+                            </a>
+                            <a href="lessons/lesson-5-CSS.html" class="lesson-link">
+                                <div class="lesson-number">5</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Flexbox в CSS</h3>
+                                    <p class="lesson-desc">Основные свойства Flexblox, современная верстка</p>
+                                </div>
+                                <div class="lesson-duration">35 мин</div>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                
+                <!-- JavaScript курс -->
+                <div class="course-card">
+                    <button class="course-header" onclick="toggleCourse('js')" aria-expanded="false" aria-controls="js-lessons">
+                        <div class="course-header-content">
+                            <div class="course-icon"></div>
+                            <div class="course-info">
+                                <h2 class="course-title">JavaScript</h2>
+                                <p class="course-description">Интерактивность на веб-страницах</p>
+                                <div class="course-stats">
+                                    <span class="stats-item">2 урока</span>
+                                    <span class="stats-item">•</span>
+                                    <span class="stats-item">1 час</span>
+                                </div>
+                            </div>
+                            <div class="course-arrow" id="js-arrow">▶</div>
+                        </div>
+                    </button>
+                    
+                    <div class="course-lessons" id="js-lessons">
+                        <nav class="lessons-list">
+                            <a href="lessons/lesson-1-JS.html" class="lesson-link">
+                                <div class="lesson-number">1</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Введение в JavaScript</h3>
+                                    <p class="lesson-desc">Переменные, типы данных, console.log</p>
+                                </div>
+                                <div class="lesson-duration">20 мин</div>
+                            </a>
+                            
+                            <a href="lessons/lesson-2-JS.html" class="lesson-link">
+                                <div class="lesson-number">2</div>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">Типы данных и операторы</h3>
+                                    <p class="lesson-desc">Числа, строки, булево, операторы сравнения</p>
+                                </div>
+                                <div class="lesson-duration">35 мин</div>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="lessons-footer">
+                <p>Начните с первого урока HTML и двигайтесь последовательно. Каждый следующий урок основан на знаниях из предыдущих.</p>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Функция для раскрытия/закрытия курса
+        function toggleCourse(courseId) {
+            const lessons = document.getElementById(`${courseId}-lessons`);
+            const arrow = document.getElementById(`${courseId}-arrow`);
+            const header = document.querySelector(`[aria-controls="${courseId}-lessons"]`);
+            
+            // Переключаем видимость
+            const isExpanded = lessons.classList.toggle('expanded');
+            
+            // Меняем стрелку и атрибут доступности
+            if (isExpanded) {
+                arrow.textContent = '▼';
+                header.setAttribute('aria-expanded', 'true');
+            } else {
+                arrow.textContent = '▶';
+                header.setAttribute('aria-expanded', 'false');
+            }
+            
+            // Опционально: закрываем другие курсы при открытии нового
+            // closeOtherCourses(courseId);
+        }
+        
+        // Закрытие бургер-меню (копируй из своего основного скрипта)
+        const burgerMenu = document.querySelector('.burger-menu');
+        const navLinksContainer = document.querySelector('.nav-links');
+        const body = document.body;
+        
+        if (burgerMenu) {
+            burgerMenu.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinksContainer.classList.toggle('active');
+                body.classList.toggle('menu-open');
+                
+                if (body.classList.contains('menu-open')) {
+                    body.style.overflow = 'hidden';
+                } else {
+                    body.style.overflow = '';
+                }
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                });
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!navLinksContainer.contains(event.target) && 
+                    !burgerMenu.contains(event.target) && 
+                    navLinksContainer.classList.contains('active')) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+        }
+        
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                if (burgerMenu) burgerMenu.classList.remove('active');
+                if (navLinksContainer) navLinksContainer.classList.remove('active');
+                if (body) {
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

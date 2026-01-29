@@ -1,0 +1,511 @@
+/* ===== СТИЛИ ДЛЯ СТРАНИЦЫ ВЫБОРА УРОКОВ ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    color: #1f2937;
+    overflow-x: hidden;
+}
+ol, ul {
+    margin-left: 15px;
+}
+/* Навигация */
+#navbar {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 0 40px;
+    top: 0;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #FFFFFF;
+}
+
+/* Бургер-меню кнопка */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #1f2937;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Анимация бургера в крестик */
+.burger-menu.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Основное меню */
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+#navbar .link {
+    margin: 0 1rem;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.logo {
+    display: inline-block;
+    margin-right: 5%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: "Inter";
+}
+
+#navbar a {
+    text-decoration: none;
+    color: #1f2937;
+    padding: 5px 0;
+    position: relative;
+}
+.lessons-main {
+    margin-top: 50px;
+    min-height: calc(100vh - 50px);
+    background-color: #f9fafb;
+}
+
+.lessons-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.lessons-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.lessons-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* ===== АККОРДЕОН С КУРСАМИ ===== */
+.courses-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.course-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.course-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-color: #d1d5db;
+}
+
+.course-header {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+.course-header:hover {
+    background-color: #f9fafb;
+}
+
+.course-header-content {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    gap: 20px;
+}
+
+.course-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    flex-shrink: 0;
+    background-image: url(css/icons8-html.svg);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.course-card:nth-child(2) .course-icon {
+   background-image: url(css/icons8-css.svg);
+   background-size: 120%;
+}
+
+.course-card:nth-child(3) .course-icon {
+    background-image: url(css/icons8-javascript.svg);
+    background-size: 100%;
+}
+
+.course-info {
+    flex: 1;
+}
+
+.course-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 4px 0;
+}
+
+.course-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0 0 8px 0;
+}
+
+.course-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stats-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: #9ca3af;
+}
+
+.course-arrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #6b7280;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* ===== СПИСОК УРОКОВ ===== */
+.course-lessons {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.course-lessons.expanded {
+    max-height: 1000px;
+}
+
+.lessons-list {
+    padding: 0 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lesson-link {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    gap: 16px;
+}
+
+.lesson-link:hover {
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.lesson-link.current {
+    background: #eff6ff;
+    border-color: #2563eb;
+}
+
+.lesson-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4b5563;
+    flex-shrink: 0;
+}
+
+.lesson-link.current .lesson-number {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.lesson-info {
+    flex: 1;
+}
+
+.lesson-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1f2937;
+    margin: 0 0 4px 0;
+}
+
+.lesson-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.lesson-duration {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+/* ===== ФУТЕР СТРАНИЦЫ ===== */
+.lessons-footer {
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.lessons-footer p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+    .lessons-container {
+        padding: 30px 20px;
+    }
+    
+    .lessons-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+    .nav-links {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: #FFFFFF;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 999;
+    }
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    #navbar .link {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    #navbar a {
+        padding: 10px 20px;
+        display: block;
+    }
+    
+    #navbar a:hover {
+        background-color: #f3f4f6;
+    }
+    .lessons-main {
+        margin-top: 45px;
+    }
+    
+    .lessons-container {
+        padding: 20px 15px;
+    }
+    
+    .lessons-title {
+        font-size: 1.5rem;
+    }
+    
+    .lessons-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+    
+    .course-header-content {
+        padding: 20px;
+        gap: 16px;
+    }
+    
+    .course-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .course-title {
+        font-size: 1.125rem;
+    }
+    
+    .course-description {
+        font-size: 0.9rem;
+    }
+    
+    .stats-item {
+        font-size: 0.8rem;
+    }
+    
+    .lessons-list {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .lesson-link {
+        padding: 14px;
+        gap: 12px;
+    }
+    
+    .lesson-number {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    
+    .lesson-title {
+        font-size: 0.95rem;
+    }
+    
+    .lesson-desc {
+        font-size: 0.8rem;
+    }
+    
+    .lesson-duration {
+        font-size: 0.8rem;
+    }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (max-width: 480px) {
+    .lessons-title {
+        font-size: 1.25rem;
+    }
+    
+    .lessons-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .course-header-content {
+        padding: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .course-info {
+        width: 100%;
+    }
+    
+    .course-arrow {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .course-header {
+        position: relative;
+    }
+    
+    .lessons-list {
+        padding: 0 16px 16px 16px;
+    }
+    
+    .lesson-link {
+        flex-wrap: wrap;
+    }
+    
+    .lesson-duration {
+        margin-left: 48px;
+    }
+    
+    .lessons-footer {
+        padding: 20px;
+    }
+    
+    .lessons-footer p {
+        font-size: 0.9rem;
+    }
+}

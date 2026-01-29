@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class = "lesson-container">
+        <aside class = "lesson-nav">
+            <h3>Контентные элементы: текст, списки, ссылки</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#content-elements">Введение в контентные элементы</a></li>
+                    <li class="aside-link"><a href="#text">Форматирование текста</a></li>
+                    <li class="aside-link"><a href="#lists">Работа со списками</a></li>
+                    <li class="aside-link"><a href="#links-images">Ссылки и изображения</a></li>
+                    <li class="aside-link"><a href="#practice">Практика</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="lesson-content">
+         <article>
+            <section id = "content-elements" class="lesson-section">
+                <h2>Введение в контентные элементы</h2>
+                <p>После того, как мы разобрались с базовой структурой HTML-документа, настало время наполнить его контентом. В этом уроке мы научимся работать с текстом, списками, ссылками и изображениями - основными строительными блоками любой веб-страницы.</p>
+            </section>
+            <section id = "text" class="lesson-section">
+                <h2>Форматирование текста</h2>
+                <p>Часто внутри параграфа нужно выделить слово или фразу логически или визуально. Для этого используются теги физического или логического форматирования.</p>
+                <h3>Жирное начертание:</h3>
+                <ul>
+                    <li><code class = "element">&lt;b&gt;</code>(bold) - делает текст <strong>жирным</strong> без придания особой важности. Используется для визуального выделения.</li>
+                    <li><code class = "element">&lt;strong&gt;</code> - также делает текст <strong>жирным</strong>, но указывает на его <strong>важность, серьезность или срочность.</strong> Это семантический тег, который «понимают» поисковики и скринридеры.</li>
+                </ul>
+                <div class = "code-block">
+                    <pre><code>&lt;p&gt;Это просто &lt;b&gt;визуально&lt;/b&gt; выделенный текст.&lt;/p&gt;
+&lt;p&gt;А это &lt;strong&gt;очень важное&lt;/strong&gt; предупреждение!&lt;/p&gt;</code></pre>
+                </div>
+                <h3>Курсивное начертание:</h3>
+                <ul>                   
+                    <li><code class="element">&lt;i&gt;</code> (italic) - отображает текст <i>курсивом</i> без дополнительного смысла. Раньше использовался для иконок, смены тона.</li>
+                    <li><code class="element">&lt;em&gt;</code> (emphasis) - делает текст <em>курсивным</em> и добавляет смысловой акцент, <em>интонационное ударение</em>.</li>
+                </ul>
+                <div class = "code-block">
+                    <pre><code>&lt;p&gt;Термин &lt;i&gt;HTML&lt;/i&gt; происходит от английской аббревиатуры.&lt;/p&gt;
+&lt;p&gt;Я &lt;em&gt;настоятельно&lt;/em&gt; рекомендую это прочитать.&lt;/p&gt;</code></pre>
+                </div>
+                <h3>Другие полезные теги:</h3>
+                <p><code class = "element">&lt;mark&gt;</code> - выделяет текст <mark>желтым</mark> фоном, как маркером.</p>
+                <p><code class="element">&lt;small&gt;</code> - делает текст меньше (для сносок).</p>
+                <p><code class = "element">&lt;del&gt;</code> (удаленный или зачеркнутый) и <code class="element">&lt;ins&gt;</code> (вставленный или подчеркнутый) - показывают правки.</p>             
+            </section>
+            <section id = "lists" class="lesson-section">
+                <h2>Маркированные и нумерованные списки</h2>
+                <p>Списки - отличный способ структурировать информацию: перечни, инструкции, меню.</p>
+                <h3>Маркированный список (unordered list) <code>&lt;ul&gt;</code></h3>
+                <p>Каждый пункт в таком списке обозначается тегом <code class="element">&lt;li&gt;</code> (list item) и отмечается маркером (точкой по умолчанию).</p>
+                <div class="code-block">
+                    <pre><code>&lt;ul&gt;
+  &lt;li&gt;Мука - 500 г&lt;/li&gt;
+  &lt;li&gt;Яйца - 2 шт.&lt;/li&gt;
+  &lt;li&gt;Сахар - 100 г&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+                <h3>Нумерованный список (ordered list) <code>&lt;ol&gt;</code></h3>
+                <p>Пункты здесь нумеруются автоматически (числами, буквами, римскими цифрами).</p>
+                <div class = "code-block">
+                    <pre><code>&lt;ol&gt;
+  &lt;li&gt;Включить компьютер&lt;/li&gt;
+  &lt;li&gt;Запустить редактор кода&lt;/li&gt;
+  &lt;li&gt;Написать HTML-страницу&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+                <p>Списки можно вкладывать друг в друга, создавая сложные структуры, например, для меню сайта.</p>
+            </section>
+            <section id = "links-images" class="lesson-section">
+                <h2>Ссылки и изображения</h2>
+                <p>Эти элементы делают веб интерактивным и визуально богатым.</p>
+                <h3>Ссылки (тег <code>&lt;a&gt;</code>)</h3>
+                <p>Как мы помним, гиперссылки - <strong>основа интернета.</strong> В нем всегда присутствует обязательный атрибут <code class="element">href</code>, который содержит адрес (URL) цели.</p>
+                <div class="code-block">
+                    <pre><code>&lt;p&gt;Читайте новости на &lt;a href="https://news.ru"&gt;Новостном портале&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Для скачивания &lt;a href="files/document.pdf" download&gt;нажмите сюда&lt;/a&gt;.&lt;/p&gt;</code></pre>
+                </div>
+                <p>Ссылка может вести на другой сайт, другую страницу вашего сайта, на якорь внутри текущей страницы или запускать скачивание файла.</p>
+
+                <h3>Изображения (тег <code>&lt;img&gt;</code>)</h3>
+                <p>Этот тег является одиночным и всегда состоит из 2 ключевых атрибута:</p>
+                <p><code class="element">src</code> (source) - <strong>путь</strong> к файлу изображения.</p>
+                <p><code class="element">alt</code> (alternative text) - <strong>обязательное описание</strong> изображения. Показывается, если картинка не загрузилась, и зачитывается скринридерами для незрячих.</p>
+                <div class="code-block">
+                    <pre><code>&lt;img src="images/sunset.jpg" alt="Яркий закат над морем с силуэтом паруса"&gt;
+&lt;img src="https://site.com/logo.png" alt="Логотип компании"&gt;</code></pre>
+                </div>
+            </section>
+            <section id = "practice" class="lesson-section">
+                <h2>Практика: Создаем страницу-резюме</h2>
+                <p>Давайте закрепим материал, создав простую страницу.</p>
+                <ol>
+                    <li>Создайте файл <code class="element">resume.html</code> и вставьте базовый каркас (doctype, html, head, body).</li>
+                    <li>В <code class="element">&lt;head&gt;</code> пропишите <code class="element">&lt;title&gt;</code> и кодировку.</li>
+                    <li>В <code class="element">&lt;body&gt;</code> добавьте контент:</li>
+                    <div class="code-block">
+                        <pre><code>&lt;h1&gt;Иванов Иван&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;Начинающий фронтенд-разработчик&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2&gt;Опыт работы&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;2023-н.в.&lt;/strong&gt; - Стажер в веб-студии "Проект". Верстка сайтов по макетам.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;2021-2023&lt;/strong&gt; - Фриланс. Создание лендингов на Tilda.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Навыки&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;HTML5, CSS3&lt;/li&gt;
+    &lt;li&gt;Базовый JavaScript&lt;/li&gt;
+    &lt;li&gt;Работа с Git&lt;/li&gt;
+    &lt;li&gt;Адаптивная верстка&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;Портфолио&lt;/h2&gt;
+&lt;p&gt;Посмотрите мою работу: &lt;a href="projects/site1.html" target="_blank"&gt;Сайт для кафе&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Мое фото: &lt;img src="photo.jpg" alt="Портрет Ивана Иванова в деловой обстановке" width="150"&gt;&lt;/p&gt;
+
+&lt;h2&gt;Контакты&lt;/h2&gt;
+&lt;p&gt;Email: &lt;a href="mailto:ivan@example.com"&gt;ivan@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Профиль на &lt;a href="https://github.com" target="_blank"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</code></pre>
+                    </div>
+                    <li>Отлично! Теперь <strong>откройте файл в браузере.</strong> Попробуйте изменить текст, добавить новые пункты в список, вставить ссылку на свой реальный профиль, чтобы закрепить и понимать для чего каждый элемент.</li>
+                    </ol>
+                    </section>
+                    <section id = "summary" class="lesson-section">
+                        <h2>Что вы узнали</h2>
+                        <ol>
+                            <li>Для выделения текста используются парные теги: <code class="element">&lt;b&gt;</code>/<code class="element">&lt;strong&gt;</code> для жирного и <code class="element">&lt;i&gt;</code>/ <code class="element">&lt;em&gt;</code> для курсива.</li>
+                            <li>Списки создаются с помощью контейнеров <code class="element">&lt;ul&gt;</code> (маркированный) и <code class="element">&lt;ol&gt;</code> (нумерованный), а пункты - с помощью <code class="element">&lt;li&gt;</code>.</li>
+                            <li>Ссылка создается тегом <code class="element">&lt;a&gt;</code> с обязательным атрибутом <code class="element">href</code>, а изображение — одиночным тегом &lt;img&gt; с атрибутами <code class="element">src</code> и <code class="element">alt</code>.</li>
+                            <li>С помощью этих элементов уже можно создавать содержательные и хорошо структурированные страницы.</li>
+                        </ol>
+                <div class="buttons">
+                    <a href="lesson-1-HTML.html" class="previous-lesson">Предыдущий урок</a>
+                    <a href="lesson-3-HTML.html" class="next-lesson">Следующий урок</a>
+                </div>
+                    </section>
+         </article>
+        </main>
+    </div>
+    <script>
+        // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

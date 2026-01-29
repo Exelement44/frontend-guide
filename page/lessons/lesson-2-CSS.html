@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типографика в CSS</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>Типографика в CSS</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#introduction">Что такое типографика?</a></li>
+                    <li class="aside-link"><a href="#basic-properties">Базовые свойства текста</a></li>
+                    <li class="aside-link"><a href="#font-family">Свойство font-family</a></li>
+                    <li class="aside-link"><a href="#font-size">Свойства font-size и line-height</a></li>
+                    <li class="aside-link"><a href="#font-weight">Свойство font-weight</a></li>
+                    <li class="aside-link"><a href="#color">Свойство color</a></li>
+                    <li class="aside-link"><a href="#text-align">Свойство text-align</a></li>
+                    <li class="aside-link"><a href="#practice">Практика</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="lesson-content">
+            <article>
+                <section id="introduction" class="lesson-section">
+                    <h2>Что такое типографика в вебе?</h2>
+                    <p>Типографика — это искусство оформления текста. В веб-дизайне правильная работа с текстом делает сайт не только красивым, но и удобным для чтения. Сегодня мы научимся управлять всеми аспектами текста: от выбора шрифта до межбуквенных расстояний.</p>
+                    <h3>Простая аналогия: Книга и Веб-страница.</h3>
+                    <p><strong>Хорошая книга:</strong> удобный шрифт, правильный размер, комфортные междустрочные интервалы</p>
+                    <p><strong>Плохая книга:</strong> мелкий нечитаемый текст, слишком яркие цвета, неправильные отступы</p>
+                    <p><strong>Наша задача:</strong> сделать веб-страницы такими же удобными для чтения, как хорошие книги</p>
+                    <p><strong>Почему это важно:</strong> 95% информации в интернете — это текст. Если его плохо оформить, пользователи просто уйдут с сайта.</p>
+                </section>
+
+                <section id="basic-properties" class="lesson-section">
+                    <h2>Базовые свойства текста</h2>
+                    <p>Вот пример страницы с разными стилями текста:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Работа с текстом в CSS&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;family=Merriweather:wght@300;400;700&amp;family=Source+Code+Pro:wght@400;600&amp;display=swap" rel="stylesheet"&gt;
+    &lt;style&gt;
+        /* Здесь будем экспериментировать с текстом */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        
+        .intro {
+            font-size: 1.125rem;
+            text-align: justify;
+            color: #4a5568;
+            margin-bottom: 40px;
+        }
+        
+        .code-block {
+            font-family: 'Source Code Pro', monospace;
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4299e1;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Искусство веб-типографики&lt;/h1&gt;
+    &lt;p class="intro"&gt;Правильное оформление текста — ключ к удобству чтения и восприятию информации...&lt;/p&gt;
+    
+    &lt;div class="code-block"&gt;
+        /* Пример CSS стилей для текста */
+        p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #333333;
+            text-align: left;
+        }
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    <p>Давайте разберем каждое свойство подробно.</p>
+                </section>
+
+                <section id="font-family" class="lesson-section">
+                    <h2>Свойство <code class="element">font-family</code> — выбор шрифта</h2>
+                    <p><code class="element">font-family</code> определяет, какой шрифт будет использоваться для текста.</p>
+                    
+                    <h3>Базовый синтаксис:</h3>
+                    <div class="code-block">
+                        <pre><code>selector {
+    font-family: "Основной шрифт", запасной шрифт, общее семейство;
+}</code></pre>
+                    </div>
+
+                    <h3>3 основных семейства шрифтов:</h3>
+                    <table class="selector-table">
+                        <thead>
+                            <tr>
+                                <th>Семейство</th>
+                                <th>Особенности</th>
+                                <th>Примеры</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Serif (засечковые)</td>
+                                <td>Есть засечки, традиционный вид</td>
+                                <td>Times New Roman, Georgia, Merriweather</td>
+                            </tr>
+                            <tr>
+                                <td>Sans-serif (рубленые)</td>
+                                <td>Без засечек, современный вид</td>
+                                <td>Arial, Helvetica, Roboto, Inter</td>
+                            </tr>
+                            <tr>
+                                <td>Monospace (моноширинные)</td>
+                                <td>Все символы одинаковой ширины</td>
+                                <td>Courier New, Consolas, Source Code Pro</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Практические примеры:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Базовые системные шрифты */
+.body-text {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Для длинных текстов (статьи, блоги) */
+.article-text {
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Для кода */
+.code-text {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Современный дизайн */
+.modern-text {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}</code></pre>
+                    </div>
+
+                    <h3>Как подключить Google Fonts:</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;!-- В &lt;head&gt; --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;family=Merriweather:wght@300;400;700&amp;display=swap" rel="stylesheet"&gt;
+
+&lt;!-- В CSS --&gt;
+.modern-heading {
+    font-family: 'Merriweather', serif;
+}
+
+.modern-text {
+    font-family: 'Roboto', sans-serif;
+}</code></pre>
+                    </div>
+
+                    <h3>Важные правила:</h3>
+                    <ul>
+                        <li>Всегда указывайте запасные шрифты — если первый не загрузится</li>
+                        <li>Названия из нескольких слов в кавычки — "Times New Roman"</li>
+                        <li>Сначала специфичные, потом общие — 'Roboto', sans-serif</li>
+                        <li>Используйте системные шрифты для скорости — они уже есть у пользователя</li>
+                    </ul>
+                </section>
+
+                <section id="font-size" class="lesson-section">
+                    <h2>Свойства размера: <code class="element">font-size</code>, <code class="element">line-height</code></h2>
+                    
+                    <h3><code class="element">font-size</code> — размер шрифта</h3>
+                    <p>Единицы измерения:</p>
+                    <table class="selector-table">
+                        <thead>
+                            <tr>
+                                <th>Единица</th>
+                                <th>Описание</th>
+                                <th>Пример</th>
+                                <th>Когда использовать</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>px (пиксели)</td>
+                                <td>Абсолютный размер</td>
+                                <td><code class="element">font-size: 16px;</code></td>
+                                <td>Точно заданные размеры</td>
+                            </tr>
+                            <tr>
+                                <td>em</td>
+                                <td>Относительно родителя</td>
+                                <td><code class="element">font-size: 1.5em;</code></td>
+                                <td>Масштабируемые интерфейсы</td>
+                            </tr>
+                            <tr>
+                                <td>rem</td>
+                                <td>Относительно корня</td>
+                                <td><code class="element">font-size: 1.2rem;</code></td>
+                                <td>Рекомендуется! Единая система</td>
+                            </tr>
+                            <tr>
+                                <td>%</td>
+                                <td>Проценты от родителя</td>
+                                <td><code class="element">font-size: 150%;</code></td>
+                                <td>Старые браузеры</td>
+                            </tr>
+                            <tr>
+                                <td>vw/vh</td>
+                                <td>Относительно окна</td>
+                                <td><code class="element">font-size: 3vw;</code></td>
+                                <td>Адаптивные заголовки</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Рекомендуемые размеры:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Базовая система размеров */
+:root {
+    font-size: 16px; /* 1rem = 16px */
+}
+
+body {
+    font-size: 1rem; /* 16px */
+}
+
+h1 {
+    font-size: 2.5rem; /* 40px */
+}
+
+h2 {
+    font-size: 2rem; /* 32px */
+}
+
+h3 {
+    font-size: 1.5rem; /* 24px */
+}
+
+p {
+    font-size: 1rem; /* 16px */
+}
+
+.small-text {
+    font-size: 0.875rem; /* 14px */
+}</code></pre>
+                    </div>
+
+                    <h3><code class="element">line-height</code> — межстрочный интервал</h3>
+                    <p>Определяет расстояние между строками текста.</p>
+                    <div class="code-block">
+                        <pre><code>/* Без единиц (рекомендуется) */
+.readable-text {
+    line-height: 1.6; /* 1.6 × font-size */
+}
+
+/* С единицами */
+.code-text {
+    line-height: 24px; /* Фиксированное расстояние */
+}
+
+/* Примеры использования */
+.too-tight {
+    line-height: 1;    /* Слишком плотно */
+}
+
+.good-for-reading {
+    line-height: 1.5;  /* Идеально для чтения */
+}
+
+.for-accessibility {
+    line-height: 1.8;  /* Для слабовидящих */
+}</code></pre>
+                    </div>
+                    <p><strong>Правило золотого сечения:</strong> <code class="element">line-height</code> должен быть в 1.5-1.8 раза больше <code class="element">font-size</code>.</p>
+                </section>
+
+                <section id="font-weight" class="lesson-section">
+                    <h2>Свойство <code class="element">font-weight</code> — насыщенность шрифта</h2>
+                    <p>Определяет толщину шрифта.</p>
+                    
+                    <h3>Значения:</h3>
+                    <div class="code-block">
+                        <pre><code>.light-text {
+    font-weight: 300;   /* Светлый */
+}
+
+.normal-text {
+    font-weight: 400;   /* Нормальный (обычный) */
+}
+
+.medium-text {
+    font-weight: 500;   /* Средний */
+}
+
+.bold-text {
+    font-weight: 700;   /* Жирный */
+}
+
+.extra-bold {
+    font-weight: 900;   /* Очень жирный */
+}</code></pre>
+                    </div>
+
+                    <h3>Именованные значения (устаревшие, но работают):</h3>
+                    <div class="code-block">
+                        <pre><code>.normal {
+    font-weight: normal;  /* = 400 */
+}
+
+.bold {
+    font-weight: bold;    /* = 700 */
+}</code></pre>
+                    </div>
+
+                    <h3>Практическое применение:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Иерархия заголовков */
+h1 {
+    font-weight: 700;  /* Самый жирный */
+}
+
+h2 {
+    font-weight: 600;  /* Чуть менее жирный */
+}
+
+h3 {
+    font-weight: 500;  /* Средний вес */
+}
+
+/* Акценты в текста */
+.important {
+    font-weight: 600;
+    color: #d97706;
+}
+
+/* Светлые элементы */
+.muted {
+    font-weight: 300;
+    color: #6b7280;
+}</code></pre>
+                    </div>
+                    <p><strong>Важно:</strong> Не все шрифты поддерживают все значения <code class="element">font-weight</code>. Проверяйте в документации Google Fonts.</p>
+                </section>
+
+                <section id="color" class="lesson-section">
+                    <h2>Свойство <code class="element">color</code> — цвет текста</h2>
+                    
+                    <h3>Способы задания цвета:</h3>
+                    <div class="code-block">
+                        <pre><code>/* По названию (147 стандартных цветов) */
+.basic-colors {
+    color: red;
+    color: blue;
+    color: green;
+    color: black;
+    color: white;
+    color: gray;
+}
+
+/* HEX (шестнадцатеричный) - самый популярный */
+.hex-colors {
+    color: #ff0000;      /* Красный */
+    color: #00ff00;      /* Зеленый */
+    color: #0000ff;      /* Синий */
+    color: #333333;      /* Темно-серый */
+    color: #f3f4f6;      /* Светло-серый */
+}
+
+/* RGB (Red, Green, Blue) */
+.rgb-colors {
+    color: rgb(255, 0, 0);           /* Красный */
+    color: rgb(0, 255, 0);           /* Зеленый */
+    color: rgb(0, 0, 255);           /* Синий */
+}
+
+/* RGBA (с прозрачностью) */
+.rgba-colors {
+    color: rgba(255, 0, 0, 0.5);     /* Полупрозрачный красный */
+    color: rgba(0, 0, 0, 0.7);       /* Темно-серый с прозрачностью */
+}
+
+/* HSL (Hue, Saturation, Lightness) */
+.hsl-colors {
+    color: hsl(0, 100%, 50%);        /* Красный */
+    color: hsl(120, 100%, 50%);      /* Зеленый */
+    color: hsl(240, 100%, 50%);      /* Синий */
+}</code></pre>
+                    </div>
+
+                    <h3>Практическая палитра для веба:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Темные цвета для текста */
+.text-primary {
+    color: #1f2937;  /* Основной текст */
+}
+
+.text-secondary {
+    color: #6b7280;  /* Второстепенный текст */
+}
+
+.text-muted {
+    color: #9ca3af;  /* Неактивный текст */
+}
+
+/* Акцентные цвета */
+.text-accent {
+    color: #2563eb;  /* Синий для ссылок */
+}
+
+.text-success {
+    color: #10b981;  /* Зеленый для успеха */
+}
+
+.text-warning {
+    color: #f59e0b;  /* Оранжевый для предупреждений */
+}
+
+.text-error {
+    color: #ef4444;  /* Красный для ошибок */
+}</code></pre>
+                    </div>
+
+                    <h3>Контрастность текста:</h3>
+                    <p>Для хорошей читаемости соблюдайте минимальный контраст:</p>
+                    <ul>
+                        <li>Обычный текст: 4.5:1 (WCAG AA)</li>
+                        <li>Крупный текст (от 18px): 3:1</li>
+                    </ul>
+                    <p><strong>Используйте инструменты:</strong> WebAIM Contrast Checker</p>
+                </section>
+
+                <section id="text-align" class="lesson-section">
+                    <h2>Свойство <code class="element">text-align</code> — выравнивание текста</h2>
+                    
+                    <h3>Основные значения:</h3>
+                    <div class="code-block">
+                        <pre><code>.left-align {
+    text-align: left;      /* По левому краю (по умолчанию) */
+}
+
+.center-align {
+    text-align: center;    /* По центру */
+}
+
+.right-align {
+    text-align: right;     /* По правому краю */
+}
+
+.justify-align {
+    text-align: justify;   /* По ширине */
+}</code></pre>
+                    </div>
+
+                    <h3>Практическое применение:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Заголовки обычно по центру */
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Основной текст по левому краю */
+article p {
+    text-align: left;
+    text-align: justify; /* Для длинных текстов */
+}
+
+/* Цитаты часто по центру */
+blockquote {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Подписи к изображениям */
+figcaption {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Кнопки и CTA */
+.cta-button {
+    text-align: center;
+    display: block; /* Для центрирования кнопки */
+}
+
+/* Таблицы */
+td {
+    text-align: right; /* Числа справа */
+}
+
+td:first-child {
+    text-align: left;  /* Первая колонка слева */
+}</code></pre>
+                    </div>
+
+                    <h3><code class="element">text-align</code> для разных языков:</h3>
+                    <div class="code-block">
+                        <pre><code>/* Для языков слева направо (русский, английский) */
+:lang(ru), :lang(en) {
+    text-align: left;
+    direction: ltr;
+}
+
+/* Для языков справа налево (арабский, иврит) */
+:lang(ar), :lang(he) {
+    text-align: right;
+    direction: rtl;
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="practice" class="lesson-section">
+                    <h2>Практика: Создаем типографский макет</h2>
+                    <p><strong>Задача:</strong> Превратить обычный HTML в профессионально оформленную статью.</p>
+                    
+                    <h3>Исходный HTML:</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Типографский макет&lt;/title&gt;
+    &lt;link rel="stylesheet" href="typography.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;article class="blog-post"&gt;
+        &lt;header class="post-header"&gt;
+            &lt;h1 class="post-title"&gt;Искусство веб-типографики&lt;/h1&gt;
+            &lt;p class="post-meta"&gt;Автор: Алексей Дизайнер • 15 марта 2024&lt;/p&gt;
+        &lt;/header&gt;
+        
+        &lt;div class="post-content"&gt;
+            &lt;p class="lead"&gt;Правильная типографика может превратить обычный текст в произведение искусства...&lt;/p&gt;
+            
+            &lt;h2&gt;Выбор шрифта&lt;/h2&gt;
+            &lt;p&gt;Шрифт — это голос вашего сайта. Как и в реальной жизни, важно выбрать правильный тон...&lt;/p&gt;
+            
+            &lt;blockquote class="quote"&gt;
+                "Хорошая типографика незаметна. Плохая типографика бросается в глаза."
+                &lt;cite&gt;— Неизвестный дизайнер&lt;/cite&gt;
+            &lt;/blockquote&gt;
+            
+            &lt;h2&gt;Размер и интервалы&lt;/h2&gt;
+            &lt;p&gt;Размер шрифта и межстрочные интервалы определяют удобство чтения...&lt;/p&gt;
+            
+            &lt;div class="code-example"&gt;
+                &lt;h3&gt;Пример CSS кода:&lt;/h3&gt;
+                &lt;pre&gt;&lt;code&gt;body {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}&lt;/code&gt;&lt;/pre&gt;
+            &lt;/div&gt;
+            
+            &lt;h2&gt;Цвет и контраст&lt;/h2&gt;
+            &lt;p&gt;Цвет текста должен обеспечивать достаточный контраст с фоном...&lt;/p&gt;
+            
+            &lt;ul class="tips-list"&gt;
+                &lt;li&gt;Используйте темный текст на светлом фоне&lt;/li&gt;
+                &lt;li&gt;Избегайте чистого черного (#000)&lt;/li&gt;
+                &lt;li&gt;Проверяйте контрастность&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        
+        &lt;footer class="post-footer"&gt;
+            &lt;p class="tags"&gt;Теги: &lt;span&gt;типографика&lt;/span&gt;, &lt;span&gt;веб-дизайн&lt;/span&gt;, &lt;span&gt;css&lt;/span&gt;&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+
+                    <h3>Что нужно сделать в файле <code class="element">typography.css</code>:</h3>
+                    <ol>
+                        <li>Подключить Google Fonts (Georgia для основного текста, Roboto для заголовков)</li>
+                        <li>Стилизовать заголовок статьи</li>
+                        <li>Оформить основной текст с правильными размерами и интервалами</li>
+                        <li>Стилизовать цитату</li>
+                        <li>Оформить блок с кодом</li>
+                        <li>Сделать список с советами</li>
+                        <li>Добавить стили для подвала</li>
+                    </ol>
+
+                    <h3>Критерии успеха:</h3>
+                    <ul>
+                        <li>Читаемый основной текст (16-18px, line-height 1.6-1.8)</li>
+                        <li>Четкая иерархия заголовков (h1 > h2 > h3)</li>
+                        <li>Правильные цвета (достаточный контраст)</li>
+                        <li>Уместное выравнивание</li>
+                        <li>Единый стиль всех элементов</li>
+                    </ul>
+                </section>
+
+                <section id="step-by-step" class="lesson-section">
+                    <h2>Шаг за шагом: Создаем читаемый блог</h2>
+                    
+                    <h3>Шаг 1: Подключаем шрифты и задаем базовые стили</h3>
+                    <div class="code-block">
+                        <pre><code>/* typography.css */
+
+/* Подключение Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;family=Roboto:wght@300;400;500&amp;family=Source+Code+Pro:wght@400;600&amp;display=swap');
+
+/* Сброс и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 2: Стилизуем контейнер статьи</h3>
+                    <div class="code-block">
+                        <pre><code>.blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 3: Заголовок статьи</h3>
+                    <div class="code-block">
+                        <pre><code>.post-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.post-title {
+    font-family: 'Merriweather', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.post-meta {
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 4: Основной контент</h3>
+                    <div class="code-block">
+                        <pre><code>.post-content {
+    padding: 60px 40px;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #4a5568;
+    margin-bottom: 40px;
+    text-align: justify;
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 40px 0 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin: 30px 0 15px;
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: #4a5568;
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 5: Цитата</h3>
+                    <div class="code-block">
+                        <pre><code>.quote {
+    background: #f8fafc;
+    border-left: 4px solid #4299e1;
+    padding: 30px;
+    margin: 40px 0;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #2d3748;
+}
+
+.quote cite {
+    display: block;
+    margin-top: 15px;
+    font-style: normal;
+    font-size: 1rem;
+    color: #718096;
+    text-align: right;
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 6: Блок с кодом</h3>
+                    <div class="code-block">
+                        <pre><code>.code-example {
+    background: #1a202c;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+    overflow-x: auto;
+}
+
+.code-example h3 {
+    color: #e2e8f0;
+    margin-top: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.code-example pre {
+    margin: 0;
+}
+
+.code-example code {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 7: Список советов</h3>
+                    <div class="code-block">
+                        <pre><code>.tips-list {
+    background: #f0fff4;
+    border: 1px solid #c6f6d5;
+    border-radius: 12px;
+    padding: 30px 30px 30px 50px;
+    margin: 40px 0;
+    list-style: none;
+}
+
+.tips-list li {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #276749;
+    position: relative;
+    padding-left: 30px;
+}
+
+.tips-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #38a169;
+    font-weight: bold;
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 8: Подвал статьи</h3>
+                    <div class="code-block">
+                        <pre><code>.post-footer {
+    background: #f8fafc;
+    padding: 30px 40px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.tags {
+    font-size: 1rem;
+    color: #718096;
+}
+
+.tags span {
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    margin: 0 5px;
+    display: inline-block;
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 9: Адаптивность</h3>
+                    <div class="code-block">
+                        <pre><code>@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .blog-post {
+        border-radius: 0;
+    }
+    
+    .post-header,
+    .post-content {
+        padding: 40px 20px;
+    }
+    
+    .post-title {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="summary" class="lesson-section">
+                    <h2>Что вы узнали</h2>
+                    
+                    <h3>1. Ключевые свойства текста:</h3>
+                    <ul>
+                        <li><code class="element">font-family</code> — выбор шрифта и семейств</li>
+                        <li><code class="element">font-size</code> — размер с разными единицами измерения</li>
+                        <li><code class="element">font-weight</code> — насыщенность (300-900)</li>
+                        <li><code class="element">color</code> — цвет текста (HEX, RGB, HSL)</li>
+                        <li><code class="element">text-align</code> — выравнивание (left, center, right, justify)</li>
+                    </ul>
+
+                    <h3>2. Важные концепции:</h3>
+                    <ul>
+                        <li>Типографская иерархия — заголовки > подзаголовки > основной текст</li>
+                        <li>Контрастность — для доступности и читаемости</li>
+                        <li>Межстрочные интервалы — <code class="element">line-height</code> для удобства чтения</li>
+                        <li>Система размеров — rem vs px vs em</li>
+                    </ul>
+
+                    <h3>3. Практические навыки:</h3>
+                    <ul>
+                        <li>Подключение Google Fonts</li>
+                        <li>Создание читаемых текстовых блоков</li>
+                        <li>Оформление цитат и кода</li>
+                        <li>Создание адаптивной типографики</li>
+                        <li>Работа с цветовыми палитрами для текста</li>
+                    </ul>
+
+                    <h3>4. Золотые правила веб-типографики:</h3>
+                    <ul>
+                        <li>Основной текст: 16-18px, line-height: 1.5-1.8</li>
+                        <li>Контраст текста и фона: минимум 4.5:1</li>
+                        <li>Используйте rem для размеров</li>
+                        <li>Максимум 2-3 шрифта на странице</li>
+                        <li>Заголовки должны быть явно крупнее основного текста</li>
+                    </ul>
+
+                    <div class="buttons">
+                        <a href="lesson-1-CSS.html" class="previous-lesson">Предыдущий урок</a>
+                        <a href="lesson-3-CSS.html" class="next-lesson">Следующий урок</a>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+    <script>
+        // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

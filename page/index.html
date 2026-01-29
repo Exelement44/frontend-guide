@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Guide - Изучай веб-разработку</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <style>
+        /* Стили для главной страницы */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+        ol, ul {
+    margin-left: 15px;
+}
+/* Навигация */
+#navbar {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 0 40px;
+    top: 0;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #FFFFFF;
+}
+
+/* Бургер-меню кнопка */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #1f2937;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Анимация бургера в крестик */
+.burger-menu.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Основное меню */
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+#navbar .link {
+    margin: 0 1rem;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.logo {
+    display: inline-block;
+    margin-right: 5%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: inter;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: #1f2937;
+    padding: 5px 0;
+    position: relative;
+}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero секция */
+        .hero {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-top: 40px;
+            margin-bottom: 24px;
+            color: #1f2937;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
+        }
+        
+        .hero-visual {
+            flex: 1;
+        }
+        
+        .code-frame {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .code-frame figure {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+         img{
+          width: auto;
+          height: 100%;
+          border-radius: 10px;
+        }
+        .code-frame figcaption {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        /* Преимущества */
+        .benefits {
+            padding: 80px 0;
+            background-color: #f9fafb;
+        }
+        
+        .section-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            color: #1f2937;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.25s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            border-color: #2563eb;
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: #2563eb;
+        }
+        
+        .benefit-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1f2937;
+        }
+        
+        .benefit-description {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+        
+        /* Roadmap */
+        .roadmap {
+            padding: 80px 0;
+        }
+        
+        .roadmap-steps {
+            max-width: 800px;
+            margin: 60px auto 0;
+            position: relative;
+        }
+        
+        .roadmap-steps::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+            z-index: 1;
+        }
+        
+        .roadmap-step {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 80px;
+            z-index: 2;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 3px solid #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #6b7280;
+            z-index: 2;
+        }
+        
+        .roadmap-step.current .step-number {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        .roadmap-step.completed .step-number {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+        }
+        
+        .step-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .step-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1f2937;
+        }
+        
+        .step-description {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        
+        .step-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #f3f4f6;
+            color: #4b5563;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        /* Призыв к действию */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-text {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        
+        .cta-button.white {
+            background: white;
+            color: #2563eb;
+        }
+        
+        .cta-button.white:hover {
+            background: #f8fafc;
+            color: #1d4ed8;
+        }
+        
+        /* Футер */
+        /* Футер */
+.footer {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 60px 0 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+.footer-logo {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-description {
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.footer-about-link {
+    display: inline-block;
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+
+.footer-about-link:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+}
+
+.footer-links h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links a:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+.footer-links a::before {
+    content: "→";
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.footer-links a:hover::before {
+    opacity: 1;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid #374151;
+    color: #9ca3af;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+            }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .code-frame {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .burger-menu {
+               display: flex;
+            }
+            #navbar {
+              justify-content: space-between;
+            }
+            .nav-links {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: #FFFFFF;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    #navbar .link {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    #navbar a {
+        padding: 10px 20px;
+        display: block;
+    }
+    
+    #navbar a:hover {
+        background-color: #f3f4f6;
+    }
+    
+    /* Блокировка прокрутки при открытом меню */
+    body.menu-open {
+        overflow: hidden;
+    }
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .roadmap-steps::before {
+                left: 25px;
+            }
+            
+            .roadmap-step {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+            
+            .step-content {
+                padding: 20px;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefit-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="index.html">Главная</a></li>
+                <li class="link"><a href="theory.html">Теория</a></li>
+                <li class="link"><a href="practice.html">Практика</a></li>
+                <li class="link"><a href="about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Основной контент -->
+    <main>
+        <!-- Hero секция -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Начни изучать веб-разработку сегодня</h1>
+                    <p class="hero-subtitle">
+                        Бесплатные, структурированные уроки для начинающих. Освой основы HTML, CSS и JavaScript, создавай современные веб-сайты и открой для себя мир IT с нуля.
+                    </p>
+                    <a href="theory.html" class="cta-button">Начать обучение →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section class="benefits">
+            <div class="container">
+                <h2 class="section-title">Почему стоит изучать веб-разработку</h2>
+                <p class="section-subtitle">Веб-разработка — это не только востребованная профессия, но и возможность реализовать свои творческие идеи</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h3 class="benefit-title">Быстрый старт карьеры</h3>
+                        <p class="benefit-description">
+                            Начать можно прямо сейчас с любого компьютера. Первые результаты будут уже через несколько дней обучения.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <h3 class="benefit-title">Высокая востребованность</h3>
+                        <p class="benefit-description">
+                            Веб-разработчики нужны в любой компании, которая имеет онлайн-присутствие. Удалённая работа и хорошая зарплата.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <h3 class="benefit-title">Творчество и логика</h3>
+                        <p class="benefit-description">
+                            Идеальное сочетание для тех, кто любит создавать красивые интерфейсы и решать технические задачи.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap карьеры -->
+        <section class="roadmap">
+            <div class="container">
+                <h2 class="section-title">Путь в веб-разработке</h2>
+                <p class="section-subtitle">Постепенное развитие от основ к профессиональному уровню</p>
+                
+                <div class="roadmap-steps">
+                    <div class="roadmap-step completed">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Основы веб-технологий</h3>
+                            <p class="step-description">
+                                Изучение HTML, CSS и базового JavaScript. Создание первых статических сайтов, понимание принципов работы веба.
+                            </p>
+                            <div class="step-skills">
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3</span>
+                                <span class="skill-tag">Основы JS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-step current">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Фронтенд разработка</h3>
+                            <p class="step-description">
+                                Углубление в JavaScript, изучение фреймворков (React/Vue), работа с API, создание интерактивных интерфейсов.
+                            </p>
+                            <div class="step-skills">
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">API</span>
+                                <span class="skill-tag">Адаптивный дизайн</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Бэкенд и полноценные приложения</h3>
+                            <p class="step-description">
+                                Изучение серверных технологий (Node.js, Python), баз данных, создание полноценных веб-приложений.
+                            </p>
+                            <div class="step-skills">
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Базы данных</span>
+                                <span class="skill-tag">Авторизация</span>
+                                <span class="skill-tag">DevOps основы</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Профессиональный разработчик</h3>
+                            <p class="step-description">
+                                Архитектура приложений, оптимизация, командная разработка, менторство, создание собственных проектов.
+                            </p>
+                            <div class="step-skills">
+                                <span class="skill-tag">Архитектура</span>
+                                <span class="skill-tag">Оптимизация</span>
+                                <span class="skill-tag">Командная работа</span>
+                                <span class="skill-tag">Менторство</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Призыв к действию -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-title">Готов сделать первый шаг?</h2>
+                <p class="cta-text">
+                    Начните с бесплатных уроков по HTML и CSS. Уже через неделю вы сможете создать свою первую веб-страницу.
+                </p>
+                <a href="theory.html" class="cta-button white">Начать обучение бесплатно →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <!-- Футер -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Информация о проекте -->
+            <div class="footer-section">
+                <div class="footer-logo">Frontend Guide</div>
+                <p class="footer-description">
+                     
+                    Создана в рамках школьного проекта с целью сделать IT-образование доступным.
+                </p>
+                <a href="about.html" class="footer-about-link">Подробнее о проекте →</a>
+            </div>
+            
+            <!-- Полезные ресурсы -->
+            <div class="footer-section">
+                <div class="footer-links">
+                    <h3>Полезные ресурсы</h3>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/ru/" target="_blank">MDN Web Docs</a></li>
+                        <li><a href="https://htmlacademy.ru/" target="_blank">HTML Academy</a></li>
+                        <li><a href="https://codepen.io/" target="_blank">CodePen</a></li>
+                        <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+                        <li><a href="https://validator.w3.org/" target="_blank">Валидатор HTML</a></li>
+                    </ul>
+                </div>
+            </div>           
+            <div class="footer-section">
+                <div class="footer-links">
+                    <h3>О проекте</h3>
+                    <ul>
+                        <li><a href="theory.html">Все уроки</a></li>
+                        <li><a href="about.html#our-mission">Цель проекта</a></li>
+                        <li><a href="about.html#our-principles">Принципы</a></li>
+                        <li><a href="about.html#our-stack">Техническая сторона</a></li>
+                        <li><a href="about.html#creators">Об авторах</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-section">
+                <div class="footer-links">
+                    <h3>Редакторы кода</h3>
+                    <ul>
+                        <li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+                        <li><a href="https://www.sublimetext.com/">Sublime Text</a></li>
+                        <li><a href="https://www.jetbrains.com/ru-ru/webstorm/">WebStorm</a></li>
+                        <li><a href="https://pulsar-edit.dev/">Pulsar</a></li>
+                        <li><a href="https://zed.dev/">Zed</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Frontend Guide. Образовательный проект для изучения веб-разработки.</p>
+            <p>Создано учениками 9 класса Регасом Дмитрием и Павлюченко Никитой</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        
+        // Простой скрипт для плавной прокрутки
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Наблюдаем за карточками и шагами roadmap
+        document.querySelectorAll('.benefit-card, .roadmap-step').forEach(el => {
+            observer.observe(el);
+        });
+        // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

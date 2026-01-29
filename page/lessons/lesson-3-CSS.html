@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блочная модель CSS</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>Блочная модель CSS</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#introduction">Что такое блочная модель?</a></li>
+                    <li class="aside-link"><a href="#components">Составляющие блочной модели</a></li>
+                    <li class="aside-link"><a href="#properties">Свойства блочной модели</a></li>
+                    <li class="aside-link"><a href="#box-sizing">Ключевое свойство box-sizing</a></li>
+                    <li class="aside-link"><a href="#block-inline">Блочные и строчные элементы</a></li>
+                    <li class="aside-link"><a href="#margin-collapsing">Схлопывание отступов</a></li>
+                    <li class="aside-link"><a href="#practice">Практика</a></li>
+                    <li class="aside-link"><a href="#problems">Частые проблемы и решения</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="lesson-content">
+            <article>
+                <section id="introduction" class="lesson-section">
+                    <h2>Что такое блочная модель?</h2>
+                    <p>Каждый HTML-элемент в CSS представляет собой прямоугольный блок (box). Блочная модель описывает, как складываются ширина и высота этого блока из нескольких составляющих.</p>
+                    
+                    <h3>Почему так важна блочная модель?</h3>
+                    <p>Представьте, что вы архитектор, который проектирует здание. У вас есть кирпичи (HTML-элементы), но без правил их укладки невозможно построить прочное и красивое здание. Блочная модель — это как раз те правила, которые определяют, как располагаются и взаимодействуют друг с другом все элементы на веб-странице.</p>
+                    
+                    <h3>Простая аналогия из реальной жизни:</h3>
+                    <p>Представьте картину в рамке под стеклом, висящую на стене:</p>
+                    <ul>
+                        <li><strong>Содержимое (content)</strong> — сама картина, то, что художник нарисовал</li>
+                        <li><strong>Внутренний отступ (padding)</strong> — паспарту, белая или цветная полоса между картиной и рамкой</li>
+                        <li><strong>Рамка (border)</strong> — сама деревянная или пластиковая рамка картины</li>
+                        <li><strong>Внешний отступ (margin)</strong> — расстояние от этой картины до соседних картин или до края стены</li>
+                    </ul>
+                    <p>Без этих составляющих картина не будет смотреться гармонично — она либо "утонет" в раме, либо будет выглядеть одиноко на пустой стене.</p>
+                </section>
+
+                <section id="components" class="lesson-section">
+                    <h2>Составляющие блочной модели (от центра к краям):</h2>
+                    <ol>
+                        <li><strong>Content (Содержимое)</strong> — область, где находится текст, изображение или другой контент элемента</li>
+                        <li><strong>Padding (Внутренний отступ)</strong> — прозрачная область вокруг содержимого, внутри границы</li>
+                        <li><strong>Border (Граница)</strong> — рамка вокруг padding и content</li>
+                        <li><strong>Margin (Внешний отступ)</strong> — прозрачная область снаружи границы, отделяющая элемент от соседей</li>
+                    </ol>
+                    
+                    <div class="code-block">
+                        <pre><code>┌─────────────────────────────────────────┐
+│              margin (внешний отступ)    │
+│  ┌───────────────────────────────────┐  │
+│  │         border (граница)          │  │
+│  │  ┌─────────────────────────────┐  │  │
+│  │  │      padding (внутренний    │  │  │
+│  │  │          отступ)            │  │  │
+│  │  │  ┌───────────────────────┐  │  │  │
+│  │  │  │     content (контент) │  │  │  │
+│  │  │  └───────────────────────┘  │  │  │
+│  │  └─────────────────────────────┘  │  │
+│  └───────────────────────────────────┘  │
+└─────────────────────────────────────────┘</code></pre>
+                    </div>
+                    <h3>Как браузер рассчитывает размер элемента?</h3>
+                    <p>По умолчанию используется стандартная блочная модель. В этой модели свойство <code class="element">width</code> задает только ширину содержимого, а <code class="element">padding</code>, <code class="element">border</code> и <code class="element">margin</code> добавляются к этой ширине.</p>
+                    
+                    <p><strong>Давайте посчитаем на примере:</strong> если мы зададим элементу ширину содержимого 300 пикселей, внутренние отступы по 20 пикселей с каждой стороны, границу толщиной 5 пикселей и внешние отступы по 30 пикселей, то:</p>
+                    
+                    <p>Общая ширина, которую элемент займет на странице = 300 (ширина контента) + 20+20 (левый и правый внутренние отступы) + 5+5 (левая и правая границы) + 30+30 (левый и правый внешние отступы) = <strong>410 пикселей</strong>.</p>
+                    
+                    <p>Точно так же рассчитывается и высота: высота контента плюс верхние и нижние отступы, границы и внешние отступы.</p>
+                    
+                    <h3>Практический пример</h3>
+                    <p>Давайте создадим два одинаковых по размеру блока, но с разными подходами к расчету размеров:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Блочная модель в CSS&lt;/title&gt;
+    &lt;style&gt;
+        .box {
+            width: 300px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid #3498db;
+            margin: 30px;
+            background-color: #f1c40f;
+        }
+        
+        .box-border-box {
+            box-sizing: border-box;
+            width: 300px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid #e74c3c;
+            margin: 30px;
+            background-color: #2ecc71;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="box"&gt;
+        &lt;p&gt;Стандартная модель (content-box)&lt;/p&gt;
+        &lt;p&gt;Фактическая ширина: 300 + 20+20 + 5+5 = 350px&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="box-border-box"&gt;
+        &lt;p&gt;Альтернативная модель (border-box)&lt;/p&gt;
+        &lt;p&gt;Фактическая ширина: 300px (включая padding и border)&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    
+                    <p>В первом блоке используется стандартная модель, где свойство <code class="element">width</code> задает только ширину содержимого. Во втором блоке применяется альтернативная модель с помощью свойства <code class="element">box-sizing: border-box</code>, где свойство <code class="element">width</code> задает общую ширину блока, включая внутренние отступы и границы.</p>
+                </section>
+
+                <section id="properties" class="lesson-section">
+                    <h2>Свойства блочной модели: изучаем детально</h2>
+                    
+                    <h3>1. Содержимое (Content) — свойства <code class="element">width</code> и <code class="element">height</code></h3>
+                    <p>Свойства <code class="element">width</code> и <code class="element">height</code> задают размеры области содержимого элемента. Вы можете использовать:</p>
+                    <ul>
+                        <li>Фиксированные значения в пикселях (например, <code class="element">width: 200px</code>)</li>
+                        <li>Относительные значения в процентах от размера родительского элемента (например, <code class="element">width: 50%</code>)</li>
+                        <li>Автоматическое определение размера (<code class="element">width: auto</code> или <code class="element">height: auto</code>), когда браузер сам рассчитывает размер на основе содержимого</li>
+                    </ul>
+                    <p>Также существуют дополнительные свойства для ограничения размеров:</p>
+                    <ul>
+                        <li><code class="element">min-width</code> и <code class="element">max-width</code> — минимальная и максимальная ширина</li>
+                        <li><code class="element">min-height</code> и <code class="element">max-height</code> — минимальная и максимальная высота</li>
+                    </ul>
+
+                    <h3>2. Внутренние отступы (Padding)</h3>
+                    <p>Свойство <code class="element">padding</code> создает пространство между содержимым элемента и его границей. Есть несколько способов задать внутренние отступы:</p>
+                    <ul>
+                        <li>Одно значение — отступы со всех четырех сторон одинаковые (<code class="element">padding: 20px</code>)</li>
+                        <li>Два значения — первое для верхнего и нижнего отступов, второе для левого и правого (<code class="element">padding: 10px 20px</code>)</li>
+                        <li>Три значения — верхний, горизонтальные (левый и правый), нижний (<code class="element">padding: 10px 20px 15px</code>)</li>
+                        <li>Четыре значения — верхний, правый, нижний, левый (по часовой стрелке, <code class="element">padding: 10px 20px 15px 5px</code>)</li>
+                    </ul>
+                    <p>Можно также задавать отступы для каждой стороны отдельно: <code class="element">padding-top</code>, <code class="element">padding-right</code>, <code class="element">padding-bottom</code>, <code class="element">padding-left</code>.</p>
+
+                    <h3>3. Границы (Border)</h3>
+                    <p>Свойства границы определяют рамку вокруг элемента. Основные свойства:</p>
+                    <ul>
+                        <li><code class="element">border-width</code> — толщина границы (в пикселях или других единицах измерения)</li>
+                        <li><code class="element">border-style</code> — стиль границы (сплошная, пунктирная, точечная и т.д.)</li>
+                        <li><code class="element">border-color</code> — цвет границы</li>
+                    </ul>
+                    <p>Чаще всего используется сокращенная запись: <code class="element">border: 2px solid #333;</code>, где указывается толщина, стиль и цвет через пробел.</p>
+                    
+                    <p><strong>Стили границ (border-style):</strong></p>
+                    <ul>
+                        <li><code class="element">solid</code> — сплошная линия</li>
+                        <li><code class="element">dotted</code> — точечная граница</li>
+                        <li><code class="element">dashed</code> — пунктирная граница</li>
+                        <li><code class="element">double</code> — двойная линия</li>
+                        <li><code class="element">groove</code>, <code class="element">ridge</code>, <code class="element">inset</code>, <code class="element">outset</code> — объемные эффекты</li>
+                        <li><code class="element">none</code> — нет границы</li>
+                        <li><code class="element">hidden</code> — скрытая граница (как none, но влияет на расчеты)</li>
+                    </ul>
+                    <p>Можно задавать границы для отдельных сторон: <code class="element">border-top</code>, <code class="element">border-right</code>, <code class="element">border-bottom</code>, <code class="element">border-left</code>.</p>
+                    
+                    <p><strong>Скругление углов</strong> — свойство <code class="element">border-radius</code> позволяет создавать закругленные углы. Можно задавать одно значение для всех углов или разные значения для каждого угла.</p>
+
+                    <h3>4. Внешние отступы (Margin)</h3>
+                    <p>Свойство <code class="element">margin</code> создает пространство за пределами границы элемента, отделяя его от соседних элементов. Синтаксис аналогичен <code class="element">padding</code>:</p>
+                    <ul>
+                        <li><code class="element">margin: 20px</code> — отступы со всех сторон</li>
+                        <li><code class="element">margin: 10px 20px</code> — вертикальные и горизонтальные отступы</li>
+                        <li><code class="element">margin: 10px 20px 15px 5px</code> — верхний, правый, нижний, левый</li>
+                    </ul>
+                    
+                    <p><strong>Особенности внешних отступов:</strong></p>
+                    <ul>
+                        <li>Можно использовать отрицательные значения (<code class="element">margin-left: -10px</code>)</li>
+                        <li>Автоматические отступы (<code class="element">margin: 0 auto</code>) часто используются для центрирования блочных элементов</li>
+                        <li>Вертикальные отступы соседних элементов могут "схлопываться" (об этом подробнее ниже)</li>
+                    </ul>
+                </section>
+
+                <section id="box-sizing" class="lesson-section">
+                    <h2>Ключевое свойство <code class="element">box-sizing</code></h2>
+                    <p>Свойство <code class="element">box-sizing</code> определяет, как браузер рассчитывает ширину и высоту элемента.</p>
+                    
+                    <h3>Значение <code class="element">content-box</code> (стандартное, по умолчанию):</h3>
+                    <ul>
+                        <li>Свойства <code class="element">width</code> и <code class="element">height</code> задают размер только содержимого</li>
+                        <li>Внутренние отступы и границы добавляются к общему размеру</li>
+                    </ul>
+                    
+                    <h3>Значение <code class="element">border-box</code> (альтернативное, часто более удобное):</h3>
+                    <ul>
+                        <li>Свойства <code class="element">width</code> и <code class="element">height</code> задают общий размер элемента, включая внутренние отступы и границы</li>
+                        <li>Размер содержимого автоматически уменьшается, чтобы вместить отступы и границы</li>
+                    </ul>
+                    
+                    <p>Многие разработчики начинают свои стили со сброса этого свойства для всех элементов:</p>
+                    <div class="code-block">
+                        <pre><code>* {
+    box-sizing: border-box;
+}</code></pre>
+                    </div>
+                    <p>Это упрощает расчеты при верстке.</p>
+                </section>
+
+                <section id="block-inline" class="lesson-section">
+                    <h2>Блочные и строчные элементы (для напоминания)</h2>
+                    
+                    <h3>Блочные элементы:</h3>
+                    <ul>
+                        <li>Занимают всю доступную ширину</li>
+                        <li>Начинаются с новой строки</li>
+                        <li>Можно задавать ширину, высоту, отступы и границы</li>
+                    </ul>
+                    <p><strong>Примеры:</strong> <code class="element">&lt;div&gt;</code>, <code class="element">&lt;h1&gt;-&lt;h6&gt;</code>, <code class="element">&lt;p&gt;</code>, <code class="element">&lt;section&gt;</code>, <code class="element">&lt;article&gt;</code></p>
+
+                    <h3>Строчные элементы:</h3>
+                    <ul>
+                        <li>Занимают только необходимую ширину под контент</li>
+                        <li>Не начинаются с новой строки, располагаются друг за другом</li>
+                        <li>Нельзя задавать ширину, высоту, вертикальные внешние отступы</li>
+                    </ul>
+                    <p><strong>Примеры:</strong> <code class="element">&lt;span&gt;</code>, <code class="element">&lt;a&gt;</code>, <code class="element">&lt;strong&gt;</code>, <code class="element">&lt;em&gt;</code>, <code class="element">&lt;img&gt;</code></p>
+
+                    <h3>Строчно-блочные элементы (<code class="element">inline-block</code>):</h3>
+                    <p>Компромиссный вариант — свойство <code class="element">display: inline-block</code>:</p>
+                    <ul>
+                        <li>Элементы ведут себя как строчные (не начинаются с новой строки)</li>
+                        <li>Но можно задавать ширину, высоту, отступы и границы как у блочных</li>
+                    </ul>
+                </section>
+
+                <section id="margin-collapsing" class="lesson-section">
+                    <h2>Схлопывание внешних отступов</h2>
+                    <p>Важное явление в CSS: Когда два блочных элемента расположены друг под другом, их вертикальные внешние отступы не складываются, а "схлопываются" — берется большее из двух значений.</p>
+                    
+                    <p><strong>Например,</strong> если у верхнего элемента <code class="element">margin-bottom: 30px</code>, а у нижнего <code class="element">margin-top: 20px</code>, то расстояние между ними будет не 50 пикселей, а 30 пикселей (большее значение).</p>
+
+                    <h3>Когда отступы не схлопываются:</h3>
+                    <ul>
+                        <li>У элементов с <code class="element">display: flex</code> или <code class="element">display: grid</code></li>
+                        <li>Когда между элементами есть граница или внутренние отступы</li>
+                        <li>Когда элемент имеет <code class="element">position: absolute</code> или <code class="element">position: fixed</code></li>
+                        <li>Когда у родительского элемента задано <code class="element">overflow: auto</code> или <code class="element">overflow: hidden</code></li>
+                    </ul>
+                </section>
+
+                <section id="practice" class="lesson-section">
+                    <h2>Практика: Создаем профильную карточку</h2>
+                    <p>Давайте создадим полноценную профильную карточку, используя все знания о блочной модели:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Практика: Блочная модель&lt;/title&gt;
+    &lt;style&gt;
+        /* Сброс стилей и применение border-box для всех элементов */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Стили для всей страницы */
+        body {
+            background-color: #f5f5f5;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* Основная карточка */
+        .profile-card {
+            width: 350px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        /* Верхняя часть карточки с градиентом */
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        /* Круглый аватар */
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+        
+        /* Изображение внутри аватара */
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Имя пользователя */
+        .profile-name {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        
+        /* Должность */
+        .profile-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        /* Основное содержимое карточки */
+        .profile-content {
+            padding: 30px;
+        }
+        
+        /* Блок со статистикой */
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Одна колонка статистики */
+        .stat {
+            flex: 1;
+        }
+        
+        /* Числовое значение статистики */
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        /* Подпись к статистике */
+        .stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        /* Биография */
+        .profile-bio {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        /* Контейнер для кнопок */
+        .profile-contact {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Общие стили кнопок */
+        .contact-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        /* Основная кнопка */
+        .btn-primary {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        /* Вторичная кнопка */
+        .btn-secondary {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        /* Эффект при наведении на кнопку */
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Демонстрация блочной модели */
+        .box-model-demo {
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Заголовок демо-блока */
+        .box-model-demo h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* Элемент для демонстрации блочной модели */
+        .demo-element {
+            width: 200px;
+            height: 100px;
+            padding: 20px;
+            border: 5px solid #e74c3c;
+            margin: 15px auto;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="profile-card"&gt;
+        &lt;div class="profile-header"&gt;
+            &lt;div class="profile-avatar"&gt;
+                &lt;img src="https://via.placeholder.com/120" alt="Аватар пользователя"&gt;
+            &lt;/div&gt;
+            &lt;h1 class="profile-name"&gt;Анна Иванова&lt;/h1&gt;
+            &lt;p class="profile-title"&gt;Frontend-разработчик&lt;/p&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="profile-content"&gt;
+            &lt;div class="profile-stats"&gt;
+                &lt;div class="stat"&gt;
+                    &lt;span class="stat-value"&gt;24&lt;/span&gt;
+                    &lt;span class="stat-label"&gt;Проекта&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="stat"&gt;
+                    &lt;span class="stat-value"&gt;3&lt;/span&gt;
+                    &lt;span class="stat-label"&gt;Года опыта&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="stat"&gt;
+                    &lt;span class="stat-value"&gt;15&lt;/span&gt;
+                    &lt;span class="stat-label"&gt;Клиентов&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;p class="profile-bio"&gt;
+                Специализируюсь на создании современных, адаптивных интерфейсов. 
+                Владею HTML5, CSS3, JavaScript и фреймворками React и Vue.js. 
+                Постоянно изучаю новые технологии и лучшие практики веб-разработки.
+            &lt;/p&gt;
+            
+            &lt;div class="profile-contact"&gt;
+                &lt;button class="contact-btn btn-primary"&gt;Написать&lt;/button&gt;
+                &lt;button class="contact-btn btn-secondary"&gt;Резюме&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Демонстрация блочной модели --&gt;
+    &lt;div class="box-model-demo"&gt;
+        &lt;h3&gt;Демонстрация блочной модели:&lt;/h3&gt;
+        &lt;p&gt;Этот блок имеет padding: 20px, border-left: 4px, margin-top: 30px&lt;/p&gt;
+        
+        &lt;div class="demo-element"&gt;
+            content-box: 200x100px
+        &lt;/div&gt;
+        
+        &lt;p&gt;Элемент выше имеет:&lt;br&gt;
+        width: 200px + padding: 20px×2 + border: 5px×2 = &lt;strong&gt;250px фактической ширины&lt;/strong&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </section>
+
+                <section id="problems" class="lesson-section">
+                    <h2>Частые проблемы и их решения</h2>
+                    
+                    <h3>1. Элемент "вылазит" за пределы родителя</h3>
+                    <p>Если содержимое элемента не помещается в заданные размеры, оно может выходить за границы родительского контейнера. Решение — свойство <code class="element">overflow</code>:</p>
+                    <div class="code-block">
+                        <pre><code>.parent {
+    overflow: hidden; /* обрезает всё, что выходит за границы */
+    /* или */
+    overflow: auto; /* добавляет прокрутку при необходимости */
+}</code></pre>
+                    </div>
+
+                    <h3>2. Центрирование блочного элемента по горизонтали</h3>
+                    <p>Для центрирования блочного элемента с фиксированной или процентной шириной:</p>
+                    <div class="code-block">
+                        <pre><code>.block {
+    width: 80%; /* или фиксированная ширина, например 500px */
+    margin: 0 auto; /* автоматические отступы слева и справа */
+}</code></pre>
+                    </div>
+
+                    <h3>3. Вертикальное центрирование (простой способ)</h3>
+                    <p>С появлением Flexbox вертикальное центрирование стало намного проще:</p>
+                    <div class="code-block">
+                        <pre><code>.parent {
+    display: flex;
+    align-items: center; /* вертикальное выравнивание */
+    justify-content: center; /* горизонтальное выравнивание */
+}</code></pre>
+                    </div>
+
+                    <h3>4. Учет внешних отступов при использовании float</h3>
+                    <p>Когда элементы плавают (свойство <code class="element">float</code>), их родительский контейнер может "схлопываться". Решение — clearfix:</p>
+                    <div class="code-block">
+                        <pre><code>.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="summary" class="lesson-section">
+                    <h2>Что вы узнали:</h2>
+                    <ol>
+                        <li>Блочная модель состоит из четырех слоев: содержимое, внутренние отступы, граница и внешние отступы</li>
+                        <li>По умолчанию используется <code class="element">box-sizing: content-box</code>, где ширина и высота задают только размер содержимого</li>
+                        <li><code class="element">box-sizing: border-box</code> включает внутренние отступы и границы в указанные ширину и высоту</li>
+                        <li><code class="element">Padding</code> — внутренние отступы между содержимым и границей, <code class="element">margin</code> — внешние отступы между границей и соседними элементами</li>
+                        <li>Вертикальные внешние отступы соседних элементов могут схлопываться (браузер берет большее значение)</li>
+                        <li>Блочные и строчные элементы ведут себя по-разному относительно блочной модели</li>
+                        <li>Использование универсального правила <code class="element">* { box-sizing: border-box; }</code> упрощает верстку и расчет размеров</li>
+                    </ol>
+
+                    <div class="buttons">
+                        <a href="lesson-2-CSS.html" class="previous-lesson">Предыдущий урок</a>
+                        <a href="lesson-4-CSS.html" class="next-lesson">Следующий урок</a>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+    <script>
+        // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>

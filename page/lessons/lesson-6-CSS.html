@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>CSS Grid</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#introduction">Что такое CSS Grid?</a></li>
+                    <li class="aside-link"><a href="#activation">Включаем Grid</a></li>
+                    <li class="aside-link"><a href="#creating-grid">Создание сетки</a></li>
+                    <li class="aside-link"><a href="#item-placement">Размещение элементов</a></li>
+                    <li class="aside-link"><a href="#gap">Промежутки между элементами</a></li>
+                    <li class="aside-link"><a href="#alignment">Выравнивание элементов</a></li>
+                    <li class="aside-link"><a href="#areas">Именованные области</a></li>
+                    <li class="aside-link"><a href="#auto-flow">Автоматическое размещение</a></li>
+                    <li class="aside-link"><a href="#practice-conversion">Практика: Преобразование макета</a></li>
+                    <li class="aside-link"><a href="#practice-gallery">Практика: Галерея Pinterest</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="lesson-content">
+            <article>
+                <section id="introduction" class="lesson-section">
+                    <h2>Что такое CSS Grid?</h2>
+                    <p>CSS Grid — это система для создания двумерных макетов. В отличие от Flexbox, который работает в одном направлении (ряд ИЛИ колонка), Grid позволяет работать одновременно с рядами и колонками, создавая настоящие сетки.</p>
+                    
+                    <h3>Простая аналогия: Тетрадь в клетку или таблица Excel.</h3>
+                    <p>Представьте тетрадь в клеточку:</p>
+                    <ul>
+                        <li><strong>Весь лист (контейнер)</strong> — это ваш grid-контейнер</li>
+                        <li><strong>Клеточки (ячейки)</strong> — элементы, которые можно размещать</li>
+                        <li><strong>Линии (линейки)</strong> — границы между рядами и колонками</li>
+                    </ul>
+                    
+                    <p><strong>Без Grid</strong> — как если бы вы рисовали таблицу от руки, вымеряя каждый квадрат линейкой</p>
+                    <p><strong>С Grid</strong> — у вас есть готовая разлинованная тетрадь, где вы просто говорите:</p>
+                    <ul>
+                        <li>"Раздели лист на 3 колонки и 2 строки"</li>
+                        <li>"Первый элемент пусть занимает первые две колонки в первой строке"</li>
+                        <li>"Второй элемент — всю вторую строку"</li>
+                    </ul>
+                    <p>Grid превращает создание сложных макетов в заполнение готовой сетки!</p>
+                </section>
+
+                <section id="activation" class="lesson-section">
+                    <h2>1. Включаем Grid</h2>
+                    <p>Как и с Flexbox, всё начинается с одного свойства:</p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Важное отличие от Flexbox:</strong></p>
+                    <ul>
+                        <li>Flexbox — для одномерных макетов (в ряд ИЛИ в колонку)</li>
+                        <li>Grid — для двумерных макетов (и в ряд, И в колонку одновременно)</li>
+                    </ul>
+                </section>
+
+                <section id="creating-grid" class="lesson-section">
+                    <h2>2. Создаем сетку: Колонки и строки</h2>
+                    
+                    <h3><code class="element">grid-template-columns</code> — определяем колонки</h3>
+                    <p>Сколько колонок будет и какой ширины?</p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-template-columns: 100px 200px 100px;
+    /* Три колонки: 100px | 200px | 100px */
+}</code></pre>
+                    </div>
+                    
+                    <p>Можно использовать разные единицы:</p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-template-columns: 100px 1fr 2fr;
+    /* fr (fraction) — доля доступного пространства */
+    /* 1fr : 2fr = 1 часть : 2 части */
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Популярный паттерн — адаптивные колонки:</strong></p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Три одинаковые колонки, которые растягиваются */
+}</code></pre>
+                    </div>
+
+                    <h3><code class="element">grid-template-rows</code> — определяем строки</h3>
+                    <p>Аналогично для строк:</p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-template-rows: 100px 200px;
+    /* Две строки: 100px и 200px высотой */
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Автоматические строки:</strong></p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-template-rows: 100px auto 150px;
+    /* Средняя строка подстраивается под контент */
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="item-placement" class="lesson-section">
+                    <h2>3. Работа с элементами: Размещение в ячейках</h2>
+                    
+                    <h3>По умолчанию — автоматическое размещение</h3>
+                    <p>Элементы заполняют сетку по порядку:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;div class="grid-container"&gt;
+    &lt;div class="item"&gt;1&lt;/div&gt;
+    &lt;div class="item"&gt;2&lt;/div&gt;
+    &lt;div class="item"&gt;3&lt;/div&gt;
+    &lt;div class="item"&gt;4&lt;/div&gt;
+    &lt;div class="item"&gt;5&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <pre><code>.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
+    /* 3 колонки × 2 строки = 6 ячеек */
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Результат:</strong></p>
+                    <div class="code-block">
+                        <pre><code>[1] [2] [3]
+[4] [5] [ ]</code></pre>
+                    </div>
+
+                    <h3><code class="element">grid-column</code> и <code class="element">grid-row</code> — занимаем несколько ячеек</h3>
+                    <p>Элемент может занимать несколько клеток:</p>
+                    <div class="code-block">
+                        <pre><code>.item-1 {
+    grid-column: 1 / 3; /* От 1-й до 3-й линии (2 колонки) */
+    grid-row: 1;        /* Только 1-я строка */
+}
+
+.item-4 {
+    grid-column: 2 / 4; /* От 2-й до 4-й линии */
+    grid-row: 2 / 3;    /* Только 2-я строка */
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Нумерация линий (важно!):</strong></p>
+                    <div class="code-block">
+                        <pre><code>Колонки:   1     2     3     4
+         | A | |   | |   | |   |
+         |---|-----|-----|-----|
+Строки:  1     2     3     4</code></pre>
+                    </div>
+                    
+                    <p><strong>Сокращенная запись span:</strong></p>
+                    <div class="code-block">
+                        <pre><code>.item {
+    grid-column: 2 / span 2; /* Начать со 2-й линии, занять 2 колонки */
+    /* То же что grid-column: 2 / 4 */
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="gap" class="lesson-section">
+                    <h2>4. Промежутки между элементами</h2>
+                    
+                    <h3><code class="element">gap</code> — отступы (работает так же, как в Flexbox)</h3>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    gap: 20px;           /* 20px между всеми элементами */
+    gap: 10px 20px;      /* 10px между строками, 20px между колонками */
+    
+    /* Старые названия (работают тоже): */
+    /* row-gap: 10px; */
+    /* column-gap: 20px; */
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Наглядный пример:</strong></p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}</code></pre>
+                    </div>
+                    <p><strong>Без gap:</strong> [A][B][C]<br>
+                    <strong>С gap 15px:</strong> [A] 15px [B] 15px [C]</p>
+                </section>
+
+                <section id="alignment" class="lesson-section">
+                    <h2>5. Выравнивание элементов</h2>
+                    
+                    <h3>Внутри своей ячейки</h3>
+                    <div class="code-block">
+                        <pre><code>.item {
+    justify-self: center;    /* По горизонтали в ячейке */
+    align-self: center;      /* По вертикали в ячейке */
+    
+    /* Сокращенная запись: */
+    place-self: center;      /* и по горизонтали, и по вертикали */
+}</code></pre>
+                    </div>
+
+                    <h3>Всех элементов сразу</h3>
+                    <div class="code-block">
+                        <pre><code>.container {
+    justify-items: center;   /* Все элементы по горизонтали */
+    align-items: center;     /* Все элементы по вертикали */
+    
+    /* Сокращенная запись: */
+    place-items: center;     /* Все элементы по центру ячеек */
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="areas" class="lesson-section">
+                    <h2>6. Области (areas) — именованные области</h2>
+                    <p>Позволяют давать ячейкам имена и размещать элементы по этим именам:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar content content"
+        "footer footer footer";
+}
+
+.header {
+    grid-area: header;  /* Займет область header */
+}
+
+.sidebar {
+    grid-area: sidebar; /* Займет область sidebar */
+}
+
+.content {
+    grid-area: content; /* Займет область content */
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Визуализация:</strong></p>
+                    <div class="code-block">
+                        <pre><code>header  header  header
+sidebar content content
+footer  footer  footer</code></pre>
+                    </div>
+                    
+                    <p><strong>Точка (.) — пустая ячейка:</strong></p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    grid-template-areas:
+        "logo . menu"
+        ". content .";
+    /* logo и menu в первой строке с пустой ячейкой между */
+    /* content во второй строке по центру */
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="auto-flow" class="lesson-section">
+                    <h2>7. Автоматическое размещение — <code class="element">grid-auto-flow</code></h2>
+                    <p>Что делать с элементами, которые не размещены явно?</p>
+                    
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-auto-flow: row;        /* Заполнять строками (по умолчанию) */
+    grid-auto-flow: column;     /* Заполнять колонками */
+    grid-auto-flow: dense;      /* Заполнять пробелы */
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Пример с dense:</strong></p>
+                    <div class="code-block">
+                        <pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
+}
+
+.item-2 {
+    grid-column: span 2; /* Занимает 2 колонки */
+}
+/* Элемент 3 "прыгнет" в пустую ячейку */</code></pre>
+                    </div>
+                </section>
+
+                <section id="practice-conversion" class="lesson-section">
+                    <h2>Практика 1: Преобразование обычного макета в Grid</h2>
+                    
+                    <h3>Исходный код (верстка с позиционированием):</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;div class="old-layout"&gt;
+    &lt;header class="header"&gt;Шапка&lt;/header&gt;
+    &lt;nav class="nav"&gt;Меню&lt;/nav&gt;
+    &lt;main class="main"&gt;Контент&lt;/main&gt;
+    &lt;aside class="sidebar"&gt;Боковая&lt;/aside&gt;
+    &lt;footer class="footer"&gt;Подвал&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <pre><code>.old-layout {
+    width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #3498db;
+}
+
+.nav {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 200px;
+    bottom: 60px;
+    background: #2ecc71;
+}
+
+.main {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    right: 0;
+    bottom: 60px;
+    background: #ecf0f1;
+}
+
+.sidebar {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 150px;
+    bottom: 60px;
+    background: #9b59b6;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #f39c12;
+}</code></pre>
+                    </div>
+
+                    <h3>Задача:</h3>
+                    <p>Перепишите этот макет с использованием CSS Grid так, чтобы:</p>
+                    <ol>
+                        <li>Убрать все <code class="element">position: absolute</code></li>
+                        <li>Использовать именованные области (<code class="element">grid-template-areas</code>)</li>
+                        <li>Сделать адаптивным (на мобильных — всё в колонку)</li>
+                        <li>Добавить промежутки между областями</li>
+                    </ol>
+
+                    <h3>Подсказки для решения:</h3>
+                    <ul>
+                        <li>Создайте grid-контейнер</li>
+                        <li>Определите <code class="element">grid-template-areas</code> для десктопа</li>
+                        <li>Используйте медиа-запрос для мобильной версии</li>
+                        <li>Назначьте элементам <code class="element">grid-area</code></li>
+                    </ul>
+
+                    <h3>Решение:</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;!-- HTML остается таким же --&gt;
+&lt;div class="new-layout"&gt;
+    &lt;header class="header"&gt;Шапка&lt;/header&gt;
+    &lt;nav class="nav"&gt;Меню&lt;/nav&gt;
+    &lt;main class="main"&gt;Контент&lt;/main&gt;
+    &lt;aside class="sidebar"&gt;Боковая&lt;/aside&gt;
+    &lt;footer class="footer"&gt;Подвал&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <pre><code>.new-layout {
+    display: grid;
+    gap: 10px;
+    min-height: 100vh;
+    
+    /* Десктопная версия */
+    grid-template-areas:
+        "header header header"
+        "nav main sidebar"
+        "footer footer footer";
+    
+    grid-template-columns: 200px 1fr 150px;
+    grid-template-rows: 80px 1fr 60px;
+}
+
+.header { grid-area: header; background: #3498db; }
+.nav { grid-area: nav; background: #2ecc71; }
+.main { grid-area: main; background: #ecf0f1; }
+.sidebar { grid-area: sidebar; background: #9b59b6; }
+.footer { grid-area: footer; background: #f39c12; }
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .new-layout {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "sidebar"
+            "footer";
+        
+        grid-template-columns: 1fr;
+        grid-template-rows: auto; /* Автоматическая высота */
+    }
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="practice-gallery" class="lesson-section">
+                    <h2>Практика 2: Пошаговое создание фото-галереи Pinterest-стиля</h2>
+                    <p>Создадим галерею с элементами разной высоты (как в Pinterest):</p>
+
+                    <h3>Шаг 1: HTML структура</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;div class="pinterest-grid"&gt;
+    &lt;div class="pin" style="height: 200px;"&gt;📷 Фото 1&lt;/div&gt;
+    &lt;div class="pin" style="height: 300px;"&gt;🎨 Арт 1&lt;/div&gt;
+    &lt;div class="pin" style="height: 250px;"&gt;🏞️ Пейзаж 1&lt;/div&gt;
+    &lt;div class="pin" style="height: 180px;"&gt;🏙️ Город 1&lt;/div&gt;
+    &lt;div class="pin" style="height: 320px;"&gt;🌊 Море 1&lt;/div&gt;
+    &lt;div class="pin" style="height: 220px;"&gt;📸 Фото 2&lt;/div&gt;
+    &lt;div class="pin" style="height: 280px;"&gt;🎭 Арт 2&lt;/div&gt;
+    &lt;div class="pin" style="height: 190px;"&gt;🌄 Пейзаж 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+
+                    <h3>Шаг 2: Включаем Grid и создаем колонки</h3>
+                    <div class="code-block">
+                        <pre><code>.pinterest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.pin {
+    background: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}</code></pre>
+                    </div>
+                    
+                    <p><strong>Что делает <code class="element">auto-fill</code> и <code class="element">minmax()</code>:</strong></p>
+                    <ul>
+                        <li><code class="element">minmax(250px, 1fr)</code> — минимальная ширина 250px, максимальная — 1 доля</li>
+                        <li><code class="element">auto-fill</code> — автоматически создает столько колонок, сколько помещается</li>
+                    </ul>
+                    <p><strong>Результат:</strong> адаптивные колонки, которые не становятся уже 250px</p>
+
+                    <h3>Шаг 3: Добавляем автоматическое размещение строк</h3>
+                    <div class="code-block">
+                        <pre><code>.pinterest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 10px; /* Базовый размер строки */
+    gap: 20px;
+}
+
+.pin {
+    /* Высота задана inline-style в HTML */
+    /* Каждый элемент занимает нужное количество строк */
+    grid-row-end: span calc(var(--height, 200) / 10);
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 4: Улучшаем с помощью CSS переменных</h3>
+                    <div class="code-block">
+                        <pre><code>.pinterest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 10px;
+    gap: 20px;
+}
+
+.pin {
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    
+    /* Динамическое определение span */
+    grid-row-end: span calc(var(--h) / 10);
+}
+
+/* Устанавливаем высоты через CSS переменные */
+.pin:nth-child(1) { --h: 200; }
+.pin:nth-child(2) { --h: 300; }
+.pin:nth-child(3) { --h: 250; }
+.pin:nth-child(4) { --h: 180; }
+.pin:nth-child(5) { --h: 320; }
+.pin:nth-child(6) { --h: 220; }
+.pin:nth-child(7) { --h: 280; }
+.pin:nth-child(8) { --h: 190; }</code></pre>
+                    </div>
+
+                    <h3>Шаг 5: Добавляем hover-эффекты</h3>
+                    <div class="code-block">
+                        <pre><code>.pin {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pin:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.pin::after {
+    content: "📌";
+    font-size: 16px;
+    margin-top: 10px;
+    opacity: 0.7;
+}</code></pre>
+                    </div>
+
+                    <h3>Шаг 6: Тестируем результат</h3>
+                    <ol>
+                        <li>Откройте страницу в браузере</li>
+                        <li>Меняйте ширину окна — колонки будут адаптироваться</li>
+                        <li>Наведите на элементы — увидите анимацию</li>
+                        <li>Убедитесь, что:
+                            <ul>
+                                <li>Элементы заполняют пробелы (как в Pinterest)</li>
+                                <li>При сужении окна колонок становится меньше</li>
+                                <li>Все элементы остаются не уже 250px</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </section>
+
+                <section id="summary" class="lesson-section">
+                    <h2>Что вы узнали</h2>
+                    <ul>
+                        <li>CSS Grid включается одной строкой: <code class="element">display: grid</code></li>
+                        <li>Двумерная система — управление и строками, и колонками одновременно</li>
+                        <li>Основные свойства контейнера:
+                            <ul>
+                                <li><code class="element">grid-template-columns</code> — определение колонок</li>
+                                <li><code class="element">grid-template-rows</code> — определение строк</li>
+                                <li><code class="element">grid-template-areas</code> — именованные области</li>
+                                <li><code class="element">gap</code> — промежутки между элементами</li>
+                            </ul>
+                        </li>
+                        <li>Основные свойства элементов:
+                            <ul>
+                                <li><code class="element">grid-column</code> / <code class="element">grid-row</code> — размещение в ячейках</li>
+                                <li><code class="element">grid-area</code> — привязка к именованной области</li>
+                                <li><code class="element">justify-self</code> / <code class="element">align-self</code> — выравнивание в ячейке</li>
+                            </ul>
+                        </li>
+                        <li>Полезные функции:
+                            <ul>
+                                <li><code class="element">repeat()</code> — повторение шаблона</li>
+                                <li><code class="element">minmax()</code> — минимальные/максимальные размеры</li>
+                                <li><code class="element">auto-fill</code> / <code class="element">auto-fit</code> — автоматическое создание колонок</li>
+                            </ul>
+                        </li>
+                        <li>Grid упрощает:
+                            <ul>
+                                <li>Создание сложных макетов</li>
+                                <li>Адаптивные дизайны</li>
+                                <li>Выравнивание элементов</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="buttons">
+                        <a href="lesson-5-CSS.html" class="previous-lesson">Предыдущий урок</a>
+                        <a href="..//theory.html" class="next-lesson">Вернуться к теории</a>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+    <script>
+    // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+        </script>
+</body>
+</html>

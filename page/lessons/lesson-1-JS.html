@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы JavaScript</title>
+    <link rel="stylesheet" href="lessons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo"><a href="index.html" id="home-link">Frontend Guide</a></div>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li class="link"><a href="../index.html">Главная</a></li>
+                <li class="link"><a href="../theory.html">Теория</a></li>
+                <li class="link"><a href="../practice.html">Практика</a></li>
+                <li class="link"><a href="../about.html">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="lesson-container">
+        <aside class="lesson-nav">
+            <h3>Основы JavaScript</h3>
+            <nav>
+                <ul>
+                    <li class="aside-link"><a href="#introduction">Что такое JavaScript?</a></li>
+                    <li class="aside-link"><a href="#connection">Подключение JavaScript</a></li>
+                    <li class="aside-link"><a href="#console">Команда console.log()</a></li>
+                    <li class="aside-link"><a href="#variables">Переменные</a></li>
+                    <li class="aside-link"><a href="#practice">Практика</a></li>
+                    <li class="aside-link"><a href="#summary">Что вы узнали</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="lesson-content">
+            <article>
+                <section id="introduction" class="lesson-section">
+                    <h2>Что такое JavaScript?</h2>
+                    <p>JavaScript — это язык программирования, который делает веб-страницы "живыми". Если HTML — это скелет страницы, а CSS — её внешний вид, то JavaScript — это мышцы и мозг, которые заставляют страницу реагировать на ваши действия.</p>
+                    
+                    <h3>Простая аналогия: Умный дом.</h3>
+                    <p>Представьте себе дом:</p>
+                    <ul>
+                        <li><strong>HTML</strong> — фундамент, стены, окна, двери (структура)</li>
+                        <li><strong>CSS</strong> — обои, краска, мебель (внешний вид)</li>
+                        <li><strong>JavaScript</strong> — выключатели света, термостат, дверной звонок, система безопасности (интерактивность)</li>
+                    </ul>
+                    
+                    <p>Когда вы нажимаете кнопку на сайте, заполняете форму, видите анимацию или всплывающее окно — всё это работает на JavaScript. Это язык, который понимает браузер и выполняет прямо на вашем компьютере.</p>
+                </section>
+
+                <section id="connection" class="lesson-section">
+                    <h2>Как подключить JavaScript к странице</h2>
+                    <p>Есть три основных способа подключить JavaScript:</p>
+                    
+                    <h3>Способ 1: Внутри тега <code class="element">&lt;script&gt;</code> (внутри HTML)</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Моя страница&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет!&lt;/h1&gt;
+    
+    &lt;script&gt;
+        // Здесь пишем JavaScript код
+        alert('Страница загружена!');
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+
+                    <h3>Способ 2: Внешний файл (рекомендуется)</h3>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Моя страница&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет!&lt;/h1&gt;
+    
+    &lt;!-- Подключаем внешний файл --&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    
+                    <p>Файл <code class="element">script.js</code>:</p>
+                    <div class="code-block">
+                        <pre><code>// Код в отдельном файле
+alert('Привет из внешнего файла!');</code></pre>
+                    </div>
+
+                    <h3>Способ 3: В <code class="element">&lt;head&gt;</code> с атрибутом <code class="element">defer</code></h3>
+                    <div class="code-block">
+                        <pre><code>&lt;head&gt;
+    &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                    
+                    <p><code class="element">defer</code> означает: "загрузи скрипт, но выполни его только после загрузки всей страницы".</p>
+                    
+                    <p><strong>Правило для начинающих:</strong> Используйте Способ 2 — отдельный файл <code class="element">script.js</code>. Это аккуратнее и проще для организации кода.</p>
+                </section>
+
+                <section id="console" class="lesson-section">
+                    <h2>Первая команда: <code class="element">console.log()</code> — ваш лучший друг</h2>
+                    <p><code class="element">console.log()</code> — это способ "поговорить" с консолью браузера. Консоль — это специальное окно, где можно видеть сообщения от JavaScript.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>console.log('Привет, консоль!');
+console.log(2 + 2);
+console.log('Меня зовут:', 'Анна');</code></pre>
+                    </div>
+                    
+                    <h3>Как открыть консоль в браузере:</h3>
+                    <ol>
+                        <li>Нажмите <code class="element">F12</code> или правой кнопкой → "Исследовать элемент"</li>
+                        <li>Перейдите на вкладку <code class="element">Console</code></li>
+                        <li>Там вы увидите результаты <code class="element">console.log()</code></li>
+                    </ol>
+
+                    <h3>Зачем это нужно?</h3>
+                    <ul>
+                        <li>Проверять, работает ли ваш код</li>
+                        <li>Видеть результаты вычислений</li>
+                        <li>Находить ошибки</li>
+                        <li>Отлаживать (исправлять) программу</li>
+                    </ul>
+
+                    <h3>Примеры использования:</h3>
+                    <div class="code-block">
+                        <pre><code>console.log('Начало программы');
+console.log('2 + 3 =', 2 + 3);
+console.log('Текущее время:', new Date());</code></pre>
+                    </div>
+                </section>
+
+                <section id="variables" class="lesson-section">
+                    <h2>Переменные: Ящики для хранения данных</h2>
+                    <p>Переменная — это как коробка с названием, в которую можно положить что угодно (число, текст, список) и потом достать по названию.</p>
+                    
+                    <h3>Создание переменных: <code class="element">let</code> и <code class="element">const</code></h3>
+                    
+                    <p><strong><code class="element">let</code></strong> — для переменных, которые МОГУТ меняться</p>
+                    <div class="code-block">
+                        <pre><code>let age = 15;     // Создали переменную age со значением 15
+age = 16;         // Изменили значение на 16 (можно!)
+console.log(age); // Покажет 16</code></pre>
+                    </div>
+
+                    <p><strong><code class="element">const</code></strong> — для переменных, которые НЕ МОГУТ меняться (константы)</p>
+                    <div class="code-block">
+                        <pre><code>const birthYear = 2008;  // Создали константу
+birthYear = 2009;        // ОШИБКА! Нельзя изменить константу</code></pre>
+                    </div>
+
+                    <h3>Правила именования переменных:</h3>
+                    <ul>
+                        <li>Могут содержать буквы, цифры, <code class="element">_</code>, <code class="element">$</code></li>
+                        <li>Не могут начинаться с цифры</li>
+                        <li>Чувствительны к регистру (<code class="element">age</code> и <code class="element">Age</code> — разные переменные)</li>
+                        <li>Нельзя использовать зарезервированные слова (<code class="element">let</code>, <code class="element">const</code>, <code class="element">if</code> и т.д.)</li>
+                    </ul>
+
+                    <h3>Хорошие имена:</h3>
+                    <div class="code-block">
+                        <pre><code>let userName = "Анна";    // понятно
+let user_age = 15;        // с подчеркиванием
+let isOnline = true;      // булево значение</code></pre>
+                    </div>
+
+                    <h3>Плохие имена:</h3>
+                    <div class="code-block">
+                        <pre><code>let a = 10;               // что означает "a"?
+let 1stPlace = "первый";  // начинается с цифры
+let let = 5;              // зарезервированное слово</code></pre>
+                    </div>
+                </section>
+
+                
+
+                <section id="practice" class="lesson-section">
+                    <h2>Практика: Простая программа</h2>
+                    
+                    <h3>Задание: Знакомство с JavaScript</h3>
+                    
+                    <h3>Шаг 1: Создаем файлы</h3>
+                    <p><strong>index.html:</strong></p>
+                    <div class="code-block">
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Мой первый JS&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Проверяем JavaScript&lt;/h1&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    
+                    <p><strong>script.js:</strong></p>
+                    <div class="code-block">
+                        <pre><code>console.log('=== Моя первая программа ===');
+
+// Создаем переменные
+const myName = "Алексей";
+let myAge = 14;
+
+// Выводим в консоль
+console.log('Меня зовут:', myName);
+console.log('Мне лет:', myAge);
+
+// Пробуем изменить переменную let
+myAge = 15;
+console.log('Ой, скоро будет:', myAge);
+
+// Это вызовет ошибку (раскомментируйте, чтобы увидеть):
+// const school = "Школа №5";
+// school = "Другая школа"; // ОШИБКА!</code></pre>
+                    </div>
+
+                    <h3>Шаг 2: Открываем консоль</h3>
+                    <ol>
+                        <li>Откройте <code class="element">index.html</code> в браузере</li>
+                        <li>Нажмите <code class="element">F12</code></li>
+                        <li>Перейдите на вкладку "Console"</li>
+                        <li>Увидите:</li>
+                    </ol>
+                    <div class="code-block">
+                        <pre><code>=== Моя первая программа ===
+Меня зовут: Алексей
+Мне лет: 14
+Ой, скоро будет: 15</code></pre>
+                    </div>
+
+                    <h3>Шаг 3: Экспериментируем</h3>
+                    <p>Попробуйте:</p>
+                    <ul>
+                        <li>Изменить значения переменных</li>
+                        <li>Добавить новые переменные</li>
+                        <li>Поменять текст в <code class="element">console.log()</code></li>
+                        <li>Попробовать изменить <code class="element">const</code> (увидите ошибку)</li>
+                    </ul>
+                </section>
+
+                <section id="summary" class="lesson-section">
+                    <h2>Что вы узнали</h2>
+                    <ol>
+                        <li>JavaScript делает страницы интерактивными</li>
+                        <li>Подключается через <code class="element">&lt;script src="file.js"&gt;&lt;/script&gt;</code></li>
+                        <li><code class="element">console.log()</code> выводит информацию в консоль (открывается <code class="element">F12</code>)</li>
+                        <li>Переменные хранят данные:
+                            <ul>
+                                <li><code class="element">const</code> — для постоянных значений</li>
+                                <li><code class="element">let</code> — для изменяемых значений</li>
+                            </ul>
+                        </li>
+                        <li>Консоль браузера — ваш основной инструмент для проверки кода</li>
+                    </ol>
+
+                    <div class="buttons">
+                        <span></span>
+                        <a href="lesson-2-JS.html" class="next-lesson">Следующий урок</a>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+    <script>
+        // Скрипт для выделения активной секции (ваш оригинальный)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Исправленный скрипт для выделения активной секции
+            const sections = document.querySelectorAll('.lesson-section');
+            const navLinks = document.querySelectorAll('.lesson-nav a');
+            
+    // Настраиваем высоту хедера для корректировки
+    const headerHeight = document.querySelector('header').offsetHeight || 50;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Удаляем active у всех ссылок
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Добавляем active соответствующей ссылке
+                    const activeLink = document.querySelector(`.lesson-nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        },
+        {
+            threshold: 0.3, // Срабатывает когда 30% секции в зоне видимости
+            rootMargin: `-${headerHeight}px 0px -40% 0px` // Учитываем высоту хедера
+        }
+    );
+    
+    // Наблюдаем за всеми секциями
+    sections.forEach(section => observer.observe(section));
+    
+    // Также добавляем обработчик скролла для дополнительной надежности
+    let scrollTimeout;
+    function updateActiveOnScroll() {
+        const scrollPosition = window.scrollY + headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && 
+                scrollPosition < sectionTop + sectionHeight) {
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveOnScroll, 100);
+    });
+    
+    // Вызываем при загрузке
+    updateActiveOnScroll();
+});
+            // Скрипт для бургер-меню
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinksContainer = document.querySelector('.nav-links');
+            const body = document.body;
+            
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', function() {
+                    // Переключение состояния меню
+                    this.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Блокировка прокрутки при открытом меню
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!navLinksContainer.contains(event.target) && 
+                        !burgerMenu.contains(event.target) && 
+                        navLinksContainer.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // Закрытие меню при изменении размера окна (если перешли на десктоп)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    burgerMenu.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    body.style.overflow = '';
+                }
+            });
+    </script>
+</body>
+</html>
