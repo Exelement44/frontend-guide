@@ -306,7 +306,7 @@ tr:nth-child(even) {
         display: flex;
     }
     #navbar {
-      justify-content: space-between;
+      justify-content: space-around;
     }
     th, td {
     padding: 8px 10px;
@@ -495,3 +495,4 @@ tr:nth-child(even) {
 
 
 /* Оптимизация для печати */
+
